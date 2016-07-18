@@ -16,14 +16,16 @@ import java.util.List;
  */
 @WebServlet(name = "Servlet", urlPatterns = {"/Servlet"})
 public class Servlet extends HttpServlet {
+
+    List<UsersEntity> list = null;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Session session = HibernateUtil.getSessionFactory().openSession();
-        List<UsersEntity> list = null;
+
 
         org.hibernate.Transaction tx = session.beginTransaction();
 
-        Query query = session.createQuery("from UsersEntity ").setMaxResults(100);
+        Query query = session.createQuery("from UsersEntity ").setMaxResults(10000);
 
         tx.commit();
         list = query.list();
