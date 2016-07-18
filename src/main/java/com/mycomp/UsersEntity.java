@@ -156,4 +156,20 @@ public class UsersEntity {
         result = 31 * result + (daterelease != null ? daterelease.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "UsersEntity{" +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", middlename='" + middlename + '\'' +
+                ", sex='" + sex + '\'' +
+                ", age=" + age +
+                ", groupname='" + groupname + '\'' +
+                ", facultyname='" + facultyname + '\'' +
+                ", dateenrollment=" + dateenrollment +
+                ", daterelease=" + daterelease +
+                '}';
+    }
 }

@@ -1,5 +1,6 @@
 package com.mycomp;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import javax.servlet.ServletException;
@@ -20,8 +21,25 @@ public class Servlet extends HttpServlet {
         Session session = HibernateUtil.getSessionFactory().openSession();
         List<UsersEntity> list = null;
 
+        org.hibernate.Transaction tx = session.beginTransaction();
+
+        Query query = session.createQuery("from UsersEntity ").setMaxResults(100);
+
+        tx.commit();
+        list = query.list();
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i).toString());
+
+        }
+        request.setAttribute("list", list);
+
+
+
 
         request.getRequestDispatcher("/index.jsp").forward(request,response);
+
+        session.flush();
+        session.close();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
