@@ -2,6 +2,8 @@ package com.mycomp;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,28 +22,42 @@ public class Servlet extends HttpServlet {
     List<UsersEntity> list = null;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
+//        Session session = HibernateUtil.getSessionFactory().openSession();
+//
+//
+//        org.hibernate.Transaction tx = session.beginTransaction();
+//
+//        Query query = session.createQuery("from UsersEntity ").setMaxResults(10000);
+//
+//        tx.commit();
+//        list = query.list();
+//        for (int i = 0; i < list.size(); i++) {
+//            System.out.println(list.get(i).toString());
+//
+//        }
+//        request.setAttribute("list", list);
+//
+//
+//
+//
+//        request.getRequestDispatcher("/index.jsp").forward(request,response);
+//
+//        session.flush();
+//        session.close();
 
 
-        org.hibernate.Transaction tx = session.beginTransaction();
+        ApplicationContext context = new ClassPathXmlApplicationContext("SpringContext.xml");
+        DaoService service = (DaoService) context.getBean("storageService");
+        List<UsersEntity> list = service.getAll();
 
-        Query query = session.createQuery("from UsersEntity ").setMaxResults(10000);
-
-        tx.commit();
-        list = query.list();
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).toString());
 
         }
-        request.setAttribute("list", list);
-
-
 
 
         request.getRequestDispatcher("/index.jsp").forward(request,response);
 
-        session.flush();
-        session.close();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
