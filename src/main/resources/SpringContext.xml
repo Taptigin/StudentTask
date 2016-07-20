@@ -28,7 +28,7 @@
 
     <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
           id="entityManagerFactory">
-        <property name="persistenceXmlLocation" value="classpath:webapp/WEB-INF/persistence.xml"/>
+        <property name="persistenceXmlLocation" value="classpath:persistence.xml"/>
         <property name="persistenceUnitName" value="com.mycomp.persistence.unit"/>
         <property name="dataSource" ref="dataSource"/>
         <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
