@@ -34,7 +34,7 @@ public class Servlet extends HttpServlet {
 
         }
 
-
+        System.out.println("");
         request.getRequestDispatcher("/index.jsp").forward(request,response);
 
     }
