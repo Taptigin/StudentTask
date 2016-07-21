@@ -1,8 +1,8 @@
 ﻿CREATE TABLE  users 
 (ID int primary key, FirstName varchar(80), 
-LastName varchar(80), MiddlenameName varchar(80),
+LastName varchar(80), MiddleName varchar(80),
 Sex varchar(1),Age int, GroupName varchar(80),
-FacultyName varchar(80),DateEnrollment date,DateRelease date);
+FacultyName varchar(80),EnrollmentDate date,ReleaseDate date);
 
 CREATE SEQUENCE studentId 
 START with 0
