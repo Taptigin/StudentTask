@@ -22,28 +22,7 @@ public class Servlet extends HttpServlet {
     List<UsersEntity> list = null;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//        Session session = HibernateUtil.getSessionFactory().openSession();
-//
-//
-//        org.hibernate.Transaction tx = session.beginTransaction();
-//
-//        Query query = session.createQuery("from UsersEntity ").setMaxResults(10000);
-//
-//        tx.commit();
-//        list = query.list();
-//        for (int i = 0; i < list.size(); i++) {
-//            System.out.println(list.get(i).toString());
-//
-//        }
-//        request.setAttribute("list", list);
-//
-//
-//
-//
-//        request.getRequestDispatcher("/index.jsp").forward(request,response);
-//
-//        session.flush();
-//        session.close();
+
 
 
         ApplicationContext context = new ClassPathXmlApplicationContext("SpringContext.xml");

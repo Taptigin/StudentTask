@@ -4,21 +4,21 @@ import javax.persistence.*;
 import java.sql.Date;
 
 /**
- * Created by Александр on 18.07.2016.
+ * Created by Александр on 21.07.2016.
  */
 @Entity
-@Table(name = "users", schema = "public", catalog = "postgres")
+@Table(name = "users", schema = "public", catalog = "students")
 public class UsersEntity {
     private Integer id;
-    private String firstname;
-    private String lastname;
-    private String middlename;
+    private String firstName;
+    private String lastName;
+    private String middleName;
     private String sex;
     private Integer age;
-    private String groupname;
-    private String facultyname;
-    private Date dateenrollment;
-    private Date daterelease;
+    private String groupName;
+    private String facultyName;
+    private Date enrollmentDate;
+    private Date releaseDate;
 
     @Id
     @Column(name = "id")
@@ -32,32 +32,32 @@ public class UsersEntity {
 
     @Basic
     @Column(name = "firstname")
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     @Basic
     @Column(name = "lastname")
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @Basic
     @Column(name = "middlename")
-    public String getMiddlename() {
-        return middlename;
+    public String getMiddleName() {
+        return middleName;
     }
 
-    public void setMiddlename(String middlename) {
-        this.middlename = middlename;
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
     }
 
     @Basic
@@ -82,42 +82,42 @@ public class UsersEntity {
 
     @Basic
     @Column(name = "groupname")
-    public String getGroupname() {
-        return groupname;
+    public String getGroupName() {
+        return groupName;
     }
 
-    public void setGroupname(String groupname) {
-        this.groupname = groupname;
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
     }
 
     @Basic
     @Column(name = "facultyname")
-    public String getFacultyname() {
-        return facultyname;
+    public String getFacultyName() {
+        return facultyName;
     }
 
-    public void setFacultyname(String facultyname) {
-        this.facultyname = facultyname;
-    }
-
-    @Basic
-    @Column(name = "dateenrollment")
-    public Date getDateenrollment() {
-        return dateenrollment;
-    }
-
-    public void setDateenrollment(Date dateenrollment) {
-        this.dateenrollment = dateenrollment;
+    public void setFacultyName(String facultyName) {
+        this.facultyName = facultyName;
     }
 
     @Basic
-    @Column(name = "daterelease")
-    public Date getDaterelease() {
-        return daterelease;
+    @Column(name = "enrollmentdate")
+    public Date getEnrollmentDate() {
+        return enrollmentDate;
     }
 
-    public void setDaterelease(Date daterelease) {
-        this.daterelease = daterelease;
+    public void setEnrollmentDate(Date enrollmentDate) {
+        this.enrollmentDate = enrollmentDate;
+    }
+
+    @Basic
+    @Column(name = "releasedate")
+    public Date getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
     @Override
@@ -128,16 +128,16 @@ public class UsersEntity {
         UsersEntity that = (UsersEntity) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
-        if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
-        if (middlename != null ? !middlename.equals(that.middlename) : that.middlename != null) return false;
+        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
+        if (middleName != null ? !middleName.equals(that.middleName) : that.middleName != null) return false;
         if (sex != null ? !sex.equals(that.sex) : that.sex != null) return false;
         if (age != null ? !age.equals(that.age) : that.age != null) return false;
-        if (groupname != null ? !groupname.equals(that.groupname) : that.groupname != null) return false;
-        if (facultyname != null ? !facultyname.equals(that.facultyname) : that.facultyname != null) return false;
-        if (dateenrollment != null ? !dateenrollment.equals(that.dateenrollment) : that.dateenrollment != null)
+        if (groupName != null ? !groupName.equals(that.groupName) : that.groupName != null) return false;
+        if (facultyName != null ? !facultyName.equals(that.facultyName) : that.facultyName != null) return false;
+        if (enrollmentDate != null ? !enrollmentDate.equals(that.enrollmentDate) : that.enrollmentDate != null)
             return false;
-        if (daterelease != null ? !daterelease.equals(that.daterelease) : that.daterelease != null) return false;
+        if (releaseDate != null ? !releaseDate.equals(that.releaseDate) : that.releaseDate != null) return false;
 
         return true;
     }
@@ -145,15 +145,15 @@ public class UsersEntity {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
-        result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
-        result = 31 * result + (middlename != null ? middlename.hashCode() : 0);
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (middleName != null ? middleName.hashCode() : 0);
         result = 31 * result + (sex != null ? sex.hashCode() : 0);
         result = 31 * result + (age != null ? age.hashCode() : 0);
-        result = 31 * result + (groupname != null ? groupname.hashCode() : 0);
-        result = 31 * result + (facultyname != null ? facultyname.hashCode() : 0);
-        result = 31 * result + (dateenrollment != null ? dateenrollment.hashCode() : 0);
-        result = 31 * result + (daterelease != null ? daterelease.hashCode() : 0);
+        result = 31 * result + (groupName != null ? groupName.hashCode() : 0);
+        result = 31 * result + (facultyName != null ? facultyName.hashCode() : 0);
+        result = 31 * result + (enrollmentDate != null ? enrollmentDate.hashCode() : 0);
+        result = 31 * result + (releaseDate != null ? releaseDate.hashCode() : 0);
         return result;
     }
 
@@ -161,15 +161,15 @@ public class UsersEntity {
     public String toString() {
         return "UsersEntity{" +
                 "id=" + id +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", middlename='" + middlename + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", middleName='" + middleName + '\'' +
                 ", sex='" + sex + '\'' +
                 ", age=" + age +
-                ", groupname='" + groupname + '\'' +
-                ", facultyname='" + facultyname + '\'' +
-                ", dateenrollment=" + dateenrollment +
-                ", daterelease=" + daterelease +
+                ", groupName='" + groupName + '\'' +
+                ", facultyName='" + facultyName + '\'' +
+                ", enrollmentDate=" + enrollmentDate +
+                ", releaseDate=" + releaseDate +
                 '}';
     }
 }

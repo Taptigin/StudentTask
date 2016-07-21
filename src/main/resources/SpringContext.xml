@@ -13,9 +13,9 @@
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.postgresql.Driver"/>
-        <property name="url" value="jdbc:postgresql://localhost:5432/postgres"/>
-        <property name="username" value="postgres"/>
-        <property name="password" value="Trpk30273000"/>
+        <property name="url" value="jdbc:postgresql://localhost:5432/students"/>
+        <property name="username" value="taptigin"/>
+        <property name="password" value="123"/>
     </bean>
 
     <bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"/>
