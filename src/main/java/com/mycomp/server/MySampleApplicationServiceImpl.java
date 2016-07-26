@@ -25,11 +25,5 @@ public class MySampleApplicationServiceImpl extends RemoteServiceServlet impleme
     }
 
 
-    public List<UsersEntity> allRows() {
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("SpringContext.xml");
-        DaoService service = (DaoService) context.getBean("storageService");
-        List<UsersEntity> list = service.getAll();
-        return list;
-    }
 }

@@ -49,20 +49,10 @@ public class MySampleApplication implements EntryPoint {
                 }
             };
 
-            final AsyncCallback<List<UsersEntity>> callAll = new AsyncCallback<List<UsersEntity>>() {
-                @Override
-                public void onFailure(Throwable caught) {
 
-                }
-
-                @Override
-                public void onSuccess(List<UsersEntity> result) {
-
-                }
-            };
 
         service.getRow(callback);
-        service.allRows(callAll);
+
 
         // Assume that the host HTML has elements defined whose
         // IDs are "slot1", "slot2".  In a real app, you probably would not want
