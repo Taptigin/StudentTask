@@ -9,6 +9,9 @@ public interface MySampleApplicationService extends RemoteService {
     // Sample interface method of remote interface
     String getMessage(String msg);
 
+    String getRow();
+
+
     /**
      * Utility/Convenience class.
      * Use MySampleApplicationService.App.getInstance() to access static instance of MySampleApplicationServiceAsync
@@ -19,5 +22,7 @@ public interface MySampleApplicationService extends RemoteService {
         public static synchronized MySampleApplicationServiceAsync getInstance() {
             return ourInstance;
         }
+
+
     }
 }
