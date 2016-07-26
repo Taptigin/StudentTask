@@ -1,6 +1,7 @@
 package com.mycomp;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
@@ -8,7 +9,7 @@ import java.sql.Date;
  */
 @Entity
 @Table(name = "users", schema = "public", catalog = "students")
-public class UsersEntity {
+public class UsersEntity implements Serializable{
     private Integer id;
     private String firstName;
     private String lastName;
