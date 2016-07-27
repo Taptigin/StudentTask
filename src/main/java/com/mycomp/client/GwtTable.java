@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class GwtTable implements EntryPoint {
     private GwtTableServiceAsync serviceAsync = GWT.create(GwtTableService.class);
-    //private List<UsersEntity> list = new ArrayList<>();
+
 
     public void onModuleLoad() {
 
