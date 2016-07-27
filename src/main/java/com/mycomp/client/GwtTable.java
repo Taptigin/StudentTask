@@ -27,7 +27,9 @@ public class GwtTable implements EntryPoint {
             @Override
             public void onSuccess(List<UsersEntity> result) {
                 Label label = new Label(result.get(0).toString());
+                Label label2 = new Label("123");
                 RootPanel.get().add(label);
+                RootPanel.get().add(label2);
 
             }
         };
