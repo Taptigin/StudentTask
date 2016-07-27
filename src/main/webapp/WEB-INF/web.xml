@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+        PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+    <servlet>
+        <servlet-name>com.mycomp.GwtTable GwtTableServiceImpl</servlet-name>
+        <servlet-class>com.mycomp.server.GwtTableServiceImpl</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>com.mycomp.GwtTable GwtTableServiceImpl</servlet-name>
+        <url-pattern>/com.mycomp.GwtTable/GwtTable</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>GwtTable.html</welcome-file>
+    </welcome-file-list>
+
+
+
+</web-app>
