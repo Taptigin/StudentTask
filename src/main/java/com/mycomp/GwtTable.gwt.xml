@@ -8,7 +8,7 @@
     <entry-point class='com.mycomp.client.GwtTable'/>
 
     <source path="client"/>
-    <source path="server"/>
+
 
     <!--<inherits name="com.google.gwt.uibinder.UiBinder"/>-->
 
