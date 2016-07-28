@@ -4,20 +4,11 @@
         "http://java.sun.com/dtd/web-app_2_3.dtd">
 
 <web-app>
-    <servlet>
-        <servlet-name>com.mycomp.GwtTable GwtTableServiceImpl</servlet-name>
-        <servlet-class>com.mycomp.server.GwtTableServiceImpl</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>com.mycomp.GwtTable GwtTableServiceImpl</servlet-name>
-        <url-pattern>/com.mycomp.GwtTable/GwtTable</url-pattern>
-    </servlet-mapping>
-
-    <welcome-file-list>
-        <welcome-file>GwtTable.html</welcome-file>
-    </welcome-file-list>
 
 
 
+
+<welcome-file-list>
+    <welcome-file>TableGWT.html</welcome-file>
+</welcome-file-list>
 </web-app>
