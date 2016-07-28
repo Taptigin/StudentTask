@@ -1,80 +1,58 @@
 package com.mycomp.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.google.gwt.event.dom.client.KeyDownHandler;
+import com.google.gwt.i18n.client.NumberFormat;
+import com.google.gwt.user.client.Random;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
+import com.mycomp.UsersEntity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Александр on 28.07.2016.
  */
 public class TableGWT implements EntryPoint {
-    private VerticalPanel mainPanel = new VerticalPanel();
-    private FlexTable stocksFlexTable = new FlexTable();
-    private HorizontalPanel addPanel = new HorizontalPanel();
-    private TextBox newSymbolTextBox = new TextBox();
-    private Button addStockButton = new Button("Add");
-    private Label lastUpdatedLabel = new Label();
 
+private TableServiceAsync swc = GWT.create(TableService.class);
     public void onModuleLoad() {
-        stocksFlexTable.setText(0, 0, "Symbol");
-        stocksFlexTable.setText(0, 1, "Price");
-        stocksFlexTable.setText(0, 2, "Change");
-        stocksFlexTable.setText(0, 3, "Remove");
+        // Tables have no explicit size -- they resize automatically on demand.
+        FlexTable t = new FlexTable();
 
-        // Assemble Add Stock panel.
-        addPanel.add(newSymbolTextBox);
-        addPanel.add(addStockButton);
+        // Put some text at the table's extremes.  This forces the table to be
+        // 3 by 3.
+        t.setText(0, 0, "upper-left corner");
+        t.setText(2, 2, "bottom-right corner");
 
-        // Assemble Main panel.
-        mainPanel.add(stocksFlexTable);
-        mainPanel.add(addPanel);
-        mainPanel.add(lastUpdatedLabel);
+        // Let's put a button in the middle...
+        t.setWidget(1, 0, new Button("Wide Button"));
 
-        // Associate the Main panel with the HTML host page.
-        RootPanel.get("stockList").add(mainPanel);
+        // ...and set it's column span so that it takes up the whole row.
+        t.getFlexCellFormatter().setColSpan(1, 0, 3);
 
-
-        // Move cursor focus to the input box.
-        newSymbolTextBox.setFocus(true);
-
-        addStockButton.addClickHandler(new ClickHandler() {
+        AsyncCallback<List<UsersEntity>> callback = new AsyncCallback<List<UsersEntity>>() {
             @Override
-            public void onClick(ClickEvent event) {
-                addStock();
-            }
-        });
+            public void onFailure(Throwable caught) {
 
-        newSymbolTextBox.addKeyDownHandler(new KeyDownHandler() {
+            }
+
             @Override
-            public void onKeyDown(KeyDownEvent event) {
-                addStock();
+            public void onSuccess(List<UsersEntity> result) {
+                String s = result.get(0).toString();
+                t.setText(2,2,s);
+
             }
-        });
+        };
 
-
-
-
-
-
-    }
-
-    private void addStock() {
-
-        final String symbol = newSymbolTextBox.getText().toUpperCase().trim();
-        newSymbolTextBox.setFocus(true);
-
-        // Stock code must be between 1 and 10 chars that are numbers, letters, or dots.
-        if (!symbol.matches("^[0-9A-Z\\.]{1,10}$")) {
-            Window.alert("'" + symbol + "' is not a valid symbol.");
-            newSymbolTextBox.selectAll();
-            return;
-        }
-
-        newSymbolTextBox.setText("");
+        RootPanel.get().add(t);
 
     }
 
