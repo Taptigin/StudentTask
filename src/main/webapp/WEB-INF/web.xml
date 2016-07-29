@@ -11,7 +11,7 @@
 
     <servlet-mapping>
         <servlet-name>TableServiceImpl</servlet-name>
-        <url-pattern>/tableServiceImpl</url-pattern>
+        <url-pattern>/com.mycomp.TableGWT/TableService</url-pattern>
     </servlet-mapping>
 
 

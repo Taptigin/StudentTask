@@ -2,19 +2,10 @@ package com.mycomp.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.dom.client.KeyDownEvent;
-import com.google.gwt.event.dom.client.KeyDownHandler;
-import com.google.gwt.i18n.client.NumberFormat;
-import com.google.gwt.user.client.Random;
-import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
-import com.mycomp.UsersEntity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,10 +13,31 @@ import java.util.List;
  */
 public class TableGWT implements EntryPoint {
 
-private TableServiceAsync swc = GWT.create(TableService.class);
+    private String s;
+    private FlexTable t = new FlexTable();
+
+
     public void onModuleLoad() {
-        // Tables have no explicit size -- they resize automatically on demand.
-        FlexTable t = new FlexTable();
+
+        TableServiceAsync swc = GWT.create(TableService.class);
+
+        AsyncCallback<List<UsersEntity>> callback = new AsyncCallback<List<UsersEntity>>() {
+            @Override
+            public void onFailure(Throwable caught) {
+                Window.alert("Fail getAllUsers");
+            }
+
+            @Override
+            public void onSuccess(List<UsersEntity> result) {
+
+                s = result.get(1).toString();
+                Window.alert(s);
+
+
+            }
+        };
+
+        swc.getAll(callback);
 
         // Put some text at the table's extremes.  This forces the table to be
         // 3 by 3.
@@ -38,23 +50,14 @@ private TableServiceAsync swc = GWT.create(TableService.class);
         // ...and set it's column span so that it takes up the whole row.
         t.getFlexCellFormatter().setColSpan(1, 0, 3);
 
-        AsyncCallback<List<UsersEntity>> callback = new AsyncCallback<List<UsersEntity>>() {
-            @Override
-            public void onFailure(Throwable caught) {
 
-            }
 
-            @Override
-            public void onSuccess(List<UsersEntity> result) {
-                String s = result.get(0).toString();
-                t.setText(2,2,s);
-
-            }
-        };
-
+        t.setText(2,2,s);
         RootPanel.get().add(t);
 
     }
+
+
 
 
 

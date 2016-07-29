@@ -7,6 +7,7 @@
     <entry-point class='com.mycomp.client.TableGWT'/>
 
     <!--<source path="com.mycomp.shared"/>-->
-    <!--<source path="com.mycomp"/>-->
+    <source path="com.mycomp"/>
+    <source path='client'/>
 
 </module>

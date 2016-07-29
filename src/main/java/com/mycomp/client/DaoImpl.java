@@ -1,4 +1,4 @@
-package com.mycomp;
+package com.mycomp.client;
 
 import org.springframework.stereotype.Repository;
 
