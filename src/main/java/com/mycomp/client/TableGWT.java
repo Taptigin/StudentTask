@@ -14,7 +14,7 @@ import java.util.List;
 public class TableGWT implements EntryPoint {
 
     private String s;
-    private FlexTable t = new FlexTable();
+    private final FlexTable t = new FlexTable();
 
 
     public void onModuleLoad() {
@@ -32,6 +32,12 @@ public class TableGWT implements EntryPoint {
 
                 s = result.get(1).toString();
                 Window.alert(s);
+
+                for (int i = 0; i < 250; i++) {
+                    t.setText(i,1,result.get(i).getFirstName());
+                    t.setText(i,2,result.get(i).getLastName());
+
+                }
 
 
             }
