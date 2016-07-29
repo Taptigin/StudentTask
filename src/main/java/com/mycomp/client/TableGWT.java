@@ -36,6 +36,8 @@ public class TableGWT implements EntryPoint {
                 for (int i = 0; i < 250; i++) {
                     t.setText(i,1,result.get(i).getFirstName());
                     t.setText(i,2,result.get(i).getLastName());
+                    t.setText(i,3,result.get(i).getSex());
+                    t.setText(i,4,result.get(i).getEnrollmentDate().toString());
 
                 }
 
