@@ -132,7 +132,7 @@
         <executions>
           <execution>
             <configuration>
-              <module>com.mycompany.gwt.Module</module>
+              <module>com.mycomp.TableGWT</module>
             </configuration>
             <goals>
               <goal>compile</goal>
