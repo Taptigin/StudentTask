@@ -11,5 +11,6 @@
     <source path="com.mycomp"/>
     <source path='client'/>
 
+
     <add-linker name="xsiframe"/>
 </module>
