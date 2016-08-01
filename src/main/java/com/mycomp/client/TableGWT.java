@@ -52,11 +52,15 @@ public class TableGWT implements EntryPoint {
 
                 SimpleLayoutPanel slp = new SimpleLayoutPanel();
                 table.setTitle("111");
-                slp.add(table);
+
                 slp.setTitle("123");
+
+                slp.add(table);
+
+
                 RootLayoutPanel.get().add(slp);
 
-
+                Window.alert(result.get(5000).toString());
 
             }
         };
