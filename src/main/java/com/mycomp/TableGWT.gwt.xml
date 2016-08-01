@@ -6,8 +6,10 @@
 
     <entry-point class='com.mycomp.client.TableGWT'/>
 
-    <!--<source path="com.mycomp.shared"/>-->
+    <inherits name='com.google.gwt.user.theme.clean.Clean'/>
+
     <source path="com.mycomp"/>
     <source path='client'/>
 
+    <add-linker name="xsiframe"/>
 </module>
