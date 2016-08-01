@@ -4,6 +4,7 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy;
+import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
@@ -15,12 +16,45 @@ import java.util.List;
  */
 public class TableGWT implements EntryPoint {
 
-    DataGrid<UsersEntity> table = new DataGrid<UsersEntity>();
+    private DataGrid<UsersEntity> table = new DataGrid<UsersEntity>();
 
 
     public void onModuleLoad() {
 
         table.setKeyboardSelectionPolicy(HasKeyboardSelectionPolicy.KeyboardSelectionPolicy.ENABLED);
+
+        TableServiceAsync swc = GWT.create(TableService.class);
+
+        AsyncCallback<List<UsersEntity>> callback = new AsyncCallback<List<UsersEntity>>() {
+            @Override
+            public void onFailure(Throwable caught) {
+                Window.alert("Сервис не запустился.");
+
+            }
+
+            @Override
+            public void onSuccess(List<UsersEntity> result) {
+
+                TextColumn<UsersEntity> firstName = new TextColumn<UsersEntity>() {
+                    @Override
+                    public String getValue(UsersEntity object) {
+                        return object.getFirstName();
+                    }
+                };
+
+                table.addColumn(firstName,"Имя");
+
+
+            }
+        };
+
+
+        swc.getAll(callback);
+
+        SimpleLayoutPanel slp = new SimpleLayoutPanel();
+        slp.add(table);
+        slp.setTitle("123");
+        RootLayoutPanel.get().add(slp);
 
 
 
