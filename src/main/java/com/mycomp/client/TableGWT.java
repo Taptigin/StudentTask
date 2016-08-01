@@ -9,6 +9,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,6 +18,7 @@ import java.util.List;
 public class TableGWT implements EntryPoint {
 
     private DataGrid<UsersEntity> table = new DataGrid<UsersEntity>();
+    private List<UsersEntity> list = new ArrayList<>();
 
 
     public void onModuleLoad() {
@@ -35,14 +37,24 @@ public class TableGWT implements EntryPoint {
             @Override
             public void onSuccess(List<UsersEntity> result) {
 
+
                 TextColumn<UsersEntity> firstName = new TextColumn<UsersEntity>() {
                     @Override
                     public String getValue(UsersEntity object) {
                         return object.getFirstName();
                     }
                 };
-
                 table.addColumn(firstName,"Имя");
+
+
+                table.setRowData(0,result);
+
+                SimpleLayoutPanel slp = new SimpleLayoutPanel();
+                table.setTitle("111");
+                slp.add(table);
+                slp.setTitle("123");
+                RootLayoutPanel.get().add(slp);
+
 
 
             }
@@ -51,10 +63,8 @@ public class TableGWT implements EntryPoint {
 
         swc.getAll(callback);
 
-        SimpleLayoutPanel slp = new SimpleLayoutPanel();
-        slp.add(table);
-        slp.setTitle("123");
-        RootLayoutPanel.get().add(slp);
+
+
 
 
 
