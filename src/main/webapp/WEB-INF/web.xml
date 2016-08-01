@@ -17,6 +17,6 @@
 
 
 <welcome-file-list>
-    <welcome-file>TableGWT</welcome-file>
+    <welcome-file>TableGWT.html</welcome-file>
 </welcome-file-list>
 </web-app>
