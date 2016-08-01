@@ -46,8 +46,9 @@ public class TableGWT implements EntryPoint {
                 };
                 table.addColumn(firstName,"Имя");
 
-
+                table.setRowCount(result.size(), true);
                 table.setRowData(0,result);
+                table.setWidth("100%");
 
                 SimpleLayoutPanel slp = new SimpleLayoutPanel();
                 table.setTitle("111");
