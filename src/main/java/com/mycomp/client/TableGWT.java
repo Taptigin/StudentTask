@@ -13,7 +13,9 @@ import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
+import org.springframework.format.datetime.standard.DateTimeContext;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -48,6 +50,7 @@ public class TableGWT implements EntryPoint {
                 table.addColumn(getLastName(),"Фамилия");
                 table.addColumn(getSex(),"Пол");
                 table.addColumn(getEnrollmentDate(),"Дата поступления");
+                table.addColumn(getReleaseDate(),"Дата окончания");
 
 
 
@@ -129,6 +132,17 @@ public class TableGWT implements EntryPoint {
             }
         };
         return enrollmentDate;
+    }
+
+    private Column<UsersEntity,Date> getReleaseDate(){
+        DateCell dateCell = new DateCell();
+        Column<UsersEntity,Date> releaseDate = new Column<UsersEntity, Date>(dateCell) {
+            @Override
+            public Date getValue(UsersEntity object) {
+                return object.getReleaseDate();
+            }
+        };
+        return releaseDate;
     }
 
 
