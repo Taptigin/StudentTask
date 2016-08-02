@@ -1,8 +1,12 @@
 package com.mycomp.client;
 
+import com.google.gwt.cell.client.Cell;
+import com.google.gwt.cell.client.DateCell;
+import com.google.gwt.cell.client.NumberCell;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Text;
+import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy;
 import com.google.gwt.user.cellview.client.TextColumn;
@@ -11,6 +15,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -42,6 +47,7 @@ public class TableGWT implements EntryPoint {
                 table.addColumn(getMiddleName(),"Отчество");
                 table.addColumn(getLastName(),"Фамилия");
                 table.addColumn(getSex(),"Пол");
+                table.addColumn(getEnrollmentDate(),"Дата поступления");
 
 
 
@@ -112,6 +118,17 @@ public class TableGWT implements EntryPoint {
             }
         };
         return sex;
+    }
+
+    private Column<UsersEntity,Date> getEnrollmentDate(){
+        DateCell dateCell = new DateCell();
+        Column<UsersEntity,Date> enrollmentDate = new Column<UsersEntity, Date>(dateCell) {
+            @Override
+            public Date getValue(UsersEntity object) {
+                return object.getEnrollmentDate();
+            }
+        };
+        return enrollmentDate;
     }
 
 
