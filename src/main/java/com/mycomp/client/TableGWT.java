@@ -38,15 +38,11 @@ public class TableGWT implements EntryPoint {
             @Override
             public void onSuccess(List<UsersEntity> result) {
 
+                table.addColumn(getFirstName(),"Имя");
+                table.addColumn(getMiddleName(),"Отчество");
+                table.addColumn(getLastName(),"Фамилия");
 
-                TextColumn<UsersEntity> firstName = new TextColumn<UsersEntity>() {
-                    @Override
-                    public String getValue(UsersEntity object) {
-                        return object.getFirstName();
-                    }
-                };
-                table.addColumn(firstName,"Имя");
-                table.addColumn(getLastName(),"Отчество");
+
 
                 table.setRowCount(result.size(), true);
                 table.setRowData(0,result);
@@ -86,6 +82,28 @@ public class TableGWT implements EntryPoint {
         };
         return lastName;
     }
+
+    private TextColumn<UsersEntity> getFirstName(){
+        TextColumn<UsersEntity> firstName = new TextColumn<UsersEntity>() {
+            @Override
+            public String getValue(UsersEntity object) {
+                return object.getFirstName();
+            }
+        };
+        return firstName;
+    }
+
+    private TextColumn<UsersEntity> getMiddleName(){
+        TextColumn<UsersEntity> middleName = new TextColumn<UsersEntity>() {
+            @Override
+            public String getValue(UsersEntity object) {
+                return object.getMiddleName();
+            }
+        };
+        return middleName;
+    }
+
+
 
 
 
