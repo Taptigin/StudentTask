@@ -26,7 +26,7 @@ import java.util.List;
 public class TableGWT implements EntryPoint {
 
     private DataGrid<UsersEntity> table = new DataGrid<UsersEntity>();
-    private List<UsersEntity> list = new ArrayList<>();
+    //private List<UsersEntity> list = new ArrayList<>();
 
 
     public void onModuleLoad() {
