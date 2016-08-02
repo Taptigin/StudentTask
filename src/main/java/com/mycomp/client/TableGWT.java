@@ -51,7 +51,7 @@ public class TableGWT implements EntryPoint {
                 table.setWidth("100%");
 
                 LayoutPanel slp = new LayoutPanel();
-               // SimpleLayoutPanel slp = new SimpleLayoutPanel();
+
                 table.setTitle("111");
 
                 slp.setTitle("123");
@@ -59,12 +59,12 @@ public class TableGWT implements EntryPoint {
 
                 slp.add(table);
 
-                Label label = new Label("Превед");
 
-                SimpleLayoutPanel simpleLayoutPanel = new SimpleLayoutPanel();
 
-                simpleLayoutPanel.add(label);
-                RootLayoutPanel.get().add(simpleLayoutPanel);
+
+
+
+
 
                 RootLayoutPanel.get().add(slp);
 
