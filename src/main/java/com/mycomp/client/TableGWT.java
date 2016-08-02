@@ -2,6 +2,7 @@ package com.mycomp.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Text;
 import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy;
 import com.google.gwt.user.cellview.client.TextColumn;
@@ -45,28 +46,20 @@ public class TableGWT implements EntryPoint {
                     }
                 };
                 table.addColumn(firstName,"Имя");
+                table.addColumn(getLastName(),"Отчество");
 
                 table.setRowCount(result.size(), true);
                 table.setRowData(0,result);
                 table.setWidth("100%");
 
-                LayoutPanel slp = new LayoutPanel();
-
-                table.setTitle("111");
-
-                slp.setTitle("123");
+                LayoutPanel panel = new LayoutPanel();
 
 
-                slp.add(table);
+                panel.add(table);
 
 
 
-
-
-
-
-
-                RootLayoutPanel.get().add(slp);
+                RootLayoutPanel.get().add(panel);
 
                 //Window.alert(result.get(5000).toString());
 
@@ -84,7 +77,15 @@ public class TableGWT implements EntryPoint {
 
     }
 
-
+    private TextColumn<UsersEntity> getLastName(){
+        TextColumn<UsersEntity> lastName = new TextColumn<UsersEntity>() {
+            @Override
+            public String getValue(UsersEntity object) {
+                return object.getLastName();
+            }
+        };
+        return lastName;
+    }
 
 
 
