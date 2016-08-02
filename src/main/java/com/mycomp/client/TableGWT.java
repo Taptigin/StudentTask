@@ -41,6 +41,7 @@ public class TableGWT implements EntryPoint {
                 table.addColumn(getFirstName(),"Имя");
                 table.addColumn(getMiddleName(),"Отчество");
                 table.addColumn(getLastName(),"Фамилия");
+                table.addColumn(getSex(),"Пол");
 
 
 
@@ -103,7 +104,15 @@ public class TableGWT implements EntryPoint {
         return middleName;
     }
 
-
+    private TextColumn<UsersEntity> getSex(){
+        TextColumn<UsersEntity> sex = new TextColumn<UsersEntity>() {
+            @Override
+            public String getValue(UsersEntity object) {
+                return object.getSex();
+            }
+        };
+        return sex;
+    }
 
 
 
