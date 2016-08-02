@@ -50,21 +50,25 @@ public class TableGWT implements EntryPoint {
                 table.setRowData(0,result);
                 table.setWidth("100%");
 
-                //LayoutPanel slp = new LayoutPanel();
-                SimpleLayoutPanel slp = new SimpleLayoutPanel();
+                LayoutPanel slp = new LayoutPanel();
+               // SimpleLayoutPanel slp = new SimpleLayoutPanel();
                 table.setTitle("111");
 
                 slp.setTitle("123");
 
-                //table.setAutoHeaderRefreshDisabled(true);
+
                 slp.add(table);
 
+                Label label = new Label("Превед");
 
+                SimpleLayoutPanel simpleLayoutPanel = new SimpleLayoutPanel();
 
-                RootLayoutPanel.get().add(new Label("Превед"));
+                simpleLayoutPanel.add(label);
+                RootLayoutPanel.get().add(simpleLayoutPanel);
+
                 RootLayoutPanel.get().add(slp);
 
-                Window.alert(result.get(5000).toString());
+                //Window.alert(result.get(5000).toString());
 
             }
         };
