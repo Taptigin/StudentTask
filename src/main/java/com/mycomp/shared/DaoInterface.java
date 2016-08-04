@@ -1,4 +1,4 @@
-package com.mycomp.client;
+package com.mycomp.shared;
 
 import java.util.List;
 

@@ -2,6 +2,7 @@ package com.mycomp.client;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import com.mycomp.shared.UsersEntity;
 
 import java.util.List;
 

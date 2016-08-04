@@ -5,7 +5,7 @@
              version="2.0">
     <persistence-unit name="com.mycomp.persistence.unit">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>com.mycomp.client.UsersEntity</class>
+        <class>com.mycomp.shared.UsersEntity</class>
 
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="update"/>

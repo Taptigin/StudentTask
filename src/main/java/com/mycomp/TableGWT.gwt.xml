@@ -10,6 +10,7 @@
 
     <source path="com.mycomp"/>
     <source path='client'/>
+    <source path='shared'/>
 
 
     <add-linker name="xsiframe"/>

@@ -1,8 +1,8 @@
 package com.mycomp.server;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.mycomp.client.DaoService;
-import com.mycomp.client.UsersEntity;
+import com.mycomp.shared.DaoService;
+import com.mycomp.shared.UsersEntity;
 import com.mycomp.client.TableService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

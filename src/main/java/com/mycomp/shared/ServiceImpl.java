@@ -1,4 +1,4 @@
-package com.mycomp.client;
+package com.mycomp.shared;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

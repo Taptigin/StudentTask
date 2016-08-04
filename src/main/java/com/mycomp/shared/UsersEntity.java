@@ -1,4 +1,4 @@
-package com.mycomp.client;
+package com.mycomp.shared;
 
 import javax.persistence.*;
 import java.io.Serializable;
