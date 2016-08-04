@@ -3,13 +3,14 @@ package com.mycomp.client;
 import com.google.gwt.cell.client.DateCell;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.cellview.client.Column;
-import com.google.gwt.user.cellview.client.DataGrid;
-import com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy;
-import com.google.gwt.user.cellview.client.TextColumn;
+import com.google.gwt.user.cellview.client.*;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
+import com.google.gwt.view.client.DefaultSelectionEventManager;
+import com.google.gwt.view.client.DefaultSelectionModel;
+import com.google.gwt.view.client.MultiSelectionModel;
+import com.google.gwt.view.client.SelectionModel;
 import com.mycomp.shared.UsersEntity;
 
 import java.util.Date;
@@ -21,13 +22,14 @@ import java.util.List;
 public class TableGWT implements EntryPoint {
 
     private DataGrid<UsersEntity> table = new DataGrid<UsersEntity>();
-    //private List<UsersEntity> list = new ArrayList<>();
+    SimplePager pager;
+
 
 
     public void onModuleLoad() {
 
         table.setKeyboardSelectionPolicy(HasKeyboardSelectionPolicy.KeyboardSelectionPolicy.ENABLED);
-
+        table.setAutoHeaderRefreshDisabled(true);
         TableServiceAsync swc = GWT.create(TableService.class);
 
         AsyncCallback<List<UsersEntity>> callback = new AsyncCallback<List<UsersEntity>>() {
@@ -39,6 +41,17 @@ public class TableGWT implements EntryPoint {
 
             @Override
             public void onSuccess(List<UsersEntity> result) {
+
+
+                ColumnSortEvent.ListHandler<UsersEntity> sortHandler = new ColumnSortEvent.ListHandler<>(result);
+                table.addColumnSortHandler(sortHandler);
+
+                SimplePager.Resources pagerResources = GWT.create(SimplePager.Resources.class);
+                pager = new SimplePager(SimplePager.TextLocation.CENTER,pagerResources,false,0,true);
+                pager.setDisplay(table);
+
+                final SelectionModel selectionModel = new MultiSelectionModel<UsersEntity>(); //!!!!!!!!
+                table.setSelectionModel(selectionModel, DefaultSelectionEventManager.<UsersEntity>createCheckboxManager());
 
                 table.addColumn(getFirstName(),"Имя");
                 table.addColumn(getMiddleName(),"Отчество");
