@@ -23,6 +23,7 @@ public class TableGWT implements EntryPoint {
 
     private DataGrid<UsersEntity> table = new DataGrid<UsersEntity>();
     SimplePager pager;
+    Integer rowCount;
 
 
 
@@ -50,6 +51,8 @@ public class TableGWT implements EntryPoint {
                 pager = new SimplePager(SimplePager.TextLocation.CENTER,pagerResources,false,0,true);
                 pager.setDisplay(table);
 
+
+
                 final SelectionModel selectionModel = new MultiSelectionModel<UsersEntity>(); //!!!!!!!!
                 table.setSelectionModel(selectionModel, DefaultSelectionEventManager.<UsersEntity>createCheckboxManager());
 
@@ -62,7 +65,7 @@ public class TableGWT implements EntryPoint {
 
 
 
-                table.setRowCount(result.size(), true);
+                table.setRowCount(rowCount, true);
                 table.setRowData(0,result);
                 table.setWidth("100%");
 
@@ -71,9 +74,13 @@ public class TableGWT implements EntryPoint {
 
                 panel.add(table);
 
+                panel.add(pager);
+
+
 
 
                 RootLayoutPanel.get().add(panel);
+
 
                // Window.alert(result.get(5).toString());
 
@@ -88,14 +95,15 @@ public class TableGWT implements EntryPoint {
 
             @Override
             public void onSuccess(Long result) {
-                Window.alert(result.toString());
+                rowCount = result.intValue();
 
             }
         };
 
 
-        swc.getAll(1,20,callback);
         swc.getRowCount(asyncCallback);
+        swc.getAll(0,10000,callback);
+
 
 
 
