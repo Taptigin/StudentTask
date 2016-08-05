@@ -8,7 +8,6 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.view.client.DefaultSelectionEventManager;
-import com.google.gwt.view.client.DefaultSelectionModel;
 import com.google.gwt.view.client.MultiSelectionModel;
 import com.google.gwt.view.client.SelectionModel;
 import com.mycomp.shared.UsersEntity;
@@ -21,7 +20,7 @@ import java.util.List;
  */
 public class TableGWT implements EntryPoint {
 
-    private DataGrid<UsersEntity> table = new DataGrid<UsersEntity>();
+    private DataGrid<UsersEntity> dataGrid = new DataGrid<>();
     SimplePager pager;
     Integer rowCount;
 
@@ -29,8 +28,8 @@ public class TableGWT implements EntryPoint {
 
     public void onModuleLoad() {
 
-        table.setKeyboardSelectionPolicy(HasKeyboardSelectionPolicy.KeyboardSelectionPolicy.ENABLED);
-        table.setAutoHeaderRefreshDisabled(true);
+        dataGrid.setKeyboardSelectionPolicy(HasKeyboardSelectionPolicy.KeyboardSelectionPolicy.ENABLED);
+        dataGrid.setAutoHeaderRefreshDisabled(true);
         TableServiceAsync swc = GWT.create(TableService.class);
 
         AsyncCallback<List<UsersEntity>> callback = new AsyncCallback<List<UsersEntity>>() {
@@ -45,41 +44,44 @@ public class TableGWT implements EntryPoint {
 
 
                 ColumnSortEvent.ListHandler<UsersEntity> sortHandler = new ColumnSortEvent.ListHandler<>(result);
-                table.addColumnSortHandler(sortHandler);
+                dataGrid.addColumnSortHandler(sortHandler);
 
-                SimplePager.Resources pagerResources = GWT.create(SimplePager.Resources.class);
-                pager = new SimplePager(SimplePager.TextLocation.CENTER,pagerResources,false,0,true);
-                pager.setDisplay(table);
+//                SimplePager.Resources pagerResources = GWT.create(SimplePager.Resources.class);
+//                pager = new SimplePager(SimplePager.TextLocation.CENTER,pagerResources,false,0,true);
+//                pager.setDisplay(dataGrid);
 
-
+                pager = new SimplePager();
+                pager.setDisplay(dataGrid);
 
                 final SelectionModel selectionModel = new MultiSelectionModel<UsersEntity>(); //!!!!!!!!
-                table.setSelectionModel(selectionModel, DefaultSelectionEventManager.<UsersEntity>createCheckboxManager());
+                dataGrid.setSelectionModel(selectionModel, DefaultSelectionEventManager.<UsersEntity>createCheckboxManager());
 
-                table.addColumn(getFirstName(),"Имя");
-                table.addColumn(getMiddleName(),"Отчество");
-                table.addColumn(getLastName(),"Фамилия");
-                table.addColumn(getSex(),"Пол");
-                table.addColumn(getEnrollmentDate(),"Дата поступления");
-                table.addColumn(getReleaseDate(),"Дата окончания");
+                dataGrid.addColumn(getFirstName(),"Имя");
+                dataGrid.addColumn(getMiddleName(),"Отчество");
+                dataGrid.addColumn(getLastName(),"Фамилия");
+                dataGrid.addColumn(getSex(),"Пол");
+                dataGrid.addColumn(getEnrollmentDate(),"Дата поступления");
+                dataGrid.addColumn(getReleaseDate(),"Дата окончания");
 
 
 
-                table.setRowCount(rowCount, true);
-                table.setRowData(0,result);
-                table.setWidth("100%");
+                dataGrid.setRowCount(rowCount, true);
+                dataGrid.setRowData(0,result);
+                dataGrid.setWidth("100%");
 
                 LayoutPanel panel = new LayoutPanel();
 
 
-                panel.add(table);
+                panel.add(dataGrid);
 
-                panel.add(pager);
+                //panel.add(pager);
 
 
 
 
                 RootLayoutPanel.get().add(panel);
+                RootLayoutPanel.get().add(pager);
+
 
 
                // Window.alert(result.get(5).toString());
