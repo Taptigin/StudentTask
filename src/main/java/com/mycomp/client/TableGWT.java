@@ -75,7 +75,7 @@ public class TableGWT implements EntryPoint {
 
                 RootLayoutPanel.get().add(panel);
 
-                Window.alert(result.get(5000).toString());
+                //Window.alert(result.get(5).toString());
 
             }
         };
