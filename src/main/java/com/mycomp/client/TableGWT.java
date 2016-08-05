@@ -75,13 +75,28 @@ public class TableGWT implements EntryPoint {
 
                 RootLayoutPanel.get().add(panel);
 
-                Window.alert(result.get(5).toString());
+               // Window.alert(result.get(5).toString());
+
+            }
+        };
+
+        AsyncCallback<Integer> asyncCallback = new AsyncCallback<Integer>() {
+            @Override
+            public void onFailure(Throwable caught) {
+                Window.alert("Не сработало возвращение RowCount");
+            }
+
+            @Override
+            public void onSuccess(Integer result) {
+                Window.alert(result.toString());
 
             }
         };
 
 
-        swc.getAll(1,15,callback);
+        swc.getAll(1,20,callback);
+        swc.getRowCount(asyncCallback);
+
 
 
 

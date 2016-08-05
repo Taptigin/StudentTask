@@ -14,6 +14,7 @@ import java.util.List;
 @Repository
 public class DaoImpl implements DaoInterface{
 
+
     @PersistenceContext
     private EntityManager em;
 
@@ -27,6 +28,17 @@ public class DaoImpl implements DaoInterface{
         List<UsersEntity> list = query.getResultList();
 
         return list;
+
+    }
+
+    @Override
+    public Integer getRowCount() {
+
+        Query query = em.createQuery("from UsersEntity",UsersEntity.class);
+        Integer rowCount = query.getResultList().size();
+
+
+        return rowCount;
 
     }
 }

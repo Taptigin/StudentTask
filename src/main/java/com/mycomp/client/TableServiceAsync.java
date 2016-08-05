@@ -6,5 +6,7 @@ import com.mycomp.shared.UsersEntity;
 import java.util.List;
 
 public interface TableServiceAsync {
-        void getAll(int firstId, int lastId, AsyncCallback<List<UsersEntity>> callback);
+    void getAll(int firstId, int lastId, AsyncCallback<List<UsersEntity>> callback);
+
+    void getRowCount(AsyncCallback<Integer> asyncCallback);
 }

@@ -19,4 +19,9 @@ public class ServiceImpl implements DaoService{
     public List<UsersEntity> getAll(int firstId, int lastId) {
         return dao.getAll(firstId,lastId);
     }
+
+    @Override
+    public Integer getRowCount() {
+        return dao.getRowCount();
+    }
 }

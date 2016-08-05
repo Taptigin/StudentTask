@@ -14,13 +14,19 @@ import java.util.List;
  */
 public class TableServiceImpl extends RemoteServiceServlet implements TableService {
 
+    private ApplicationContext context = new ClassPathXmlApplicationContext("SpringContext.xml");
+    private DaoService service = (DaoService) context.getBean("storageService");
 
 
     @Override
     public List<UsersEntity> getAll(int firstId, int lastId) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("SpringContext.xml");
-        DaoService service = (DaoService) context.getBean("storageService");
+
         List<UsersEntity> list = service.getAll(firstId,lastId);
         return list;
+    }
+
+    @Override
+    public Integer getRowCount() {
+        return service.getRowCount();
     }
 }
