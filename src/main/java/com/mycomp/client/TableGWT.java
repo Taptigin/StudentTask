@@ -80,14 +80,14 @@ public class TableGWT implements EntryPoint {
             }
         };
 
-        AsyncCallback<Integer> asyncCallback = new AsyncCallback<Integer>() {
+        AsyncCallback<Long> asyncCallback = new AsyncCallback<Long>() {
             @Override
             public void onFailure(Throwable caught) {
                 Window.alert("Не сработало возвращение RowCount");
             }
 
             @Override
-            public void onSuccess(Integer result) {
+            public void onSuccess(Long result) {
                 Window.alert(result.toString());
 
             }

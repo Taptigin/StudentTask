@@ -26,7 +26,7 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
     }
 
     @Override
-    public Integer getRowCount() {
+    public Long getRowCount() {
         return service.getRowCount();
     }
 }

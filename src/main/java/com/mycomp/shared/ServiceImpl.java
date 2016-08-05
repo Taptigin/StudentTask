@@ -21,7 +21,7 @@ public class ServiceImpl implements DaoService{
     }
 
     @Override
-    public Integer getRowCount() {
+    public Long getRowCount() {
         return dao.getRowCount();
     }
 }

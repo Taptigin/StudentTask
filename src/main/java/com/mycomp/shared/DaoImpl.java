@@ -32,11 +32,10 @@ public class DaoImpl implements DaoInterface{
     }
 
     @Override
-    public Integer getRowCount() {
+    public Long getRowCount() {
 
-        Query query = em.createQuery("from UsersEntity",UsersEntity.class);
-        Integer rowCount = query.getResultList().size();
-
+        Query query = em.createQuery("SELECT count(u.id) from UsersEntity u",Long.class);
+        Long rowCount = (Long) query.getSingleResult();
 
         return rowCount;
 

@@ -8,5 +8,5 @@ import java.util.List;
 public interface DaoInterface {
 
     public List<UsersEntity> getAll(int firstId, int lastId);
-    public Integer getRowCount();
+    public Long getRowCount();
 }

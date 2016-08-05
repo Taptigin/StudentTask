@@ -8,5 +8,7 @@ import java.util.List;
 public interface TableServiceAsync {
     void getAll(int firstId, int lastId, AsyncCallback<List<UsersEntity>> callback);
 
-    void getRowCount(AsyncCallback<Integer> asyncCallback);
+
+
+    void getRowCount(AsyncCallback<Long> async);
 }
