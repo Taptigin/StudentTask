@@ -12,11 +12,11 @@ import java.util.List;
 public class ServiceImpl implements DaoService{
 
     @Autowired
-    private DaoInterface dao;
+    public DaoInterface dao;
 
 
     @Override
-    public List<UsersEntity> getAll() {
-        return dao.getAll();
+    public List<UsersEntity> getAll(int firstId, int lastId) {
+        return null;
     }
 }

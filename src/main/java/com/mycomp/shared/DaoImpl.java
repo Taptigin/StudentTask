@@ -18,11 +18,11 @@ public class DaoImpl implements DaoInterface{
     private EntityManager em;
 
     @Override
-    public List<UsersEntity> getAll() {
+    public List<UsersEntity> getAll(int firstId, int lastId) {
 
         Query query = em.createQuery("from UsersEntity u where u.id >= :firstId and id<= :lastID", UsersEntity.class);
-        query.setParameter("firstId",0);
-        query.setParameter("lastID",100);
+        query.setParameter("firstId",firstId);
+        query.setParameter("lastID",lastId);
 
         List<UsersEntity> list = query.getResultList();
 

@@ -15,11 +15,12 @@ import java.util.List;
 public class TableServiceImpl extends RemoteServiceServlet implements TableService {
 
 
+
     @Override
-    public List<UsersEntity> getAll() {
+    public List<UsersEntity> getAll(int firstId, int lastId) {
         ApplicationContext context = new ClassPathXmlApplicationContext("SpringContext.xml");
         DaoService service = (DaoService) context.getBean("storageService");
-        List<UsersEntity> list = service.getAll();
+        List<UsersEntity> list = service.getAll(firstId,lastId);
         return list;
     }
 }
