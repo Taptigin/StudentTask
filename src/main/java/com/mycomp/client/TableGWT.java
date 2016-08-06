@@ -26,6 +26,7 @@ public class TableGWT implements EntryPoint {
     SimplePager pager;
     Long rowCount;
     List<UsersEntity> list;
+    int counter;
 
 
 
@@ -46,6 +47,7 @@ public class TableGWT implements EntryPoint {
             public void onSuccess(List<UsersEntity> result) {
 
 
+                list = result;
 
                 SimplePager.Resources pagerResources = GWT.create(SimplePager.Resources.class);
                 pager = new SimplePager(SimplePager.TextLocation.CENTER, pagerResources, true, 0, true);
@@ -58,11 +60,14 @@ public class TableGWT implements EntryPoint {
                 table.addColumn(getEnrollmentDate(),"Дата поступления");
                 table.addColumn(getReleaseDate(),"Дата окончания");
 
+                updateTable();
+
                 table.setRowCount(rowCount.intValue(), true);
-                table.setRowData(0,result);
+
                 table.addRangeChangeHandler(new RangeChangeEvent.Handler() {
                     @Override
                     public void onRangeChange(RangeChangeEvent event) {
+                        updateTable();
 
 
                     }
@@ -180,6 +185,7 @@ public class TableGWT implements EntryPoint {
     }
 
     private void updateTable(){
+        table.setRowData(0,list);
 
     }
 
