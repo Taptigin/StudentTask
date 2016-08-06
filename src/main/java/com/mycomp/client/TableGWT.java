@@ -9,10 +9,7 @@ import com.google.gwt.user.cellview.client.*;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
-import com.google.gwt.view.client.DefaultSelectionEventManager;
-import com.google.gwt.view.client.DefaultSelectionModel;
-import com.google.gwt.view.client.MultiSelectionModel;
-import com.google.gwt.view.client.SelectionModel;
+import com.google.gwt.view.client.*;
 import com.mycomp.shared.UsersEntity;
 
 import java.util.Date;
@@ -25,8 +22,10 @@ import static com.google.gwt.dom.client.Style.Unit.PCT;
  */
 public class TableGWT implements EntryPoint {
 
-    private DataGrid<UsersEntity> table = new DataGrid<UsersEntity>();
+    DataGrid<UsersEntity> table = new DataGrid<UsersEntity>();
     SimplePager pager;
+    Long rowCount;
+    List<UsersEntity> list;
 
 
 
@@ -47,15 +46,10 @@ public class TableGWT implements EntryPoint {
             public void onSuccess(List<UsersEntity> result) {
 
 
-              //  ColumnSortEvent.ListHandler<UsersEntity> sortHandler = new ColumnSortEvent.ListHandler<>(result);
-              //  table.addColumnSortHandler(sortHandler);
 
                 SimplePager.Resources pagerResources = GWT.create(SimplePager.Resources.class);
                 pager = new SimplePager(SimplePager.TextLocation.CENTER, pagerResources, true, 0, true);
 
-
-//                final SelectionModel selectionModel = new MultiSelectionModel<UsersEntity>(); //!!!!!!!!
-//                table.setSelectionModel(selectionModel, DefaultSelectionEventManager.<UsersEntity>createCheckboxManager());
 
                 table.addColumn(getFirstName(),"Имя");
                 table.addColumn(getMiddleName(),"Отчество");
@@ -64,16 +58,24 @@ public class TableGWT implements EntryPoint {
                 table.addColumn(getEnrollmentDate(),"Дата поступления");
                 table.addColumn(getReleaseDate(),"Дата окончания");
 
-                table.setRowCount(result.size(), true);
+                table.setRowCount(rowCount.intValue(), true);
                 table.setRowData(0,result);
+                table.addRangeChangeHandler(new RangeChangeEvent.Handler() {
+                    @Override
+                    public void onRangeChange(RangeChangeEvent event) {
+
+
+                    }
+                });
                 table.setWidth("100%");
 
                 pager.setDisplay(table);
                 pager.setPageSize(50);
 
                 DockLayoutPanel panel = new DockLayoutPanel(Style.Unit.PX);
+
+                panel.addNorth(new HTMLPanel("h1", "Список студентов"), 60);
                 panel.addNorth(table,500);
-//                panel.addSouth(pager,5);
                 panel.add(pager);
 
 
@@ -97,7 +99,7 @@ public class TableGWT implements EntryPoint {
 
             @Override
             public void onSuccess(Long result) {
-                //Window.alert(result.toString());
+                rowCount = result;
 
             }
         };
@@ -175,6 +177,10 @@ public class TableGWT implements EntryPoint {
             }
         };
         return releaseDate;
+    }
+
+    private void updateTable(){
+
     }
 
 
