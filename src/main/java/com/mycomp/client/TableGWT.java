@@ -103,7 +103,7 @@ public class TableGWT implements EntryPoint {
 
 
         swc.getRowCount(asyncCallback);
-        swc.getAll(0,10000,callback);
+        swc.getAll(1,10000,callback);
 
 
 
