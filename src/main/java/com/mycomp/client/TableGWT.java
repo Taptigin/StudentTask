@@ -69,9 +69,12 @@ public class TableGWT implements EntryPoint {
                 table.setWidth("100%");
 
                 pager.setDisplay(table);
+                pager.setPageSize(50);
 
                 DockLayoutPanel panel = new DockLayoutPanel(Style.Unit.PX);
-                panel.addNorth(table,800);
+                panel.addNorth(table,500);
+//                panel.addSouth(pager,5);
+                panel.add(pager);
 
 
 
