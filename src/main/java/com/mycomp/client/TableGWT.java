@@ -3,6 +3,7 @@ package com.mycomp.client;
 import com.google.gwt.cell.client.DateCell;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.layout.client.Layout;
 import com.google.gwt.user.cellview.client.*;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -48,7 +49,7 @@ public class TableGWT implements EntryPoint {
 
                 SimplePager.Resources pagerResources = GWT.create(SimplePager.Resources.class);
                 pager = new SimplePager(SimplePager.TextLocation.CENTER,pagerResources,false,0,true);
-                pager.setDisplay(table);
+
 
                 final SelectionModel selectionModel = new MultiSelectionModel<UsersEntity>(); //!!!!!!!!
                 table.setSelectionModel(selectionModel, DefaultSelectionEventManager.<UsersEntity>createCheckboxManager());
@@ -67,13 +68,19 @@ public class TableGWT implements EntryPoint {
                 table.setWidth("100%");
 
                 LayoutPanel panel = new LayoutPanel();
+//                LayoutPanel panel2 = new LayoutPanel();
+
+                pager.setDisplay(table);
 
 
                 panel.add(table);
-
+                panel.add(pager);
+//                panel2.add(pager);
 
 
                 RootLayoutPanel.get().add(panel);
+//                RootPanel.get("slot2").add(panel2);
+
 
                // Window.alert(result.get(5).toString());
 
@@ -94,7 +101,7 @@ public class TableGWT implements EntryPoint {
         };
 
 
-        swc.getAll(1,20,callback);
+        swc.getAll(1,200,callback);
         swc.getRowCount(asyncCallback);
 
 
