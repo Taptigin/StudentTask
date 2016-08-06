@@ -3,6 +3,7 @@ package com.mycomp.client;
 import com.google.gwt.cell.client.DateCell;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style;
 import com.google.gwt.layout.client.Layout;
 import com.google.gwt.user.cellview.client.*;
 import com.google.gwt.user.client.Window;
@@ -16,6 +17,8 @@ import com.mycomp.shared.UsersEntity;
 
 import java.util.Date;
 import java.util.List;
+
+import static com.google.gwt.dom.client.Style.Unit.PCT;
 
 /**
  * Created by Александр on 28.07.2016.
@@ -44,15 +47,15 @@ public class TableGWT implements EntryPoint {
             public void onSuccess(List<UsersEntity> result) {
 
 
-                ColumnSortEvent.ListHandler<UsersEntity> sortHandler = new ColumnSortEvent.ListHandler<>(result);
-                table.addColumnSortHandler(sortHandler);
+              //  ColumnSortEvent.ListHandler<UsersEntity> sortHandler = new ColumnSortEvent.ListHandler<>(result);
+              //  table.addColumnSortHandler(sortHandler);
 
                 SimplePager.Resources pagerResources = GWT.create(SimplePager.Resources.class);
                 pager = new SimplePager(SimplePager.TextLocation.CENTER,pagerResources,false,0,true);
 
 
-                final SelectionModel selectionModel = new MultiSelectionModel<UsersEntity>(); //!!!!!!!!
-                table.setSelectionModel(selectionModel, DefaultSelectionEventManager.<UsersEntity>createCheckboxManager());
+//                final SelectionModel selectionModel = new MultiSelectionModel<UsersEntity>(); //!!!!!!!!
+//                table.setSelectionModel(selectionModel, DefaultSelectionEventManager.<UsersEntity>createCheckboxManager());
 
                 table.addColumn(getFirstName(),"Имя");
                 table.addColumn(getMiddleName(),"Отчество");
@@ -61,25 +64,21 @@ public class TableGWT implements EntryPoint {
                 table.addColumn(getEnrollmentDate(),"Дата поступления");
                 table.addColumn(getReleaseDate(),"Дата окончания");
 
-
-
                 table.setRowCount(result.size(), true);
                 table.setRowData(0,result);
                 table.setWidth("100%");
 
-                LayoutPanel panel = new LayoutPanel();
-//                LayoutPanel panel2 = new LayoutPanel();
-
                 pager.setDisplay(table);
 
+                DockLayoutPanel panel = new DockLayoutPanel(Style.Unit.PX);
+                panel.addNorth(table,800);
 
-                panel.add(table);
-                panel.add(pager);
-//                panel2.add(pager);
+
+
+
 
 
                 RootLayoutPanel.get().add(panel);
-//                RootPanel.get("slot2").add(panel2);
 
 
                // Window.alert(result.get(5).toString());
@@ -95,7 +94,7 @@ public class TableGWT implements EntryPoint {
 
             @Override
             public void onSuccess(Long result) {
-                Window.alert(result.toString());
+                //Window.alert(result.toString());
 
             }
         };
