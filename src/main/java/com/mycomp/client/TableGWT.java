@@ -39,10 +39,11 @@ public class TableGWT implements EntryPoint {
 
             @Override
             public void onSuccess(List<UsersEntity> result) {
-                 list = result; Window.alert(list.get(2).toString());
+                 list = result;
             }
         };
-        swc.getAll(firstId,lastId,callback); Window.alert("callBack");
+        swc.getAll(firstId,lastId,callback); Window.alert("callBack");Window.alert("last" + lastId);
+        Window.alert(list.get(lastId).toString());
         return list;
     }
 
