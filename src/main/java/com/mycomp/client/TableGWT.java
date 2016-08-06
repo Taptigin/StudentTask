@@ -42,7 +42,7 @@ public class TableGWT implements EntryPoint {
                  list = result; Window.alert(list.get(2).toString());
             }
         };
-        swc.getAll(firstId,lastId,callback);
+        swc.getAll(firstId,lastId,callback); Window.alert("callBack");
         return list;
     }
 
@@ -71,7 +71,8 @@ public class TableGWT implements EntryPoint {
             }
         });
 
-
+        Window.alert("pager" + pager.getDisplay().getVisibleRange().getStart() + " " +
+                pager.getDisplay().getVisibleRange().getStart());
     }
 
     private void createPager(){
