@@ -51,7 +51,7 @@ public class TableGWT implements EntryPoint {
               //  table.addColumnSortHandler(sortHandler);
 
                 SimplePager.Resources pagerResources = GWT.create(SimplePager.Resources.class);
-                pager = new SimplePager(SimplePager.TextLocation.CENTER,pagerResources,false,0,true);
+                pager = new SimplePager(SimplePager.TextLocation.CENTER, pagerResources, true, 0, true);
 
 
 //                final SelectionModel selectionModel = new MultiSelectionModel<UsersEntity>(); //!!!!!!!!
