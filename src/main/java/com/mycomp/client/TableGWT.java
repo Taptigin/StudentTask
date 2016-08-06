@@ -43,7 +43,7 @@ public class TableGWT implements EntryPoint {
             }
         };
         swc.getAll(firstId,lastId,callback); Window.alert("callBack");Window.alert("last" + lastId);
-        Window.alert(list.get(lastId).toString());
+        Window.alert(list.get(lastId-5).toString());
         return list;
     }
 
