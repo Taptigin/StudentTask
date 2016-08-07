@@ -44,8 +44,8 @@ public class TableGWT implements EntryPoint {
                  list = result;
             }
         };
-        swc.getAll(firstId,lastId,callback); //Window.alert("callBack");Window.alert("last" + lastId);
-        //Window.alert(list.get(lastId-5).toString());
+        swc.getAll(firstId,lastId,callback);
+
         return list;
     }
 
@@ -69,7 +69,7 @@ public class TableGWT implements EntryPoint {
         //updateTable(1,50);
         dataProvider.onRangeChanged(table);
 
-        Window.alert("1");
+
         table.addRangeChangeHandler(new RangeChangeEvent.Handler() {
             @Override
             public void onRangeChange(RangeChangeEvent event) {
@@ -77,10 +77,9 @@ public class TableGWT implements EntryPoint {
             }
         });
 
-        Window.alert("2");
 
-//        Window.alert("pager" + pager.getDisplay().getVisibleRange().getStart() + " " +
-//                pager.getDisplay().getVisibleRange().getStart());
+
+
     }
 
     private void createPager(){
@@ -89,7 +88,7 @@ public class TableGWT implements EntryPoint {
 
         pager.setDisplay(table);
         pager.setPageSize(50);
-        Window.alert("pager" + pager.getDisplay().getRowCount());
+
     }
 
     public void onModuleLoad() {
@@ -225,8 +224,8 @@ public class TableGWT implements EntryPoint {
         @Override
         protected void onRangeChanged(HasData<UsersEntity> display) {
             Range range = display.getVisibleRange();
-            final int start = range.getStart(); Window.alert("start " +start);
-            int length = range.getLength(); Window.alert("length" +length);
+            final int start = range.getStart();
+            int length = range.getLength();
 
             TableServiceAsync swc = GWT.create(TableService.class);
 
@@ -257,7 +256,7 @@ public class TableGWT implements EntryPoint {
                     table.setRowData(start,result);
 
                     String s = String.valueOf(result.size());
-                    Window.alert(s);
+
 
                 }
             };
