@@ -21,17 +21,14 @@ import java.util.List;
 public class TableGWT implements EntryPoint {
 
     private static DataGrid<UsersEntity> table = new DataGrid<UsersEntity>();
+    MyAsyncDataProvider dataProvider = new MyAsyncDataProvider();
+    TableServiceAsync swc = GWT.create(TableService.class);
     private SimplePager pager;
     private Long rowCount;
-
-    MyAsyncDataProvider dataProvider = new MyAsyncDataProvider();
-
-    TableServiceAsync swc = GWT.create(TableService.class);
     private List<UsersEntity> list = new ArrayList<>();
 
 
-
-    private List<UsersEntity> getData(int firstId,int lastId){
+    private List<UsersEntity> getData(int firstId, int lastId) {
 
         AsyncCallback<List<UsersEntity>> callback = new AsyncCallback<List<UsersEntity>>() {
             @Override
@@ -41,26 +38,26 @@ public class TableGWT implements EntryPoint {
 
             @Override
             public void onSuccess(List<UsersEntity> result) {
-                 list = result;
+                list = result;
             }
         };
-        swc.getAll(firstId,lastId,callback);
+        swc.getAll(firstId, lastId, callback);
 
         return list;
     }
 
-    private void createTable(){
+    private void createTable() {
         table.setKeyboardSelectionPolicy(HasKeyboardSelectionPolicy.KeyboardSelectionPolicy.ENABLED);
 
-        table.addColumn(getFirstName(),"Имя");
-        table.addColumn(getMiddleName(),"Отчество");
-        table.addColumn(getLastName(),"Фамилия");
-        table.addColumn(getAge(),"Возраст");
-        table.addColumn(getSex(),"Пол");
-        table.addColumn(getEnrollmentDate(),"Дата поступления");
-        table.addColumn(getReleaseDate(),"Дата окончания");
-        table.addColumn(getGroupName(),"Группа");
-        table.addColumn(getFacultyName(),"Факультет");
+        table.addColumn(getFirstName(), "Имя");
+        table.addColumn(getMiddleName(), "Отчество");
+        table.addColumn(getLastName(), "Фамилия");
+        table.addColumn(getAge(), "Возраст");
+        table.addColumn(getSex(), "Пол");
+        table.addColumn(getEnrollmentDate(), "Дата поступления");
+        table.addColumn(getReleaseDate(), "Дата окончания");
+        table.addColumn(getGroupName(), "Группа");
+        table.addColumn(getFacultyName(), "Факультет");
 
         table.setAutoHeaderRefreshDisabled(true);
 
@@ -78,11 +75,9 @@ public class TableGWT implements EntryPoint {
         });
 
 
-
-
     }
 
-    private void createPager(){
+    private void createPager() {
         SimplePager.Resources pagerResources = GWT.create(SimplePager.Resources.class);
         pager = new SimplePager(SimplePager.TextLocation.CENTER, pagerResources, true, 0, true);
 
@@ -98,34 +93,20 @@ public class TableGWT implements EntryPoint {
         dataProvider.onRangeChanged(table);
 
 
-
-
         DockLayoutPanel panel = new DockLayoutPanel(Style.Unit.PX);
 
         panel.addNorth(new HTMLPanel("h1", "Список студентов"), 60);
-        panel.addNorth(pager,70);
+        panel.addNorth(pager, 70);
         panel.add(table);
 
 
         RootLayoutPanel.get().add(panel);
 
 
-
-            }
-
+    }
 
 
-
-
-
-
-
-
-
-
-
-
-    private TextColumn<UsersEntity> getLastName(){
+    private TextColumn<UsersEntity> getLastName() {
         TextColumn<UsersEntity> lastName = new TextColumn<UsersEntity>() {
             @Override
             public String getValue(UsersEntity object) {
@@ -135,7 +116,7 @@ public class TableGWT implements EntryPoint {
         return lastName;
     }
 
-    private TextColumn<UsersEntity> getFirstName(){
+    private TextColumn<UsersEntity> getFirstName() {
         TextColumn<UsersEntity> firstName = new TextColumn<UsersEntity>() {
             @Override
             public String getValue(UsersEntity object) {
@@ -145,7 +126,7 @@ public class TableGWT implements EntryPoint {
         return firstName;
     }
 
-    private TextColumn<UsersEntity> getMiddleName(){
+    private TextColumn<UsersEntity> getMiddleName() {
         TextColumn<UsersEntity> middleName = new TextColumn<UsersEntity>() {
             @Override
             public String getValue(UsersEntity object) {
@@ -155,7 +136,7 @@ public class TableGWT implements EntryPoint {
         return middleName;
     }
 
-    private TextColumn<UsersEntity> getSex(){
+    private TextColumn<UsersEntity> getSex() {
         TextColumn<UsersEntity> sex = new TextColumn<UsersEntity>() {
             @Override
             public String getValue(UsersEntity object) {
@@ -165,9 +146,9 @@ public class TableGWT implements EntryPoint {
         return sex;
     }
 
-    private Column<UsersEntity,Date> getEnrollmentDate(){
+    private Column<UsersEntity, Date> getEnrollmentDate() {
         DateCell dateCell = new DateCell();
-        Column<UsersEntity,Date> enrollmentDate = new Column<UsersEntity, Date>(dateCell) {
+        Column<UsersEntity, Date> enrollmentDate = new Column<UsersEntity, Date>(dateCell) {
             @Override
             public Date getValue(UsersEntity object) {
                 return object.getEnrollmentDate();
@@ -176,9 +157,9 @@ public class TableGWT implements EntryPoint {
         return enrollmentDate;
     }
 
-    private Column<UsersEntity,Date> getReleaseDate(){
+    private Column<UsersEntity, Date> getReleaseDate() {
         DateCell dateCell = new DateCell();
-        Column<UsersEntity,Date> releaseDate = new Column<UsersEntity, Date>(dateCell) {
+        Column<UsersEntity, Date> releaseDate = new Column<UsersEntity, Date>(dateCell) {
             @Override
             public Date getValue(UsersEntity object) {
                 return object.getReleaseDate();
@@ -187,7 +168,7 @@ public class TableGWT implements EntryPoint {
         return releaseDate;
     }
 
-    private TextColumn<UsersEntity> getGroupName(){
+    private TextColumn<UsersEntity> getGroupName() {
         TextColumn<UsersEntity> groupName = new TextColumn<UsersEntity>() {
             @Override
             public String getValue(UsersEntity object) {
@@ -197,7 +178,7 @@ public class TableGWT implements EntryPoint {
         return groupName;
     }
 
-    private TextColumn<UsersEntity> getAge(){
+    private TextColumn<UsersEntity> getAge() {
         TextColumn<UsersEntity> age = new TextColumn<UsersEntity>() {
             @Override
             public String getValue(UsersEntity object) {
@@ -207,7 +188,7 @@ public class TableGWT implements EntryPoint {
         return age;
     }
 
-    private TextColumn<UsersEntity> getFacultyName(){
+    private TextColumn<UsersEntity> getFacultyName() {
         TextColumn<UsersEntity> facultyName = new TextColumn<UsersEntity>() {
             @Override
             public String getValue(UsersEntity object) {
@@ -218,8 +199,7 @@ public class TableGWT implements EntryPoint {
     }
 
 
-
-    private static class MyAsyncDataProvider extends AsyncDataProvider<UsersEntity>{
+    private static class MyAsyncDataProvider extends AsyncDataProvider<UsersEntity> {
 
         @Override
         protected void onRangeChanged(HasData<UsersEntity> display) {
@@ -253,15 +233,14 @@ public class TableGWT implements EntryPoint {
                 public void onSuccess(List<UsersEntity> result) {
                     //updateRowData(start,result);
 
-                    table.setRowData(start,result);
+                    table.setRowData(start, result);
 
                     String s = String.valueOf(result.size());
 
 
                 }
             };
-            swc.getAll(start,length+start,callback);
-
+            swc.getAll(start, length + start, callback);
 
 
         }
