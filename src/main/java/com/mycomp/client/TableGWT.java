@@ -86,7 +86,7 @@ public class TableGWT implements EntryPoint {
 
         pager.setDisplay(table);
         pager.setPageSize(50);
-        Window.alert("pager" + pager.getDisplay());
+        Window.alert("pager" + pager.getDisplay().getRowCount());
     }
 
     public void onModuleLoad() {
@@ -200,8 +200,8 @@ public class TableGWT implements EntryPoint {
         @Override
         protected void onRangeChanged(HasData<UsersEntity> display) {
             Range range = display.getVisibleRange();
-            final int start = range.getStart();
-            int length = range.getLength();
+            final int start = range.getStart(); Window.alert("start " +start);
+            int length = range.getLength(); Window.alert("length" +length);
 
             TableServiceAsync swc = GWT.create(TableService.class);
 
@@ -236,7 +236,7 @@ public class TableGWT implements EntryPoint {
 
                 }
             };
-            swc.getAll(start,length-start,callback);
+            swc.getAll(start,length+start,callback);
 
 
 
