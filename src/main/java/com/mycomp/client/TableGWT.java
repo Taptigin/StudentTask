@@ -20,12 +20,12 @@ import java.util.List;
  */
 public class TableGWT implements EntryPoint {
 
-    DataGrid<UsersEntity> table = new DataGrid<UsersEntity>();
-    SimplePager pager;
-    Long rowCount;
+    private static DataGrid<UsersEntity> table = new DataGrid<UsersEntity>();
+    private SimplePager pager;
+    private Long rowCount;
 
     TableServiceAsync swc = GWT.create(TableService.class);
-    List<UsersEntity> list = new ArrayList<>();
+    private List<UsersEntity> list = new ArrayList<>();
 
 
 
@@ -42,8 +42,8 @@ public class TableGWT implements EntryPoint {
                  list = result;
             }
         };
-        swc.getAll(firstId,lastId,callback); Window.alert("callBack");Window.alert("last" + lastId);
-        Window.alert(list.get(lastId-5).toString());
+        swc.getAll(firstId,lastId,callback); //Window.alert("callBack");Window.alert("last" + lastId);
+        //Window.alert(list.get(lastId-5).toString());
         return list;
     }
 
@@ -63,7 +63,7 @@ public class TableGWT implements EntryPoint {
         table.setWidth("100%");
         updateTable(1,50);
 
-
+        Window.alert("1");
         table.addRangeChangeHandler(new RangeChangeEvent.Handler() {
             @Override
             public void onRangeChange(RangeChangeEvent event) {
@@ -72,8 +72,10 @@ public class TableGWT implements EntryPoint {
             }
         });
 
-        Window.alert("pager" + pager.getDisplay().getVisibleRange().getStart() + " " +
-                pager.getDisplay().getVisibleRange().getStart());
+        Window.alert("2");
+
+//        Window.alert("pager" + pager.getDisplay().getVisibleRange().getStart() + " " +
+//                pager.getDisplay().getVisibleRange().getStart());
     }
 
     private void createPager(){
@@ -86,7 +88,7 @@ public class TableGWT implements EntryPoint {
 
     public void onModuleLoad() {
 
-        getRowCount(); Window.alert("rowCount sucsess");
+        getRowCount(); //Window.alert("rowCount sucsess");
 
         createTable(); Window.alert("Table created");
         createPager(); Window.alert("pager created");
@@ -203,6 +205,48 @@ public class TableGWT implements EntryPoint {
 
 
 
+    private static class MyAsyncDataProvider extends AsyncDataProvider<UsersEntity>{
 
+        @Override
+        protected void onRangeChanged(HasData<UsersEntity> display) {
+            Range range = display.getVisibleRange();
+            final int start = range.getStart();
+            int length = range.getLength();
+
+            TableServiceAsync swc = GWT.create(TableService.class);
+
+            AsyncCallback<Long> asyncCallback = new AsyncCallback<Long>() {
+                @Override
+                public void onFailure(Throwable caught) {
+                    Window.alert("Не сработало возвращение RowCount");
+                }
+
+                @Override
+                public void onSuccess(Long result) {
+                    table.setRowCount(result.intValue());
+
+                }
+            };
+            swc.getRowCount(asyncCallback);
+
+            AsyncCallback<List<UsersEntity>> callback = new AsyncCallback<List<UsersEntity>>() {
+                @Override
+                public void onFailure(Throwable caught) {
+                    Window.alert("Сервис не запустился.");
+                }
+
+                @Override
+                public void onSuccess(List<UsersEntity> result) {
+                    updateRowData(start,result);
+
+                }
+            };
+            swc.getAll(start,length-start,callback);
+
+
+        }
+    }
 
 }
+
+
