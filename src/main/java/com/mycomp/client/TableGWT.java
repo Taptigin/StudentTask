@@ -55,9 +55,12 @@ public class TableGWT implements EntryPoint {
         table.addColumn(getFirstName(),"Имя");
         table.addColumn(getMiddleName(),"Отчество");
         table.addColumn(getLastName(),"Фамилия");
+        table.addColumn(getAge(),"Возраст");
         table.addColumn(getSex(),"Пол");
         table.addColumn(getEnrollmentDate(),"Дата поступления");
         table.addColumn(getReleaseDate(),"Дата окончания");
+        table.addColumn(getGroupName(),"Группа");
+        table.addColumn(getFacultyName(),"Факультет");
 
         table.setAutoHeaderRefreshDisabled(true);
 
@@ -185,12 +188,34 @@ public class TableGWT implements EntryPoint {
         return releaseDate;
     }
 
-    private void updateTable(int firstId, int lastId){
+    private TextColumn<UsersEntity> getGroupName(){
+        TextColumn<UsersEntity> groupName = new TextColumn<UsersEntity>() {
+            @Override
+            public String getValue(UsersEntity object) {
+                return object.getGroupName();
+            }
+        };
+        return groupName;
+    }
 
-        Window.alert("В таблицу пришел FIRST = " + firstId + "LAST = " + lastId);
-        table.setRowData(0,getData(firstId, lastId));
+    private TextColumn<UsersEntity> getAge(){
+        TextColumn<UsersEntity> age = new TextColumn<UsersEntity>() {
+            @Override
+            public String getValue(UsersEntity object) {
+                return object.getAge().toString();
+            }
+        };
+        return age;
+    }
 
-
+    private TextColumn<UsersEntity> getFacultyName(){
+        TextColumn<UsersEntity> facultyName = new TextColumn<UsersEntity>() {
+            @Override
+            public String getValue(UsersEntity object) {
+                return object.getFacultyName();
+            }
+        };
+        return facultyName;
     }
 
 
@@ -227,7 +252,7 @@ public class TableGWT implements EntryPoint {
 
                 @Override
                 public void onSuccess(List<UsersEntity> result) {
-                   // updateRowData(start,result);
+                    //updateRowData(start,result);
 
                     table.setRowData(start,result);
 
