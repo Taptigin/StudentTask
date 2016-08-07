@@ -24,6 +24,8 @@ public class TableGWT implements EntryPoint {
     private SimplePager pager;
     private Long rowCount;
 
+    MyAsyncDataProvider dataProvider = new MyAsyncDataProvider();
+
     TableServiceAsync swc = GWT.create(TableService.class);
     private List<UsersEntity> list = new ArrayList<>();
 
@@ -59,16 +61,16 @@ public class TableGWT implements EntryPoint {
 
         table.setAutoHeaderRefreshDisabled(true);
 
-        table.setRowCount(rowCount.intValue(), true);
+        //table.setRowCount(rowCount.intValue(), true);
         table.setWidth("100%");
-        updateTable(1,50);
+        //updateTable(1,50);
+        dataProvider.onRangeChanged(table);
 
         Window.alert("1");
         table.addRangeChangeHandler(new RangeChangeEvent.Handler() {
             @Override
             public void onRangeChange(RangeChangeEvent event) {
-                updateTable(pager.getDisplay().getVisibleRange().getStart(),
-                        pager.getDisplay().getVisibleRange().getLength()-pager.getDisplay().getVisibleRange().getStart());
+                dataProvider.onRangeChanged(table);
             }
         });
 
@@ -84,20 +86,24 @@ public class TableGWT implements EntryPoint {
 
         pager.setDisplay(table);
         pager.setPageSize(50);
+        Window.alert("pager" + pager.getDisplay());
     }
 
     public void onModuleLoad() {
 
-        getRowCount(); //Window.alert("rowCount sucsess");
+        createPager();
+        createTable();
+        dataProvider.onRangeChanged(table);
 
-        createTable(); Window.alert("Table created");
-        createPager(); Window.alert("pager created");
+
+
 
         DockLayoutPanel panel = new DockLayoutPanel(Style.Unit.PX);
 
         panel.addNorth(new HTMLPanel("h1", "Список студентов"), 60);
-        panel.addNorth(table,500);
-        panel.add(pager);
+        panel.addNorth(pager,70);
+        panel.add(table);
+
 
         RootLayoutPanel.get().add(panel);
 
@@ -106,23 +112,7 @@ public class TableGWT implements EntryPoint {
             }
 
 
-        private void getRowCount(){
-            AsyncCallback<Long> asyncCallback = new AsyncCallback<Long>() {
-                @Override
-                public void onFailure(Throwable caught) {
-                    Window.alert("Не сработало возвращение RowCount");
-                }
 
-                @Override
-                public void onSuccess(Long result) {
-                    rowCount = result;
-
-                }
-            };
-
-
-            swc.getRowCount(asyncCallback);
-        }
 
 
 
@@ -237,11 +227,17 @@ public class TableGWT implements EntryPoint {
 
                 @Override
                 public void onSuccess(List<UsersEntity> result) {
-                    updateRowData(start,result);
+                   // updateRowData(start,result);
+
+                    table.setRowData(start,result);
+
+                    String s = String.valueOf(result.size());
+                    Window.alert(s);
 
                 }
             };
             swc.getAll(start,length-start,callback);
+
 
 
         }
