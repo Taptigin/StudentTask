@@ -12,7 +12,7 @@ import java.util.List;
  * Created by Александр on 20.07.2016.
  */
 @Repository
-public class DaoImpl implements DaoInterface{
+public class DaoImpl implements DaoInterface {
 
 
     @PersistenceContext
@@ -22,8 +22,8 @@ public class DaoImpl implements DaoInterface{
     public List<UsersEntity> getAll(int firstId, int lastId) {
 
         Query query = em.createQuery("from UsersEntity u where u.id >= :firstId and id<= :lastID", UsersEntity.class);
-        query.setParameter("firstId",firstId);
-        query.setParameter("lastID",lastId);
+        query.setParameter("firstId", firstId);
+        query.setParameter("lastID", lastId);
 
         List<UsersEntity> list = query.getResultList();
 
@@ -34,7 +34,7 @@ public class DaoImpl implements DaoInterface{
     @Override
     public Long getRowCount() {
 
-        Query query = em.createQuery("SELECT count(u.id) from UsersEntity u",Long.class);
+        Query query = em.createQuery("SELECT count(u.id) from UsersEntity u", Long.class);
         Long rowCount = (Long) query.getSingleResult();
 
         return rowCount;

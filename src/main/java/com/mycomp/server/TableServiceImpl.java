@@ -1,9 +1,9 @@
 package com.mycomp.server;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import com.mycomp.client.TableService;
 import com.mycomp.shared.DaoService;
 import com.mycomp.shared.UsersEntity;
-import com.mycomp.client.TableService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -21,7 +21,7 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
     @Override
     public List<UsersEntity> getAll(int firstId, int lastId) {
 
-        List<UsersEntity> list = service.getAll(firstId,lastId);
+        List<UsersEntity> list = service.getAll(firstId, lastId);
         return list;
     }
 

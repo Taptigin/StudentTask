@@ -4,10 +4,10 @@
         "http://java.sun.com/dtd/web-app_2_3.dtd">
 
 <web-app>
-<servlet>
-    <servlet-name>TableServiceImpl</servlet-name>
-    <servlet-class>com.mycomp.server.TableServiceImpl</servlet-class>
-</servlet>
+    <servlet>
+        <servlet-name>TableServiceImpl</servlet-name>
+        <servlet-class>com.mycomp.server.TableServiceImpl</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>TableServiceImpl</servlet-name>
@@ -15,8 +15,7 @@
     </servlet-mapping>
 
 
-
-<welcome-file-list>
-    <welcome-file>TableGWT.html</welcome-file>
-</welcome-file-list>
+    <welcome-file-list>
+        <welcome-file>TableGWT.html</welcome-file>
+    </welcome-file-list>
 </web-app>

@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Александр on 20.07.2016.
  */
 @Service("storageService")
-public class ServiceImpl implements DaoService{
+public class ServiceImpl implements DaoService {
 
     @Autowired
     private DaoInterface dao;
@@ -17,7 +17,7 @@ public class ServiceImpl implements DaoService{
 
     @Override
     public List<UsersEntity> getAll(int firstId, int lastId) {
-        return dao.getAll(firstId,lastId);
+        return dao.getAll(firstId, lastId);
     }
 
     @Override

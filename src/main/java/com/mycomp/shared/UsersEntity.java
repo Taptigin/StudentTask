@@ -9,7 +9,7 @@ import java.sql.Date;
  */
 @Entity
 @Table(name = "users", schema = "public", catalog = "students")
-public class UsersEntity implements Serializable{
+public class UsersEntity implements Serializable {
     private Integer id;
     private String firstName;
     private String lastName;
