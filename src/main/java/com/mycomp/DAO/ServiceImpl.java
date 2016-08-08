@@ -1,5 +1,6 @@
-package com.mycomp.shared;
+package com.mycomp.DAO;
 
+import com.mycomp.shared.UsersEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
