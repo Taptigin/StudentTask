@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by Александр on 20.07.2016.
  */
-@Singleton
+
 @Repository
 public class DaoImpl implements DaoInterface {
 
