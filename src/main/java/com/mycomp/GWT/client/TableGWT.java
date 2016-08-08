@@ -1,4 +1,4 @@
-package com.mycomp.client;
+package com.mycomp.GWT.client;
 
 import com.google.gwt.cell.client.DateCell;
 import com.google.gwt.core.client.EntryPoint;
@@ -14,7 +14,7 @@ import com.google.gwt.view.client.AsyncDataProvider;
 import com.google.gwt.view.client.HasData;
 import com.google.gwt.view.client.Range;
 import com.google.gwt.view.client.RangeChangeEvent;
-import com.mycomp.shared.UsersEntity;
+import com.mycomp.GWT.shared.UsersEntityDTO;
 
 import java.util.Date;
 import java.util.List;
@@ -24,7 +24,7 @@ import java.util.List;
  */
 public class TableGWT implements EntryPoint {
 
-    private static DataGrid<UsersEntity> table = new DataGrid<UsersEntity>();
+    private static DataGrid<UsersEntityDTO> table = new DataGrid<>();
     private MyAsyncDataProvider dataProvider = new MyAsyncDataProvider();
     private SimplePager pager;
 
@@ -68,9 +68,9 @@ public class TableGWT implements EntryPoint {
     }
 
     public void onModuleLoad() {
-
-        createPager();
-        createTable();
+        Window.alert("module   loadet");
+        createPager();Window.alert("pager");
+        createTable();Window.alert("table");
         dataProvider.onRangeChanged(table);
 
 
@@ -87,92 +87,92 @@ public class TableGWT implements EntryPoint {
     }
 
 
-    private TextColumn<UsersEntity> getLastName() {
-        TextColumn<UsersEntity> lastName = new TextColumn<UsersEntity>() {
+    private TextColumn<UsersEntityDTO> getLastName() {
+        TextColumn<UsersEntityDTO> lastName = new TextColumn<UsersEntityDTO>() {
             @Override
-            public String getValue(UsersEntity object) {
+            public String getValue(UsersEntityDTO object) {
                 return object.getLastName();
             }
         };
         return lastName;
     }
 
-    private TextColumn<UsersEntity> getFirstName() {
-        TextColumn<UsersEntity> firstName = new TextColumn<UsersEntity>() {
+    private TextColumn<UsersEntityDTO> getFirstName() {
+        TextColumn<UsersEntityDTO> firstName = new TextColumn<UsersEntityDTO>() {
             @Override
-            public String getValue(UsersEntity object) {
+            public String getValue(UsersEntityDTO object) {
                 return object.getFirstName();
             }
         };
         return firstName;
     }
 
-    private TextColumn<UsersEntity> getMiddleName() {
-        TextColumn<UsersEntity> middleName = new TextColumn<UsersEntity>() {
+    private TextColumn<UsersEntityDTO> getMiddleName() {
+        TextColumn<UsersEntityDTO> middleName = new TextColumn<UsersEntityDTO>() {
             @Override
-            public String getValue(UsersEntity object) {
+            public String getValue(UsersEntityDTO object) {
                 return object.getMiddleName();
             }
         };
         return middleName;
     }
 
-    private TextColumn<UsersEntity> getSex() {
-        TextColumn<UsersEntity> sex = new TextColumn<UsersEntity>() {
+    private TextColumn<UsersEntityDTO> getSex() {
+        TextColumn<UsersEntityDTO> sex = new TextColumn<UsersEntityDTO>() {
             @Override
-            public String getValue(UsersEntity object) {
+            public String getValue(UsersEntityDTO object) {
                 return object.getSex();
             }
         };
         return sex;
     }
 
-    private Column<UsersEntity, Date> getEnrollmentDate() {
+    private Column<UsersEntityDTO, Date> getEnrollmentDate() {
         DateCell dateCell = new DateCell();
-        Column<UsersEntity, Date> enrollmentDate = new Column<UsersEntity, Date>(dateCell) {
+        Column<UsersEntityDTO, Date> enrollmentDate = new Column<UsersEntityDTO, Date>(dateCell) {
             @Override
-            public Date getValue(UsersEntity object) {
+            public Date getValue(UsersEntityDTO object) {
                 return object.getEnrollmentDate();
             }
         };
         return enrollmentDate;
     }
 
-    private Column<UsersEntity, Date> getReleaseDate() {
+    private Column<UsersEntityDTO, Date> getReleaseDate() {
         DateCell dateCell = new DateCell();
-        Column<UsersEntity, Date> releaseDate = new Column<UsersEntity, Date>(dateCell) {
+        Column<UsersEntityDTO, Date> releaseDate = new Column<UsersEntityDTO, Date>(dateCell) {
             @Override
-            public Date getValue(UsersEntity object) {
+            public Date getValue(UsersEntityDTO object) {
                 return object.getReleaseDate();
             }
         };
         return releaseDate;
     }
 
-    private TextColumn<UsersEntity> getGroupName() {
-        TextColumn<UsersEntity> groupName = new TextColumn<UsersEntity>() {
+    private TextColumn<UsersEntityDTO> getGroupName() {
+        TextColumn<UsersEntityDTO> groupName = new TextColumn<UsersEntityDTO>() {
             @Override
-            public String getValue(UsersEntity object) {
+            public String getValue(UsersEntityDTO object) {
                 return object.getGroupName();
             }
         };
         return groupName;
     }
 
-    private TextColumn<UsersEntity> getAge() {
-        TextColumn<UsersEntity> age = new TextColumn<UsersEntity>() {
+    private TextColumn<UsersEntityDTO> getAge() {
+        TextColumn<UsersEntityDTO> age = new TextColumn<UsersEntityDTO>() {
             @Override
-            public String getValue(UsersEntity object) {
+            public String getValue(UsersEntityDTO object) {
                 return object.getAge().toString();
             }
         };
         return age;
     }
 
-    private TextColumn<UsersEntity> getFacultyName() {
-        TextColumn<UsersEntity> facultyName = new TextColumn<UsersEntity>() {
+    private TextColumn<UsersEntityDTO> getFacultyName() {
+        TextColumn<UsersEntityDTO> facultyName = new TextColumn<UsersEntityDTO>() {
             @Override
-            public String getValue(UsersEntity object) {
+            public String getValue(UsersEntityDTO object) {
                 return object.getFacultyName();
             }
         };
@@ -180,10 +180,10 @@ public class TableGWT implements EntryPoint {
     }
 
 
-    private static class MyAsyncDataProvider extends AsyncDataProvider<UsersEntity> {
+    private static class MyAsyncDataProvider extends AsyncDataProvider<UsersEntityDTO> {
 
         @Override
-        protected void onRangeChanged(HasData<UsersEntity> display) {
+        protected void onRangeChanged(HasData<UsersEntityDTO> display) {
             Range range = display.getVisibleRange();
             final int start = range.getStart();
             int length = range.getLength();
@@ -204,19 +204,19 @@ public class TableGWT implements EntryPoint {
             };
             swc.getRowCount(asyncCallback);
 
-            AsyncCallback<List<UsersEntity>> callback = new AsyncCallback<List<UsersEntity>>() {
+            AsyncCallback<List<UsersEntityDTO>> callback = new AsyncCallback<List<UsersEntityDTO>>() {
                 @Override
                 public void onFailure(Throwable caught) {
-                    Window.alert("Сервис не запустился.");
+
                 }
 
                 @Override
-                public void onSuccess(List<UsersEntity> result) {
-                    //updateRowData(start,result);
+                public void onSuccess(List<UsersEntityDTO> result) {
                     table.setRowData(start, result);
-
                 }
             };
+
+
             swc.getAll(start, length + start, callback);
 
 

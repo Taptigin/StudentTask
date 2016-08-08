@@ -1,8 +1,8 @@
-package com.mycomp.client;
+package com.mycomp.GWT.client;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
-import com.mycomp.shared.UsersEntity;
+import com.mycomp.GWT.shared.UsersEntityDTO;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import java.util.List;
  */
 @RemoteServiceRelativePath("TableService")
 public interface TableService extends RemoteService {
-    List<UsersEntity> getAll(int firstId, int lastId);
+    List<UsersEntityDTO> getAll(int firstId, int lastId);
 
     Long getRowCount();
 

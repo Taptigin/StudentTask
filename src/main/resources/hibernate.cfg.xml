@@ -8,7 +8,7 @@
         <property name="connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.username">taptigin</property>
         <property name="hibernate.connection.password">123</property>
-        <mapping class="com.mycomp.shared.UsersEntity"/>
+        <mapping class="com.mycomp.EntityModel.UsersEntity"/>
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
     </session-factory>

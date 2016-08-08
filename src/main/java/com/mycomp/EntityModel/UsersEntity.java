@@ -1,4 +1,4 @@
-package com.mycomp.shared;
+package com.mycomp.EntityModel;
 
 import javax.persistence.*;
 import java.io.Serializable;

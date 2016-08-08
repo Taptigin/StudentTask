@@ -6,12 +6,12 @@
 <web-app>
     <servlet>
         <servlet-name>TableServiceImpl</servlet-name>
-        <servlet-class>com.mycomp.server.TableServiceImpl</servlet-class>
+        <servlet-class>com.mycomp.GWT.server.TableServiceImpl</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>TableServiceImpl</servlet-name>
-        <url-pattern>/com.mycomp.TableGWT/TableService</url-pattern>
+        <url-pattern>/com.mycomp.GWT.TableGWT/TableService</url-pattern>
     </servlet-mapping>
 
 

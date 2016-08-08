@@ -1,6 +1,6 @@
 package com.mycomp.DAO;
 
-import com.mycomp.shared.UsersEntity;
+import com.mycomp.EntityModel.UsersEntity;
 
 import java.util.List;
 
