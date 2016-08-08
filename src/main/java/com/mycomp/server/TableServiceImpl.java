@@ -23,7 +23,7 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
     @Override
     public List<UsersEntity> getAll(int firstId, int lastId) {
 
-        List<UsersEntity> list = service.getAll(firstId, lastId+1);
+        List<UsersEntity> list = service.getAll(firstId, lastId + 1);
         return list;
     }
 

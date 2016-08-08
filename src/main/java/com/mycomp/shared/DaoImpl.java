@@ -3,13 +3,10 @@ package com.mycomp.shared;
 
 import org.springframework.stereotype.Repository;
 
-import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
@@ -25,7 +22,6 @@ public class DaoImpl implements DaoInterface {
     private EntityManager em;
 
 
-
     @Override
     public List<UsersEntity> getAll(int firstId, int lastId) {
 
@@ -33,10 +29,9 @@ public class DaoImpl implements DaoInterface {
         CriteriaQuery<UsersEntity> query = criteriaBuilder.createQuery(UsersEntity.class);
         Root<UsersEntity> root = query.from(UsersEntity.class);
         query.select(root);
-        query.where(criteriaBuilder.gt(root.get("id"),firstId),
-                    criteriaBuilder.lt(root.get("id"),lastId));
+        query.where(criteriaBuilder.gt(root.get("id"), firstId),
+                criteriaBuilder.lt(root.get("id"), lastId));
         return em.createQuery(query).getResultList();
-
 
 
     }
@@ -48,7 +43,7 @@ public class DaoImpl implements DaoInterface {
         CriteriaQuery<Long> criteriaQuery = criteriaBuilder.createQuery(Long.class);
         criteriaQuery.select(criteriaBuilder.count(criteriaQuery.from(UsersEntity.class)));
 
-        return  em.createQuery(criteriaQuery).getSingleResult();
+        return em.createQuery(criteriaQuery).getSingleResult();
 
     }
 }

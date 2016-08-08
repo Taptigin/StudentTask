@@ -16,7 +16,6 @@ import com.google.gwt.view.client.Range;
 import com.google.gwt.view.client.RangeChangeEvent;
 import com.mycomp.shared.UsersEntity;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,8 +27,6 @@ public class TableGWT implements EntryPoint {
     private static DataGrid<UsersEntity> table = new DataGrid<UsersEntity>();
     private MyAsyncDataProvider dataProvider = new MyAsyncDataProvider();
     private SimplePager pager;
-
-
 
 
     private void createTable() {
