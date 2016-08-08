@@ -8,6 +8,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.ParameterExpression;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 /**
@@ -25,13 +27,19 @@ public class DaoImpl implements DaoInterface {
     @Override
     public List<UsersEntity> getAll(int firstId, int lastId) {
 
-        Query query = em.createQuery("from UsersEntity u where u.id >= :firstId and id<= :lastID", UsersEntity.class);
-        query.setParameter("firstId", firstId);
-        query.setParameter("lastID", lastId);
+//        Query query = em.createQuery("from UsersEntity u where u.id >= :firstId and id<= :lastID", UsersEntity.class);
+//        query.setParameter("firstId", firstId);
+//        query.setParameter("lastID", lastId);
+//
+//        List<UsersEntity> list = query.getResultList();
 
-        List<UsersEntity> list = query.getResultList();
-
-        return list;
+        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+        CriteriaQuery<UsersEntity> query = criteriaBuilder.createQuery(UsersEntity.class);
+        Root<UsersEntity> root = query.from(UsersEntity.class);
+        query.select(root);
+        query.where(criteriaBuilder.gt(root.get("id"),firstId),
+                    criteriaBuilder.lt(root.get("id"),lastId));
+        return em.createQuery(query).getResultList();
 
 
 
