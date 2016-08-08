@@ -1,4 +1,12 @@
-﻿CREATE TABLE  users 
+﻿CREATE DATABASE students
+WITH OWNER = taptigin
+ENCODING = 'UTF8'
+TABLESPACE = pg_default
+LC_COLLATE = 'Russian_Russia.1251'
+LC_CTYPE = 'Russian_Russia.1251'
+CONNECTION LIMIT = -1;
+
+CREATE TABLE  users
 (ID int primary key, FirstName varchar(80), 
 LastName varchar(80), MiddleName varchar(80),
 Sex varchar(1),Age int, GroupName varchar(80),
