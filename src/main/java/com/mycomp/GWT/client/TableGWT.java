@@ -68,9 +68,8 @@ public class TableGWT implements EntryPoint {
     }
 
     public void onModuleLoad() {
-        Window.alert("module   loadet");
-        createPager();Window.alert("pager");
-        createTable();Window.alert("table");
+        createPager();
+        createTable();
         dataProvider.onRangeChanged(table);
 
 
