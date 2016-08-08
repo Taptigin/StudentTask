@@ -28,7 +28,6 @@ public class TableGWT implements EntryPoint {
     private static DataGrid<UsersEntity> table = new DataGrid<UsersEntity>();
     private MyAsyncDataProvider dataProvider = new MyAsyncDataProvider();
     private SimplePager pager;
-    private List<UsersEntity> list = new ArrayList<>();
 
 
 
@@ -48,9 +47,7 @@ public class TableGWT implements EntryPoint {
 
         table.setAutoHeaderRefreshDisabled(true);
 
-        //table.setRowCount(rowCount.intValue(), true);
         table.setWidth("100%");
-        //updateTable(1,50);
         dataProvider.onRangeChanged(table);
 
 
@@ -219,11 +216,7 @@ public class TableGWT implements EntryPoint {
                 @Override
                 public void onSuccess(List<UsersEntity> result) {
                     //updateRowData(start,result);
-
                     table.setRowData(start, result);
-
-                    String s = String.valueOf(result.size());
-
 
                 }
             };
