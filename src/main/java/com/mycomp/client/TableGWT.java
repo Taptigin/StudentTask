@@ -26,30 +26,12 @@ import java.util.List;
 public class TableGWT implements EntryPoint {
 
     private static DataGrid<UsersEntity> table = new DataGrid<UsersEntity>();
-    MyAsyncDataProvider dataProvider = new MyAsyncDataProvider();
-    TableServiceAsync swc = GWT.create(TableService.class);
+    private MyAsyncDataProvider dataProvider = new MyAsyncDataProvider();
     private SimplePager pager;
-    private Long rowCount;
     private List<UsersEntity> list = new ArrayList<>();
 
 
-    private List<UsersEntity> getData(int firstId, int lastId) {
 
-        AsyncCallback<List<UsersEntity>> callback = new AsyncCallback<List<UsersEntity>>() {
-            @Override
-            public void onFailure(Throwable caught) {
-                Window.alert("Сервис не запустился.");
-            }
-
-            @Override
-            public void onSuccess(List<UsersEntity> result) {
-                list = result;
-            }
-        };
-        swc.getAll(firstId, lastId, callback);
-
-        return list;
-    }
 
     private void createTable() {
         table.setKeyboardSelectionPolicy(HasKeyboardSelectionPolicy.KeyboardSelectionPolicy.ENABLED);
