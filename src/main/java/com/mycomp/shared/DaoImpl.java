@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 /**
@@ -18,6 +20,8 @@ public class DaoImpl implements DaoInterface {
     @PersistenceContext
     private EntityManager em;
 
+
+
     @Override
     public List<UsersEntity> getAll(int firstId, int lastId) {
 
@@ -29,15 +33,18 @@ public class DaoImpl implements DaoInterface {
 
         return list;
 
+
+
     }
 
     @Override
     public Long getRowCount() {
 
-        Query query = em.createQuery("SELECT count(u.id) from UsersEntity u", Long.class);
-        Long rowCount = (Long) query.getSingleResult();
+        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+        CriteriaQuery<Long> criteriaQuery = criteriaBuilder.createQuery(Long.class);
+        criteriaQuery.select(criteriaBuilder.count(criteriaQuery.from(UsersEntity.class)));
 
-        return rowCount;
+        return  em.createQuery(criteriaQuery).getSingleResult();
 
     }
 }
