@@ -17,6 +17,5 @@
     <source path='com.mycomp'/>
 
 
-
     <add-linker name="xsiframe"/>
 </module>

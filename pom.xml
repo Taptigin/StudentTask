@@ -146,7 +146,7 @@
         <executions>
           <execution>
             <configuration>
-              <module>com.mycomp.TableGWT</module>
+              <module>com.mycomp.GWT.TableGWT</module>
             </configuration>
             <goals>
               <goal>compile</goal>
