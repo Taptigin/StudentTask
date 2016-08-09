@@ -55,7 +55,9 @@ public class TableGWT implements EntryPoint {
             }
         });
 
-
+        ColumnSortEvent.AsyncHandler sortHandler= new ColumnSortEvent.AsyncHandler(table);
+        table.addColumnSortHandler(sortHandler);
+        ColumnSortList columnSortList = table.getColumnSortList();
     }
 
     private void createPager() {
@@ -123,6 +125,7 @@ public class TableGWT implements EntryPoint {
                 return object.getSex();
             }
         };
+        sex.setSortable(true);
         return sex;
     }
 
@@ -134,6 +137,7 @@ public class TableGWT implements EntryPoint {
                 return object.getEnrollmentDate();
             }
         };
+        enrollmentDate.setSortable(true);
         return enrollmentDate;
     }
 
