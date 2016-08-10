@@ -51,7 +51,10 @@ public class TableGWT implements EntryPoint {
         table.addRangeChangeHandler(new RangeChangeEvent.Handler() {
             @Override
             public void onRangeChange(RangeChangeEvent event) {
-                dataProvider.onRangeChanged(table);
+                dataProvider.addDataDisplay(table);
+                //dataProvider.onRangeChanged(table);
+                Window.alert(table.getColumnSortList().get(1).getColumn().getDataStoreName());
+                Window.alert(table.getColumnSortList().toString());
             }
         });
 
@@ -72,7 +75,8 @@ public class TableGWT implements EntryPoint {
     public void onModuleLoad() {
         createPager();
         createTable();
-        dataProvider.onRangeChanged(table);
+        //dataProvider.onRangeChanged(table);
+        dataProvider.addDataDisplay(table);
 
 
         DockLayoutPanel panel = new DockLayoutPanel(Style.Unit.PX);
@@ -185,6 +189,7 @@ public class TableGWT implements EntryPoint {
 
     private static class MyAsyncDataProvider extends AsyncDataProvider<UsersEntityDTO> {
 
+
         @Override
         protected void onRangeChanged(HasData<UsersEntityDTO> display) {
             Range range = display.getVisibleRange();
@@ -215,7 +220,11 @@ public class TableGWT implements EntryPoint {
 
                 @Override
                 public void onSuccess(List<UsersEntityDTO> result) {
-                    table.setRowData(start, result);
+                    //table.setRowData(start, result);
+                    updateRowData(start,result);
+
+
+
                 }
             };
 
