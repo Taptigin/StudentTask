@@ -27,7 +27,7 @@ public class TableGWT implements EntryPoint {
     private static DataGrid<UsersEntityDTO> table = new DataGrid<>();
     private MyAsyncDataProvider dataProvider = new MyAsyncDataProvider();
     private SimplePager pager;
-    private ColumnSortList columnSortList = table.getColumnSortList();
+    private ColumnSortEvent.AsyncHandler sortHandler= new ColumnSortEvent.AsyncHandler(table);
 
 
     private void createTable() {
@@ -57,12 +57,13 @@ public class TableGWT implements EntryPoint {
                 //dataProvider.onRangeChanged(table);
                 Window.alert(table.getColumnSortList().get(1).getColumn().getDataStoreName());
                 Window.alert(table.getColumnSortList().toString());
-                Window.alert(columnSortList.toString());
+
+
 
             }
         });
 
-        ColumnSortEvent.AsyncHandler sortHandler= new ColumnSortEvent.AsyncHandler(table);
+
         table.addColumnSortHandler(sortHandler);
 
 
