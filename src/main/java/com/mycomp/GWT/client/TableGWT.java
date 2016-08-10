@@ -45,13 +45,14 @@ public class TableGWT implements EntryPoint {
         table.setAutoHeaderRefreshDisabled(true);
 
         table.setWidth("100%");
-        dataProvider.onRangeChanged(table);
+        //dataProvider.onRangeChanged(table);
+
 
 
         table.addRangeChangeHandler(new RangeChangeEvent.Handler() {
             @Override
             public void onRangeChange(RangeChangeEvent event) {
-                dataProvider.addDataDisplay(table);
+                //dataProvider.addDataDisplay(table);
                 //dataProvider.onRangeChanged(table);
                 Window.alert(table.getColumnSortList().get(1).getColumn().getDataStoreName());
                 Window.alert(table.getColumnSortList().toString());
@@ -61,6 +62,8 @@ public class TableGWT implements EntryPoint {
         ColumnSortEvent.AsyncHandler sortHandler= new ColumnSortEvent.AsyncHandler(table);
         table.addColumnSortHandler(sortHandler);
         ColumnSortList columnSortList = table.getColumnSortList();
+
+
     }
 
     private void createPager() {
