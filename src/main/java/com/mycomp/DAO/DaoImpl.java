@@ -32,7 +32,10 @@ public class DaoImpl implements DaoInterface {
         query.select(root);
         query.where(criteriaBuilder.gt(root.get("id"), firstId),
                 criteriaBuilder.lt(root.get("id"), lastId));
-        return em.createQuery(query).getResultList();
+        List<UsersEntity> list = em.createQuery(query).getResultList();
+        em.close();
+        return list;
+
 
 
     }
@@ -43,8 +46,9 @@ public class DaoImpl implements DaoInterface {
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
         CriteriaQuery<Long> criteriaQuery = criteriaBuilder.createQuery(Long.class);
         criteriaQuery.select(criteriaBuilder.count(criteriaQuery.from(UsersEntity.class)));
-
-        return em.createQuery(criteriaQuery).getSingleResult();
+        Long l = em.createQuery(criteriaQuery).getSingleResult();
+        em.close();
+        return l;
 
     }
 }
