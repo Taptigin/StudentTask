@@ -227,9 +227,9 @@ public class TableGWT implements EntryPoint {
                 public void onSuccess(List<UsersEntityDTO> result) {
 
                     updateRowData(start,result);
-                    Window.alert(table.getColumnSortList().toString());
+                    //Window.alert(table.getColumnSortList().toString());
                     Window.alert(columnSortList.toString());
-                    Window.alert(columnSortList.get(5).toString());
+
 
 
 

@@ -1,5 +1,6 @@
 package com.mycomp.GWT.server;
 
+import com.google.gwt.user.cellview.client.ColumnSortList;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.mycomp.DAO.DaoService;
 import com.mycomp.EntityModel.UsersEntity;
@@ -21,7 +22,7 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
 
     private ApplicationContext context = new ClassPathXmlApplicationContext("SpringContext.xml");
     private DaoService service = (DaoService) context.getBean("storageService");
-
+    ColumnSortList sortList;
 
 
     @Override
