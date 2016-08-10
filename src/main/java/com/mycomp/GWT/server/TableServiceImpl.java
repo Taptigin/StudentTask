@@ -3,6 +3,7 @@ package com.mycomp.GWT.server;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.mycomp.DAO.DaoService;
 import com.mycomp.EntityModel.UsersEntity;
+import com.mycomp.GWT.client.TableGWT;
 import com.mycomp.GWT.client.TableService;
 import com.mycomp.GWT.shared.UsersEntityDTO;
 import org.springframework.context.ApplicationContext;
@@ -20,6 +21,7 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
 
     private ApplicationContext context = new ClassPathXmlApplicationContext("SpringContext.xml");
     private DaoService service = (DaoService) context.getBean("storageService");
+
 
 
     @Override

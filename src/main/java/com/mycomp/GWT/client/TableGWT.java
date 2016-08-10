@@ -28,7 +28,7 @@ public class TableGWT implements EntryPoint {
     private MyAsyncDataProvider dataProvider = new MyAsyncDataProvider();
     private SimplePager pager;
     private ColumnSortEvent.AsyncHandler sortHandler= new ColumnSortEvent.AsyncHandler(table);
-    protected static ColumnSortList columnSortList = table.getColumnSortList();
+    private static ColumnSortList columnSortList = table.getColumnSortList();
 
     private void createTable() {
         table.setKeyboardSelectionPolicy(HasKeyboardSelectionPolicy.KeyboardSelectionPolicy.ENABLED);
@@ -54,9 +54,9 @@ public class TableGWT implements EntryPoint {
             @Override
             public void onRangeChange(RangeChangeEvent event) {
 
-                Window.alert(table.getColumnSortList().get(5).getColumn().getDataStoreName());
-                Window.alert(columnSortList.toString());
-                Window.alert(columnSortList.get(0).getColumn().toString());
+//                Window.alert(table.getColumnSortList().get(5).getColumn().getDataStoreName());
+//                Window.alert(columnSortList.toString());
+//                Window.alert(columnSortList.get(0).getColumn().toString());
 
             }
         });
