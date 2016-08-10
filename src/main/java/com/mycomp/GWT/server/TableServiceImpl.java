@@ -12,6 +12,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.ejb.Singleton;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -22,29 +23,59 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
 
     private ApplicationContext context = new ClassPathXmlApplicationContext("SpringContext.xml");
     private DaoService service = (DaoService) context.getBean("storageService");
-    ColumnSortList sortList;
+    String sortList;
 
 
     @Override
-    public List<UsersEntityDTO> getAll(int firstId, int lastId) {
+    public List<UsersEntityDTO> getAll(int firstId, int lastId , String sortList) {
+        this.sortList = sortList;
         List<UsersEntityDTO> listDto = new ArrayList<>();
         List<UsersEntity> list = service.getAll(firstId, lastId + 1);
-        for (int i = 0; i < list.size(); i++) {
-            UsersEntityDTO userDto = new UsersEntityDTO();
-            userDto.setFirstName(list.get(i).getFirstName());
-            userDto.setMiddleName(list.get(i).getMiddleName());
-            userDto.setLastName(list.get(i).getLastName());
-            userDto.setAge(list.get(i).getAge());
-            userDto.setId(list.get(i).getId());
-            userDto.setSex(list.get(i).getSex());
-            userDto.setGroupName(list.get(i).getGroupName());
-            userDto.setFacultyName(list.get(i).getFacultyName());
-            userDto.setEnrollmentDate(list.get(i).getEnrollmentDate());
-            userDto.setReleaseDate(list.get(i).getReleaseDate());
-            listDto.add(userDto);
 
+        System.out.println(this.sortList);
+        if (this.sortList.equals("com.google.gwt.user.cellview.client.ColumnSortList@acda")) {
+            for (int i = 0; i < list.size(); i++) {
+                UsersEntityDTO userDto = new UsersEntityDTO();
+                userDto.setFirstName(list.get(i).getFirstName());
+                userDto.setMiddleName(list.get(i).getMiddleName());
+                userDto.setLastName(list.get(i).getLastName());
+                userDto.setAge(list.get(i).getAge());
+                userDto.setId(list.get(i).getId());
+                userDto.setSex(list.get(i).getSex());
+                userDto.setGroupName(list.get(i).getGroupName());
+                userDto.setFacultyName(list.get(i).getFacultyName());
+                userDto.setEnrollmentDate(list.get(i).getEnrollmentDate());
+                userDto.setReleaseDate(list.get(i).getReleaseDate());
+                listDto.add(userDto);
+            }
+            listDto.sort(new Comparator<UsersEntityDTO>() {
+                @Override
+                public int compare(UsersEntityDTO o1, UsersEntityDTO o2) {
+
+                    return o1.getSex().compareTo(o2.getSex());
+                }
+            });
+
+        } else {
+
+            for (int i = 0; i < list.size(); i++) {
+                UsersEntityDTO userDto = new UsersEntityDTO();
+                userDto.setFirstName(list.get(i).getFirstName());
+                userDto.setMiddleName(list.get(i).getMiddleName());
+                userDto.setLastName(list.get(i).getLastName());
+                userDto.setAge(list.get(i).getAge());
+                userDto.setId(list.get(i).getId());
+                userDto.setSex(list.get(i).getSex());
+                userDto.setGroupName(list.get(i).getGroupName());
+                userDto.setFacultyName(list.get(i).getFacultyName());
+                userDto.setEnrollmentDate(list.get(i).getEnrollmentDate());
+                userDto.setReleaseDate(list.get(i).getReleaseDate());
+                listDto.add(userDto);
+
+            }
         }
-        return listDto;
+            return listDto;
+
     }
 
     @Override
