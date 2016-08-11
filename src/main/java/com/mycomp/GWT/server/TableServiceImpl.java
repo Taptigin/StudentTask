@@ -94,6 +94,18 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
                 return o2.getLastName().compareTo(o1.getLastName());
             }
         };
+        Comparator<UsersEntityDTO> compEnrollmentDateUp = new Comparator<UsersEntityDTO>() {
+            @Override
+            public int compare(UsersEntityDTO o1, UsersEntityDTO o2) {
+                return o1.getEnrollmentDate().compareTo(o2.getEnrollmentDate());
+            }
+        };
+        Comparator<UsersEntityDTO> compEnrollmentDateDown = new Comparator<UsersEntityDTO>() {
+            @Override
+            public int compare(UsersEntityDTO o1, UsersEntityDTO o2) {
+                return o2.getEnrollmentDate().compareTo(o1.getEnrollmentDate());
+            }
+        };
 
         for (int i = 0; i < list.size(); i++) {
                 UsersEntityDTO userDto = new UsersEntityDTO();
@@ -133,6 +145,10 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
                 listDto.sort(compLastNameUp);break;
             case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@535":
                 listDto.sort(compLastNameDown);break;
+            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@593":
+                listDto.sort(compEnrollmentDateUp);break;
+            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@592":
+                listDto.sort(compEnrollmentDateDown);break;
             default:break;
         }
 
