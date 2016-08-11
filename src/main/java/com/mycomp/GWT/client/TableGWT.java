@@ -25,10 +25,10 @@ import java.util.List;
 public class TableGWT implements EntryPoint {
 
     private static DataGrid<UsersEntityDTO> table = new DataGrid<>();
+    private static String columnSortName = "ID";
     private MyAsyncDataProvider dataProvider = new MyAsyncDataProvider();
     private SimplePager pager;
-    private ColumnSortEvent.AsyncHandler sortHandler= new ColumnSortEvent.AsyncHandler(table);
-    private static String columnSortName = "ID";
+    private ColumnSortEvent.AsyncHandler sortHandler = new ColumnSortEvent.AsyncHandler(table);
 
     private void createTable() {
         table.setKeyboardSelectionPolicy(HasKeyboardSelectionPolicy.KeyboardSelectionPolicy.ENABLED);
@@ -48,7 +48,6 @@ public class TableGWT implements EntryPoint {
         table.setWidth("100%");
 
 
-
         table.addRangeChangeHandler(new RangeChangeEvent.Handler() {
             @Override
             public void onRangeChange(RangeChangeEvent event) {
@@ -61,7 +60,6 @@ public class TableGWT implements EntryPoint {
 
 
         table.addColumnSortHandler(sortHandler);
-
 
 
     }
@@ -231,7 +229,7 @@ public class TableGWT implements EntryPoint {
                 @Override
                 public void onSuccess(List<UsersEntityDTO> result) {
 
-                    updateRowData(start,result);
+                    updateRowData(start, result);
                 }
             };
 

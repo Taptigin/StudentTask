@@ -37,7 +37,6 @@ public class DaoImpl implements DaoInterface {
         return list;
 
 
-
     }
 
     @Override
