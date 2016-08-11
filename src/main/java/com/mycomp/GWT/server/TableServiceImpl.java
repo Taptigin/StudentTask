@@ -106,6 +106,30 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
                 return o2.getEnrollmentDate().compareTo(o1.getEnrollmentDate());
             }
         };
+        Comparator<UsersEntityDTO> compReleaseDateUp = new Comparator<UsersEntityDTO>() {
+            @Override
+            public int compare(UsersEntityDTO o1, UsersEntityDTO o2) {
+                return o1.getReleaseDate().compareTo(o2.getReleaseDate());
+            }
+        };
+        Comparator<UsersEntityDTO> compReleaseDateDown = new Comparator<UsersEntityDTO>() {
+            @Override
+            public int compare(UsersEntityDTO o1, UsersEntityDTO o2) {
+                return o2.getReleaseDate().compareTo(o1.getReleaseDate());
+            }
+        };
+        Comparator<UsersEntityDTO> compGroupNameUp = new Comparator<UsersEntityDTO>() {
+            @Override
+            public int compare(UsersEntityDTO o1, UsersEntityDTO o2) {
+                return o1.getGroupName().compareTo(o2.getGroupName());
+            }
+        };
+        Comparator<UsersEntityDTO> compGroupNameDown = new Comparator<UsersEntityDTO>() {
+            @Override
+            public int compare(UsersEntityDTO o1, UsersEntityDTO o2) {
+                return o2.getGroupName().compareTo(o1.getGroupName());
+            }
+        };
 
         for (int i = 0; i < list.size(); i++) {
                 UsersEntityDTO userDto = new UsersEntityDTO();
@@ -149,6 +173,15 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
                 listDto.sort(compEnrollmentDateUp);break;
             case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@592":
                 listDto.sort(compEnrollmentDateDown);break;
+            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@5b2":
+                listDto.sort(compReleaseDateUp);break;
+            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@5b1":
+                listDto.sort(compReleaseDateDown);break;
+            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@5d1":
+                listDto.sort(compGroupNameUp);break;
+            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@5d0":
+                listDto.sort(compGroupNameDown);break;
+
             default:break;
         }
 
