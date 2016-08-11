@@ -234,7 +234,7 @@ public class TableGWT implements EntryPoint {
             };
 
 
-            swc.getAll(start, length + start, columnSortName, callback);
+            swc.getAll(start, length + start-1 , columnSortName, callback);
 
 
         }

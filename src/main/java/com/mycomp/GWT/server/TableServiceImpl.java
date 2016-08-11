@@ -27,7 +27,7 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
     public List<UsersEntityDTO> getAll(int firstId, int lastId, String sortList) {
         this.sortList = sortList;
         List<UsersEntityDTO> listDto = new ArrayList<>();
-        List<UsersEntity> list = service.getAll(1, 9999);
+        List<UsersEntity> list = service.getAll(1, 10000);
 
         Comparator<UsersEntityDTO> compSexUp = new Comparator<UsersEntityDTO>() {
             @Override
