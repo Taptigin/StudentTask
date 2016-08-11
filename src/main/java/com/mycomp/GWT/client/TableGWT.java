@@ -28,7 +28,6 @@ public class TableGWT implements EntryPoint {
     private MyAsyncDataProvider dataProvider = new MyAsyncDataProvider();
     private SimplePager pager;
     private ColumnSortEvent.AsyncHandler sortHandler= new ColumnSortEvent.AsyncHandler(table);
-    private static ColumnSortList columnSortList = table.getColumnSortList();
     private static String columnSortName = "ID";
 
     private void createTable() {
@@ -47,7 +46,6 @@ public class TableGWT implements EntryPoint {
         table.setAutoHeaderRefreshDisabled(true);
 
         table.setWidth("100%");
-        //dataProvider.onRangeChanged(table);
 
 
 
@@ -80,7 +78,7 @@ public class TableGWT implements EntryPoint {
     public void onModuleLoad() {
         createPager();
         createTable();
-        //dataProvider.onRangeChanged(table);
+
         dataProvider.addDataDisplay(table);
 
 
@@ -234,16 +232,6 @@ public class TableGWT implements EntryPoint {
                 public void onSuccess(List<UsersEntityDTO> result) {
 
                     updateRowData(start,result);
-//                    Window.alert(table.getColumnSortList().toString());
-//                    Window.alert(columnSortList.toString());
-//                    Window.alert(columnSortList.get(0).getColumn().getDataStoreName());
-//                    Window.alert(columnSortList.get(0).toString());
-                    Window.alert(table.getColumnSortList().get(0).toString());
-
-
-
-
-
                 }
             };
 
