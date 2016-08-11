@@ -18,8 +18,8 @@ public class ServiceImpl implements DaoService {
 
 
     @Override
-    public List<UsersEntity> getAll(int firstId, int lastId) {
-        return dao.getAll(firstId, lastId);
+    public List<UsersEntity> getAll(int firstId, int lastId, boolean descending) {
+        return dao.getAll(firstId, lastId, descending);
     }
 
     @Override

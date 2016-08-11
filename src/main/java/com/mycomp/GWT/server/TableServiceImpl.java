@@ -27,7 +27,10 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
     public List<UsersEntityDTO> getAll(int firstId, int lastId, String sortList) {
         this.sortList = sortList;
         List<UsersEntityDTO> listDto = new ArrayList<>();
-        List<UsersEntity> list = service.getAll(1, 10000);
+        boolean descending = false;
+        if (sortList.equals("com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@555")) descending = true;
+        else descending = false;
+        List<UsersEntity> list = service.getAll(1, 10000,descending);
 
         Comparator<UsersEntityDTO> compSexUp = new Comparator<UsersEntityDTO>() {
             @Override

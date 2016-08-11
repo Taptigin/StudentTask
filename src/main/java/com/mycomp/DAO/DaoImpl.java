@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,7 +25,7 @@ public class DaoImpl implements DaoInterface {
 
 
     @Override
-    public List<UsersEntity> getAll(int firstId, int lastId) {
+    public List<UsersEntity> getAll(int firstId, int lastId, boolean descending) {
 
 //        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
 //        CriteriaQuery<UsersEntity> query = criteriaBuilder.createQuery(UsersEntity.class);
@@ -33,8 +34,18 @@ public class DaoImpl implements DaoInterface {
 //        query.where(criteriaBuilder.gt(root.get("id"), firstId),
 //                criteriaBuilder.lt(root.get("id"), lastId));
 //        List<UsersEntity> list = em.createQuery(query).getResultList();
-        List<UsersEntity> list = em.createQuery("from UsersEntity u order by age")
-                .getResultList();
+        String napravlenie;
+        List<UsersEntity> list = new ArrayList<>();
+        if (descending == true) {
+            napravlenie = "ASC";
+            list = em.createQuery("from UsersEntity u order by age")
+                    .getResultList();
+        }
+        else {
+            list = em.createQuery("from UsersEntity u order by age desc")
+                    .getResultList();
+        }
+
         em.close();
         return list;
 
