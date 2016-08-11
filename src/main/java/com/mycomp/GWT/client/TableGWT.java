@@ -223,7 +223,7 @@ public class TableGWT implements EntryPoint {
             AsyncCallback<List<UsersEntityDTO>> callback = new AsyncCallback<List<UsersEntityDTO>>() {
                 @Override
                 public void onFailure(Throwable caught) {
-
+                    Window.alert("Callback not work");
                 }
 
                 @Override
