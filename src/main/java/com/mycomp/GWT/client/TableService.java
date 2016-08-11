@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by Александр on 28.07.2016.
+ * Асинхронный сервис для подтягивания данных из БД.
  */
 @RemoteServiceRelativePath("TableService")
 public interface TableService extends RemoteService {

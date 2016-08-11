@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by Александр on 20.07.2016.
+ * Имплементация ДАО сервиса.
  */
 @Service("storageService")
 public class ServiceImpl implements DaoService {
