@@ -27,17 +27,17 @@ public class DaoImpl implements DaoInterface {
     @Override
     public List<UsersEntity> getAll(int firstId, int lastId, boolean descending) {
 
-//        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-//        CriteriaQuery<UsersEntity> query = criteriaBuilder.createQuery(UsersEntity.class);
-//        Root<UsersEntity> root = query.from(UsersEntity.class);
-//        query.select(root);
-//        query.where(criteriaBuilder.gt(root.get("id"), firstId),
-//                criteriaBuilder.lt(root.get("id"), lastId));
-//        List<UsersEntity> list = em.createQuery(query).getResultList();
-        String napravlenie;
-        List<UsersEntity> list = new ArrayList<>();
+        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+        CriteriaQuery<UsersEntity> query = criteriaBuilder.createQuery(UsersEntity.class);
+        Root<UsersEntity> root = query.from(UsersEntity.class);
+        query.select(root);
+        query.where(criteriaBuilder.gt(root.get("id"), firstId),
+                criteriaBuilder.lt(root.get("id"), lastId));
+        //List<UsersEntity> list = em.createQuery(query).getResultList();
+
+        List<UsersEntity> list;
         if (descending == true) {
-            napravlenie = "ASC";
+
             list = em.createQuery("from UsersEntity u order by age")
                     .getResultList();
         }
