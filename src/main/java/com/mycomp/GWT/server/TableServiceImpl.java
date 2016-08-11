@@ -32,8 +32,6 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
         List<UsersEntityDTO> listDto = new ArrayList<>();
         List<UsersEntity> list = service.getAll(firstId, lastId + 1);
 
-        System.out.println(this.sortList);
-
         Comparator<UsersEntityDTO> compSexUp = new Comparator<UsersEntityDTO>() {
             @Override
             public int compare(UsersEntityDTO o1, UsersEntityDTO o2) {
@@ -130,6 +128,18 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
                 return o2.getGroupName().compareTo(o1.getGroupName());
             }
         };
+        Comparator<UsersEntityDTO> compFacultyNameUp = new Comparator<UsersEntityDTO>() {
+            @Override
+            public int compare(UsersEntityDTO o1, UsersEntityDTO o2) {
+                return o1.getFacultyName().compareTo(o2.getFacultyName());
+            }
+        };
+        Comparator<UsersEntityDTO> compFacultyNameDown = new Comparator<UsersEntityDTO>() {
+            @Override
+            public int compare(UsersEntityDTO o1, UsersEntityDTO o2) {
+                return o2.getFacultyName().compareTo(o1.getFacultyName());
+            }
+        };
 
         for (int i = 0; i < list.size(); i++) {
                 UsersEntityDTO userDto = new UsersEntityDTO();
@@ -181,7 +191,10 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
                 listDto.sort(compGroupNameUp);break;
             case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@5d0":
                 listDto.sort(compGroupNameDown);break;
-
+            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@5f0":
+                listDto.sort(compFacultyNameUp);break;
+            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@5ef":
+                listDto.sort(compFacultyNameDown);break;
             default:break;
         }
 
