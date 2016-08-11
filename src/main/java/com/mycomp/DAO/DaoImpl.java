@@ -31,19 +31,16 @@ public class DaoImpl implements DaoInterface {
         CriteriaQuery<UsersEntity> query = criteriaBuilder.createQuery(UsersEntity.class);
         Root<UsersEntity> root = query.from(UsersEntity.class);
         query.select(root);
-        query.where(criteriaBuilder.gt(root.get("id"), firstId),
-                criteriaBuilder.lt(root.get("id"), lastId));
-        //List<UsersEntity> list = em.createQuery(query).getResultList();
 
         List<UsersEntity> list;
         if (descending == true) {
 
-            list = em.createQuery("from UsersEntity u order by age")
-                    .getResultList();
+            query.orderBy(criteriaBuilder.asc(root.get("age")));
+            list = em.createQuery(query).getResultList();
         }
         else {
-            list = em.createQuery("from UsersEntity u order by age desc")
-                    .getResultList();
+            query.orderBy(criteriaBuilder.desc(root.get("age")));
+            list = em.createQuery(query).getResultList();
         }
 
         em.close();
