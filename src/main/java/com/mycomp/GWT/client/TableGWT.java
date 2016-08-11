@@ -29,6 +29,7 @@ public class TableGWT implements EntryPoint {
     private SimplePager pager;
     private ColumnSortEvent.AsyncHandler sortHandler= new ColumnSortEvent.AsyncHandler(table);
     private static ColumnSortList columnSortList = table.getColumnSortList();
+    private static String columnSortName = "ID";
 
     private void createTable() {
         table.setKeyboardSelectionPolicy(HasKeyboardSelectionPolicy.KeyboardSelectionPolicy.ENABLED);
@@ -54,9 +55,8 @@ public class TableGWT implements EntryPoint {
             @Override
             public void onRangeChange(RangeChangeEvent event) {
 
-//                Window.alert(table.getColumnSortList().get(5).getColumn().getDataStoreName());
-//                Window.alert(columnSortList.toString());
-//                Window.alert(columnSortList.get(0).getColumn().toString());
+                columnSortName = table.getColumnSortList().get(0).toString();
+
 
             }
         });
@@ -104,6 +104,7 @@ public class TableGWT implements EntryPoint {
                 return object.getLastName();
             }
         };
+        lastName.setSortable(true);
         return lastName;
     }
 
@@ -114,6 +115,7 @@ public class TableGWT implements EntryPoint {
                 return object.getFirstName();
             }
         };
+        firstName.setSortable(true);
         return firstName;
     }
 
@@ -124,6 +126,7 @@ public class TableGWT implements EntryPoint {
                 return object.getMiddleName();
             }
         };
+        middleName.setSortable(true);
         return middleName;
     }
 
@@ -158,6 +161,7 @@ public class TableGWT implements EntryPoint {
                 return object.getReleaseDate();
             }
         };
+        releaseDate.setSortable(true);
         return releaseDate;
     }
 
@@ -168,6 +172,7 @@ public class TableGWT implements EntryPoint {
                 return object.getGroupName();
             }
         };
+        groupName.setSortable(true);
         return groupName;
     }
 
@@ -178,6 +183,7 @@ public class TableGWT implements EntryPoint {
                 return object.getAge().toString();
             }
         };
+        age.setSortable(true);
         return age;
     }
 
@@ -188,6 +194,7 @@ public class TableGWT implements EntryPoint {
                 return object.getFacultyName();
             }
         };
+        facultyName.setSortable(true);
         return facultyName;
     }
 
@@ -227,8 +234,12 @@ public class TableGWT implements EntryPoint {
                 public void onSuccess(List<UsersEntityDTO> result) {
 
                     updateRowData(start,result);
-                    //Window.alert(table.getColumnSortList().toString());
-                    Window.alert(columnSortList.toString());
+//                    Window.alert(table.getColumnSortList().toString());
+//                    Window.alert(columnSortList.toString());
+//                    Window.alert(columnSortList.get(0).getColumn().getDataStoreName());
+//                    Window.alert(columnSortList.get(0).toString());
+                    Window.alert(table.getColumnSortList().get(0).toString());
+
 
 
 
@@ -237,7 +248,7 @@ public class TableGWT implements EntryPoint {
             };
 
 
-            swc.getAll(start, length + start, columnSortList.toString(), callback);
+            swc.getAll(start, length + start, columnSortName, callback);
 
 
         }
