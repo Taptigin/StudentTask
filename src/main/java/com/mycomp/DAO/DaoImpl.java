@@ -9,7 +9,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,7 +26,7 @@ public class DaoImpl implements DaoInterface {
 
     @Override
     public List<UsersEntity> getAll(int firstId, int lastId, boolean descending, String columnName) {
-        System.out.println("column Name is - " + columnName);
+
         this.columnName = columnName;
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
         CriteriaQuery<UsersEntity> query = criteriaBuilder.createQuery(UsersEntity.class);
@@ -41,8 +40,7 @@ public class DaoImpl implements DaoInterface {
 
             query.orderBy(criteriaBuilder.asc(root.get(getColumnToSort(this.columnName))));
             list = em.createQuery(query).getResultList();
-        }
-        else {
+        } else {
             query.orderBy(criteriaBuilder.desc(root.get(getColumnToSort(this.columnName))));
             list = em.createQuery(query).getResultList();
         }
@@ -65,8 +63,8 @@ public class DaoImpl implements DaoInterface {
 
     }
 
-    private String getColumnToSort (String columnName){
-        switch (columnName){
+    private String getColumnToSort(String columnName) {
+        switch (columnName) {
             case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@574":
                 columnName = "sex";
                 direction = "asc";
@@ -103,7 +101,7 @@ public class DaoImpl implements DaoInterface {
                 columnName = "lastName";
                 direction = "asc";
                 break;
-            case  "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@535":
+            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@535":
                 columnName = "lastName";
                 direction = "desc";
                 break;
@@ -140,7 +138,8 @@ public class DaoImpl implements DaoInterface {
                 direction = "desc";
                 break;
 
-            default: columnName = "id";
+            default:
+                columnName = "id";
                 direction = "asc";
                 break;
         }

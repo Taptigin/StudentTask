@@ -10,7 +10,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.ejb.Singleton;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -28,7 +27,7 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
         this.sortList = sortList;
         List<UsersEntityDTO> listDto = new ArrayList<>();
         boolean descending = false;
-        List<UsersEntity> list = service.getAll(1, 10000,descending , sortList);
+        List<UsersEntity> list = service.getAll(1, 10000, descending, sortList);
 
         for (int i = 0; i < list.size(); i++) {
             UsersEntityDTO userDto = new UsersEntityDTO();
@@ -44,8 +43,6 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
             userDto.setReleaseDate(list.get(i).getReleaseDate());
             listDto.add(userDto);
         }
-
-
 
 
         List<UsersEntityDTO> dto = new ArrayList<>();
