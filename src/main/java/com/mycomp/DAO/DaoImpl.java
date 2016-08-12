@@ -18,7 +18,8 @@ import java.util.List;
 
 @Repository
 public class DaoImpl implements DaoInterface {
-
+    String columnName;
+    String direction = "asc";
 
     @PersistenceContext
     private EntityManager em;
@@ -27,19 +28,22 @@ public class DaoImpl implements DaoInterface {
     @Override
     public List<UsersEntity> getAll(int firstId, int lastId, boolean descending, String columnName) {
         System.out.println("column Name is - " + columnName);
+        this.columnName = columnName;
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
         CriteriaQuery<UsersEntity> query = criteriaBuilder.createQuery(UsersEntity.class);
         Root<UsersEntity> root = query.from(UsersEntity.class);
         query.select(root);
 
-        List<UsersEntity> list;
-        if (descending == true) {
+        getColumnToSort(this.columnName);
 
-            query.orderBy(criteriaBuilder.asc(root.get("age")));
+        List<UsersEntity> list;
+        if (direction.equals("asc")) {
+
+            query.orderBy(criteriaBuilder.asc(root.get(getColumnToSort(this.columnName))));
             list = em.createQuery(query).getResultList();
         }
         else {
-            query.orderBy(criteriaBuilder.desc(root.get("age")));
+            query.orderBy(criteriaBuilder.desc(root.get(getColumnToSort(this.columnName))));
             list = em.createQuery(query).getResultList();
         }
 
@@ -59,5 +63,20 @@ public class DaoImpl implements DaoInterface {
         em.close();
         return l;
 
+    }
+
+    private String getColumnToSort (String columnName){
+        switch (columnName){
+            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@574":
+                columnName = "sex";
+                direction = "asc";
+                break;
+            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@573":
+                columnName = "sex";
+                direction = "desc";
+                break;
+            default: columnName = "id";break;
+        }
+        return columnName;
     }
 }
