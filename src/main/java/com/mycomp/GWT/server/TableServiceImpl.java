@@ -28,11 +28,7 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
         this.sortList = sortList;
         List<UsersEntityDTO> listDto = new ArrayList<>();
         boolean descending = false;
-        if (sortList.equals("com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@555")) descending = true;
-        else descending = false;
         List<UsersEntity> list = service.getAll(1, 10000,descending , sortList);
-
-        //System.out.println(sortList);
 
         for (int i = 0; i < list.size(); i++) {
             UsersEntityDTO userDto = new UsersEntityDTO();
@@ -50,66 +46,7 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
         }
 
 
-//        switch (this.sortList) {
-//            case "ID":
-//                break;
-//            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@574":
-//                listDto.sort(compSexUp);
-//                break;
-//            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@573":
-//                listDto.sort(compSexDown);
-//                break;
-//            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@555":
-//                listDto.sort(compAgeUp);
-//                break;
-//            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@554":
-//                listDto.sort(compAgeDown);
-//                break;
-//            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@4f8":
-//                listDto.sort(compFirstNameUp);
-//                break;
-//            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@4f7":
-//                listDto.sort(compFirstNameDown);
-//                break;
-//            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@517":
-//                listDto.sort(compMiddlenameUp);
-//                break;
-//            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@516":
-//                listDto.sort(compMiddlenameDown);
-//                break;
-//            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@536":
-//                listDto.sort(compLastNameUp);
-//                break;
-//            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@535":
-//                listDto.sort(compLastNameDown);
-//                break;
-//            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@593":
-//                listDto.sort(compEnrollmentDateUp);
-//                break;
-//            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@592":
-//                listDto.sort(compEnrollmentDateDown);
-//                break;
-//            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@5b2":
-//                listDto.sort(compReleaseDateUp);
-//                break;
-//            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@5b1":
-//                listDto.sort(compReleaseDateDown);
-//                break;
-//            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@5d1":
-//                listDto.sort(compGroupNameUp);
-//                break;
-//            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@5d0":
-//                listDto.sort(compGroupNameDown);
-//                break;
-//            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@5f0":
-//                listDto.sort(compFacultyNameUp);
-//                break;
-//            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@5ef":
-//                listDto.sort(compFacultyNameDown);
-//                break;
-//            default:
-//                break;
-//        }
+
 
         List<UsersEntityDTO> dto = new ArrayList<>();
         for (int i = firstId; i <= lastId; i++) {
