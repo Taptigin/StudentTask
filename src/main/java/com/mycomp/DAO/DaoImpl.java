@@ -107,7 +107,38 @@ public class DaoImpl implements DaoInterface {
                 columnName = "lastName";
                 direction = "desc";
                 break;
-
+            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@593":
+                columnName = "enrollmentDate";
+                direction = "asc";
+                break;
+            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@592":
+                columnName = "enrollmentDate";
+                direction = "desc";
+                break;
+            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@5b2":
+                columnName = "releaseDate";
+                direction = "asc";
+                break;
+            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@5b1":
+                columnName = "releaseDate";
+                direction = "desc";
+                break;
+            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@5d1":
+                columnName = "groupName";
+                direction = "asc";
+                break;
+            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@5d0":
+                columnName = "groupName";
+                direction = "desc";
+                break;
+            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@5f0":
+                columnName = "facultyName";
+                direction = "asc";
+                break;
+            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@5ef":
+                columnName = "facultyName";
+                direction = "desc";
+                break;
 
             default: columnName = "id";
                 direction = "asc";
