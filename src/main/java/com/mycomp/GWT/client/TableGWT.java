@@ -54,7 +54,6 @@ public class TableGWT implements EntryPoint {
 
                 columnSortName = table.getColumnSortList().get(0).toString();
 
-
             }
         });
 
@@ -230,6 +229,7 @@ public class TableGWT implements EntryPoint {
                 public void onSuccess(List<UsersEntityDTO> result) {
 
                     updateRowData(start, result);
+
                 }
             };
 
