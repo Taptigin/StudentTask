@@ -75,6 +75,14 @@ public class DaoImpl implements DaoInterface {
                 columnName = "sex";
                 direction = "desc";
                 break;
+            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@555":
+                columnName = "age";
+                direction = "asc";
+                break;
+            case "com.google.gwt.user.cellview.client.ColumnSortList$ColumnSortInfo@554":
+                columnName = "age";
+                direction = "desc";
+                break;
             default: columnName = "id";break;
         }
         return columnName;
