@@ -21,6 +21,7 @@ import java.util.List;
 
 /**
  * Created by Александр on 28.07.2016.
+ * GWT клиент для общения с пользователем.
  */
 public class TableGWT implements EntryPoint {
 

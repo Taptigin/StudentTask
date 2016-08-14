@@ -25,7 +25,7 @@ public class DaoImpl implements DaoInterface {
 
 
     @Override
-    public List<UsersEntity> getAll(int firstId, int lastId, boolean descending, String columnName) {
+    public List<UsersEntity> getAll(int firstId, int lastId, String columnName) {
 
         this.columnName = columnName;
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();

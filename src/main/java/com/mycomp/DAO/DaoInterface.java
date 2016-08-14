@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface DaoInterface {
 
-    public List<UsersEntity> getAll(int firstId, int lastId, boolean descending, String columnName);
+    public List<UsersEntity> getAll(int firstId, int lastId, String columnName);
 
     public Long getRowCount();
 }
