@@ -18,15 +18,15 @@ import java.util.List;
 @Singleton
 public class TableServiceImpl extends RemoteServiceServlet implements TableService {
 
-    String sortList;
+    String columnSortName;
     private ApplicationContext context = new ClassPathXmlApplicationContext("SpringContext.xml");
     private DaoService service = (DaoService) context.getBean("storageService");
 
     @Override
-    public List<UsersEntityDTO> getAll(int firstId, int lastId, String sortList, boolean isAscending) {
-        this.sortList = sortList;
+    public List<UsersEntityDTO> getAll(int firstId, int lastId, String columnSortName, boolean isAscending) {
+        this.columnSortName = columnSortName;
         List<UsersEntityDTO> listDto = new ArrayList<>();
-        List<UsersEntity> list = service.getAll(1, 10000, sortList, isAscending);
+        List<UsersEntity> list = service.getAll(1, 10000, columnSortName, isAscending);
 
         for (int i = 0; i < list.size(); i++) {
             UsersEntityDTO userDto = new UsersEntityDTO();
