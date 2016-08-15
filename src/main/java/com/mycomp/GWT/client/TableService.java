@@ -12,7 +12,7 @@ import java.util.List;
  */
 @RemoteServiceRelativePath("TableService")
 public interface TableService extends RemoteService {
-    List<UsersEntityDTO> getAll(int firstId, int lastId, String sortList);
+    List<UsersEntityDTO> getAll(int firstId, int lastId, String sortList, boolean isAscending);
 
     Long getRowCount();
 

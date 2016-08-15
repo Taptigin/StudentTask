@@ -6,7 +6,7 @@ import com.mycomp.GWT.shared.UsersEntityDTO;
 import java.util.List;
 
 public interface TableServiceAsync {
-    void getAll(int firstId, int lastId, String sortList, AsyncCallback<List<UsersEntityDTO>> callback);
+    void getAll(int firstId, int lastId, String sortList,boolean isAscending ,AsyncCallback<List<UsersEntityDTO>> callback);
 
 
     void getRowCount(AsyncCallback<Long> async);

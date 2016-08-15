@@ -23,10 +23,10 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
     private DaoService service = (DaoService) context.getBean("storageService");
 
     @Override
-    public List<UsersEntityDTO> getAll(int firstId, int lastId, String sortList) {
+    public List<UsersEntityDTO> getAll(int firstId, int lastId, String sortList, boolean isAscending) {
         this.sortList = sortList;
         List<UsersEntityDTO> listDto = new ArrayList<>();
-        List<UsersEntity> list = service.getAll(1, 10000, sortList);
+        List<UsersEntity> list = service.getAll(1, 10000, sortList, isAscending);
 
         for (int i = 0; i < list.size(); i++) {
             UsersEntityDTO userDto = new UsersEntityDTO();

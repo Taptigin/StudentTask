@@ -26,7 +26,8 @@ import java.util.List;
 public class TableGWT implements EntryPoint {
 
     private static DataGrid<UsersEntityDTO> table = new DataGrid<>();
-    private static String columnSortName = "ID";
+    private static String columnSortName = "id";
+    private static boolean isAscending = true;
     private MyAsyncDataProvider dataProvider = new MyAsyncDataProvider();
     private SimplePager pager;
     private ColumnSortEvent.AsyncHandler sortHandler = new ColumnSortEvent.AsyncHandler(table);
@@ -53,7 +54,9 @@ public class TableGWT implements EntryPoint {
             @Override
             public void onRangeChange(RangeChangeEvent event) {
 
-                columnSortName = table.getColumnSortList().get(0).toString();
+                //columnSortName = table.getColumnSortList().get(0).toString();
+                columnSortName = table.getColumnSortList().get(0).getColumn().getDataStoreName();
+                isAscending = table.getColumnSortList().get(0).isAscending();
 
             }
         });
@@ -101,6 +104,7 @@ public class TableGWT implements EntryPoint {
             }
         };
         lastName.setSortable(true);
+        lastName.setDataStoreName("lastName");
         return lastName;
     }
 
@@ -112,6 +116,7 @@ public class TableGWT implements EntryPoint {
             }
         };
         firstName.setSortable(true);
+        firstName.setDataStoreName("firstName");
         return firstName;
     }
 
@@ -123,6 +128,7 @@ public class TableGWT implements EntryPoint {
             }
         };
         middleName.setSortable(true);
+        middleName.setDataStoreName("middleName");
         return middleName;
     }
 
@@ -134,6 +140,7 @@ public class TableGWT implements EntryPoint {
             }
         };
         sex.setSortable(true);
+        sex.setDataStoreName("sex");
         return sex;
     }
 
@@ -146,6 +153,7 @@ public class TableGWT implements EntryPoint {
             }
         };
         enrollmentDate.setSortable(true);
+        enrollmentDate.setDataStoreName("enrollmentDate");
         return enrollmentDate;
     }
 
@@ -158,6 +166,7 @@ public class TableGWT implements EntryPoint {
             }
         };
         releaseDate.setSortable(true);
+        releaseDate.setDataStoreName("releaseDate");
         return releaseDate;
     }
 
@@ -169,6 +178,7 @@ public class TableGWT implements EntryPoint {
             }
         };
         groupName.setSortable(true);
+        groupName.setDataStoreName("groupName");
         return groupName;
     }
 
@@ -180,6 +190,7 @@ public class TableGWT implements EntryPoint {
             }
         };
         age.setSortable(true);
+        age.setDataStoreName("age");
         return age;
     }
 
@@ -191,6 +202,7 @@ public class TableGWT implements EntryPoint {
             }
         };
         facultyName.setSortable(true);
+        facultyName.setDataStoreName("facultyName");
         return facultyName;
     }
 
@@ -235,7 +247,7 @@ public class TableGWT implements EntryPoint {
             };
 
 
-            swc.getAll(start, length + start - 1, columnSortName, callback);
+            swc.getAll(start, length + start - 1, columnSortName,isAscending ,callback);
 
 
         }
