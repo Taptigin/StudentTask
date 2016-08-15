@@ -14,7 +14,7 @@ import java.util.List;
 public class ServiceImpl implements DaoService {
 
     @Autowired
-    private DaoInterface dao;
+    private DaoService dao;
 
 
     @Override

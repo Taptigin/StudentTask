@@ -16,7 +16,7 @@ import java.util.List;
  */
 
 @Repository
-public class DaoImpl implements DaoInterface {
+public class DaoImpl implements DaoService {
     String columnName;
     boolean direction = true;
 
