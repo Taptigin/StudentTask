@@ -10,18 +10,28 @@ import java.sql.Date;
 @Entity
 @Table(name = "users", schema = "public", catalog = "students")
 public class UsersEntity implements Serializable {
+    @Id
     private Integer id;
+    @Column(name = "firstname")
     private String firstName;
+    @Column(name = "lastname")
     private String lastName;
+    @Column(name = "middlename")
     private String middleName;
+    @Column(name = "sex")
     private String sex;
+    @Column(name = "age")
     private Integer age;
+    @Column(name = "groupname")
     private String groupName;
+    @Column(name = "facultyname")
     private String facultyName;
+    @Column(name = "enrollmentdate")
     private Date enrollmentDate;
+    @Column(name = "releasedate")
     private Date releaseDate;
 
-    @Id
+
     @Column(name = "id")
     public Integer getId() {
         return id;
@@ -31,8 +41,8 @@ public class UsersEntity implements Serializable {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "firstname")
+
+
     public String getFirstName() {
         return firstName;
     }
@@ -41,8 +51,7 @@ public class UsersEntity implements Serializable {
         this.firstName = firstName;
     }
 
-    @Basic
-    @Column(name = "lastname")
+
     public String getLastName() {
         return lastName;
     }
@@ -51,8 +60,7 @@ public class UsersEntity implements Serializable {
         this.lastName = lastName;
     }
 
-    @Basic
-    @Column(name = "middlename")
+
     public String getMiddleName() {
         return middleName;
     }
@@ -61,8 +69,7 @@ public class UsersEntity implements Serializable {
         this.middleName = middleName;
     }
 
-    @Basic
-    @Column(name = "sex")
+
     public String getSex() {
         return sex;
     }
@@ -71,8 +78,7 @@ public class UsersEntity implements Serializable {
         this.sex = sex;
     }
 
-    @Basic
-    @Column(name = "age")
+
     public Integer getAge() {
         return age;
     }
@@ -81,8 +87,7 @@ public class UsersEntity implements Serializable {
         this.age = age;
     }
 
-    @Basic
-    @Column(name = "groupname")
+
     public String getGroupName() {
         return groupName;
     }
@@ -91,8 +96,7 @@ public class UsersEntity implements Serializable {
         this.groupName = groupName;
     }
 
-    @Basic
-    @Column(name = "facultyname")
+
     public String getFacultyName() {
         return facultyName;
     }
@@ -101,8 +105,7 @@ public class UsersEntity implements Serializable {
         this.facultyName = facultyName;
     }
 
-    @Basic
-    @Column(name = "enrollmentdate")
+
     public Date getEnrollmentDate() {
         return enrollmentDate;
     }
@@ -111,8 +114,7 @@ public class UsersEntity implements Serializable {
         this.enrollmentDate = enrollmentDate;
     }
 
-    @Basic
-    @Column(name = "releasedate")
+
     public Date getReleaseDate() {
         return releaseDate;
     }
