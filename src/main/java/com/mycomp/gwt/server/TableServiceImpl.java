@@ -1,7 +1,7 @@
 package com.mycomp.gwt.server;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.mycomp.dao.DaoService;
+import com.mycomp.dao.UserService;
 import com.mycomp.model.User;
 import com.mycomp.gwt.shared.service.TableService;
 import com.mycomp.gwt.shared.UsersEntityDTO;
@@ -20,7 +20,7 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
 
     String columnSortName;
     private ApplicationContext context = new ClassPathXmlApplicationContext("SpringContext.xml");
-    private DaoService service = (DaoService) context.getBean("storageService");
+    private UserService service = (UserService) context.getBean("storageService");
 
     @Override
     public List<UsersEntityDTO> getAll(int firstId, int lastId, String columnSortName, boolean isAscending) {
