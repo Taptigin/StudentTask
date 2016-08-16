@@ -22,6 +22,14 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
     private ApplicationContext context = new ClassPathXmlApplicationContext("SpringContext.xml");
     private UserService service = (UserService) context.getBean("storageService");
 
+    /**
+     * Вывод данных из БД в GWT через конвертацию в DTO объект.
+     * @param firstId Начальный айдишник.
+     * @param lastId Последний айдишник.
+     * @param columnSortName Имя колонки для сортировки.
+     * @param isAscending Направление сортировки.
+     *
+     */
     @Override
     public List<UserDTO> getAll(int firstId, int lastId, String columnSortName, boolean isAscending) {
         this.columnSortName = columnSortName;
@@ -52,6 +60,10 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
 
     }
 
+    /**
+     * Возвращает количество записей из БД.
+     * @return Long
+     */
     @Override
     public Long getRowCount() {
         return service.getRowCount();

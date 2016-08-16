@@ -5,6 +5,7 @@ import java.sql.Date;
 
 /**
  * Created by Александр on 08.08.2016.
+ * Копия модельной сущности в виде DTO.
  */
 public class UserDTO implements Serializable {
     private Integer id;

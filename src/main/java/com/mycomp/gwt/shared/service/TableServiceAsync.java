@@ -5,6 +5,9 @@ import com.mycomp.gwt.shared.UserDTO;
 
 import java.util.List;
 
+/**
+ * Интерфейс для GWT сервиса.
+ */
 public interface TableServiceAsync {
     void getAll(int firstId, int lastId, String columnSortName, boolean isAscending , AsyncCallback<List<UserDTO>> callback);
 

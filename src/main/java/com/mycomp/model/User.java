@@ -6,6 +6,7 @@ import java.sql.Date;
 
 /**
  * Created by Александр on 21.07.2016.
+ * Модель сущности для удобной работы с БД.
  */
 @Entity
 @Table(name = "users", schema = "public", catalog = "students")
