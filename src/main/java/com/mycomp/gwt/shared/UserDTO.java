@@ -6,7 +6,7 @@ import java.sql.Date;
 /**
  * Created by Александр on 08.08.2016.
  */
-public class UsersEntityDTO implements Serializable {
+public class UserDTO implements Serializable {
     private Integer id;
     private String firstName;
     private String lastName;
@@ -18,7 +18,7 @@ public class UsersEntityDTO implements Serializable {
     private Date enrollmentDate;
     private Date releaseDate;
 
-    public UsersEntityDTO() {
+    public UserDTO() {
     }
 
     public Integer getId() {

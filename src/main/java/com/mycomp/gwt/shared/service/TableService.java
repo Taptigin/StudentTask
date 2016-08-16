@@ -2,7 +2,7 @@ package com.mycomp.gwt.shared.service;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
-import com.mycomp.gwt.shared.UsersEntityDTO;
+import com.mycomp.gwt.shared.UserDTO;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
  */
 @RemoteServiceRelativePath("TableService")
 public interface TableService extends RemoteService {
-    List<UsersEntityDTO> getAll(int firstId, int lastId, String columnSortName, boolean isAscending);
+    List<UserDTO> getAll(int firstId, int lastId, String columnSortName, boolean isAscending);
 
     Long getRowCount();
 

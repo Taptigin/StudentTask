@@ -14,7 +14,7 @@ import com.google.gwt.view.client.AsyncDataProvider;
 import com.google.gwt.view.client.HasData;
 import com.google.gwt.view.client.Range;
 import com.google.gwt.view.client.RangeChangeEvent;
-import com.mycomp.gwt.shared.UsersEntityDTO;
+import com.mycomp.gwt.shared.UserDTO;
 import com.mycomp.gwt.shared.service.TableService;
 import com.mycomp.gwt.shared.service.TableServiceAsync;
 
@@ -27,7 +27,7 @@ import java.util.List;
  */
 public class TableGWT implements EntryPoint {
 
-    private static DataGrid<UsersEntityDTO> table = new DataGrid<>();
+    private static DataGrid<UserDTO> table = new DataGrid<>();
     private static String columnSortName = "id";
     private static boolean isAscending = true;
     private MyAsyncDataProvider dataProvider = new MyAsyncDataProvider();
@@ -111,10 +111,10 @@ public class TableGWT implements EntryPoint {
      * Создаем колонки для таблицы, устанавливаем им имена, даём разрешение на сортировку.
      * @return Возвращает {@link TextColumn}
      */
-    private TextColumn<UsersEntityDTO> getLastName() {
-        TextColumn<UsersEntityDTO> lastName = new TextColumn<UsersEntityDTO>() {
+    private TextColumn<UserDTO> getLastName() {
+        TextColumn<UserDTO> lastName = new TextColumn<UserDTO>() {
             @Override
-            public String getValue(UsersEntityDTO object) {
+            public String getValue(UserDTO object) {
                 return object.getLastName();
             }
         };
@@ -123,10 +123,10 @@ public class TableGWT implements EntryPoint {
         return lastName;
     }
 
-    private TextColumn<UsersEntityDTO> getFirstName() {
-        TextColumn<UsersEntityDTO> firstName = new TextColumn<UsersEntityDTO>() {
+    private TextColumn<UserDTO> getFirstName() {
+        TextColumn<UserDTO> firstName = new TextColumn<UserDTO>() {
             @Override
-            public String getValue(UsersEntityDTO object) {
+            public String getValue(UserDTO object) {
                 return object.getFirstName();
             }
         };
@@ -135,10 +135,10 @@ public class TableGWT implements EntryPoint {
         return firstName;
     }
 
-    private TextColumn<UsersEntityDTO> getMiddleName() {
-        TextColumn<UsersEntityDTO> middleName = new TextColumn<UsersEntityDTO>() {
+    private TextColumn<UserDTO> getMiddleName() {
+        TextColumn<UserDTO> middleName = new TextColumn<UserDTO>() {
             @Override
-            public String getValue(UsersEntityDTO object) {
+            public String getValue(UserDTO object) {
                 return object.getMiddleName();
             }
         };
@@ -147,10 +147,10 @@ public class TableGWT implements EntryPoint {
         return middleName;
     }
 
-    private TextColumn<UsersEntityDTO> getSex() {
-        TextColumn<UsersEntityDTO> sex = new TextColumn<UsersEntityDTO>() {
+    private TextColumn<UserDTO> getSex() {
+        TextColumn<UserDTO> sex = new TextColumn<UserDTO>() {
             @Override
-            public String getValue(UsersEntityDTO object) {
+            public String getValue(UserDTO object) {
                 return object.getSex();
             }
         };
@@ -162,11 +162,11 @@ public class TableGWT implements EntryPoint {
      * Создаем колонки для таблицы, устанавливаем им имена, даём разрешение на сортировку.
      * @return Возвращает {@link Column}
      */
-    private Column<UsersEntityDTO, Date> getEnrollmentDate() {
+    private Column<UserDTO, Date> getEnrollmentDate() {
         DateCell dateCell = new DateCell();
-        Column<UsersEntityDTO, Date> enrollmentDate = new Column<UsersEntityDTO, Date>(dateCell) {
+        Column<UserDTO, Date> enrollmentDate = new Column<UserDTO, Date>(dateCell) {
             @Override
-            public Date getValue(UsersEntityDTO object) {
+            public Date getValue(UserDTO object) {
                 return object.getEnrollmentDate();
             }
         };
@@ -175,11 +175,11 @@ public class TableGWT implements EntryPoint {
         return enrollmentDate;
     }
 
-    private Column<UsersEntityDTO, Date> getReleaseDate() {
+    private Column<UserDTO, Date> getReleaseDate() {
         DateCell dateCell = new DateCell();
-        Column<UsersEntityDTO, Date> releaseDate = new Column<UsersEntityDTO, Date>(dateCell) {
+        Column<UserDTO, Date> releaseDate = new Column<UserDTO, Date>(dateCell) {
             @Override
-            public Date getValue(UsersEntityDTO object) {
+            public Date getValue(UserDTO object) {
                 return object.getReleaseDate();
             }
         };
@@ -188,10 +188,10 @@ public class TableGWT implements EntryPoint {
         return releaseDate;
     }
 
-    private TextColumn<UsersEntityDTO> getGroupName() {
-        TextColumn<UsersEntityDTO> groupName = new TextColumn<UsersEntityDTO>() {
+    private TextColumn<UserDTO> getGroupName() {
+        TextColumn<UserDTO> groupName = new TextColumn<UserDTO>() {
             @Override
-            public String getValue(UsersEntityDTO object) {
+            public String getValue(UserDTO object) {
                 return object.getGroupName();
             }
         };
@@ -200,10 +200,10 @@ public class TableGWT implements EntryPoint {
         return groupName;
     }
 
-    private TextColumn<UsersEntityDTO> getAge() {
-        TextColumn<UsersEntityDTO> age = new TextColumn<UsersEntityDTO>() {
+    private TextColumn<UserDTO> getAge() {
+        TextColumn<UserDTO> age = new TextColumn<UserDTO>() {
             @Override
-            public String getValue(UsersEntityDTO object) {
+            public String getValue(UserDTO object) {
                 return object.getAge().toString();
             }
         };
@@ -212,10 +212,10 @@ public class TableGWT implements EntryPoint {
         return age;
     }
 
-    private TextColumn<UsersEntityDTO> getFacultyName() {
-        TextColumn<UsersEntityDTO> facultyName = new TextColumn<UsersEntityDTO>() {
+    private TextColumn<UserDTO> getFacultyName() {
+        TextColumn<UserDTO> facultyName = new TextColumn<UserDTO>() {
             @Override
-            public String getValue(UsersEntityDTO object) {
+            public String getValue(UserDTO object) {
                 return object.getFacultyName();
             }
         };
@@ -228,11 +228,11 @@ public class TableGWT implements EntryPoint {
      * Класс аснхронного дата провайдера extends {@link AsyncDataProvider}
      * Необходим для асинхронной работы с БД.
      */
-    private static class MyAsyncDataProvider extends AsyncDataProvider<UsersEntityDTO> {
+    private static class MyAsyncDataProvider extends AsyncDataProvider<UserDTO> {
 
 
         @Override
-        protected void onRangeChanged(HasData<UsersEntityDTO> display) {
+        protected void onRangeChanged(HasData<UserDTO> display) {
             Range range = display.getVisibleRange();
             final int start = range.getStart();
             int length = range.getLength();
@@ -260,7 +260,7 @@ public class TableGWT implements EntryPoint {
             };
             swc.getRowCount(asyncCallback);
 
-            AsyncCallback<List<UsersEntityDTO>> callback = new AsyncCallback<List<UsersEntityDTO>>() {
+            AsyncCallback<List<UserDTO>> callback = new AsyncCallback<List<UserDTO>>() {
                 @Override
                 public void onFailure(Throwable caught) {
                     Window.alert("Callback not work");
@@ -271,7 +271,7 @@ public class TableGWT implements EntryPoint {
                  * @param result Результат содержашй записи в формате DTO полученные из БД.
                  */
                 @Override
-                public void onSuccess(List<UsersEntityDTO> result) {
+                public void onSuccess(List<UserDTO> result) {
 
                     updateRowData(start, result);
 

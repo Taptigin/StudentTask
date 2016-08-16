@@ -4,7 +4,7 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.mycomp.dao.UserService;
 import com.mycomp.model.User;
 import com.mycomp.gwt.shared.service.TableService;
-import com.mycomp.gwt.shared.UsersEntityDTO;
+import com.mycomp.gwt.shared.UserDTO;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -23,13 +23,13 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
     private UserService service = (UserService) context.getBean("storageService");
 
     @Override
-    public List<UsersEntityDTO> getAll(int firstId, int lastId, String columnSortName, boolean isAscending) {
+    public List<UserDTO> getAll(int firstId, int lastId, String columnSortName, boolean isAscending) {
         this.columnSortName = columnSortName;
-        List<UsersEntityDTO> listDto = new ArrayList<>();
+        List<UserDTO> listDto = new ArrayList<>();
         List<User> list = service.getAll(1, 10000, columnSortName, isAscending);
 
         for (User user : list) {
-            UsersEntityDTO userDto = new UsersEntityDTO();
+            UserDTO userDto = new UserDTO();
             userDto.setFirstName(user.getFirstName());
             userDto.setMiddleName(user.getMiddleName());
             userDto.setLastName(user.getLastName());
@@ -44,7 +44,7 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
         }
 
 
-        List<UsersEntityDTO> dto = new ArrayList<>();
+        List<UserDTO> dto = new ArrayList<>();
         for (int i = firstId; i <= lastId; i++) {
             dto.add(listDto.get(i));
         }
