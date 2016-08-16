@@ -25,9 +25,10 @@ public class UserImpl implements UserService {
 
     /**
      * Получение данных из БД.
-     * @param firstId Первый айдишник.
-     * @param lastId Последний айдишник.
-     * @param columnName Имя колонки по которой производится сортировка.
+     *
+     * @param firstId     Первый айдишник.
+     * @param lastId      Последний айдишник.
+     * @param columnName  Имя колонки по которой производится сортировка.
      * @param isAscending Направление сортировки.
      * @return Лист с записями из БД.
      */
@@ -60,6 +61,7 @@ public class UserImpl implements UserService {
 
     /**
      * Получаем общее количество записей содержащихся в БД.
+     *
      * @return Количество записей.
      */
     @Override

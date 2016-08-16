@@ -36,7 +36,7 @@ public class TableGWT implements EntryPoint {
 
     /**
      * Создание таблицы.
-      */
+     */
     private void createTable() {
         table.setKeyboardSelectionPolicy(HasKeyboardSelectionPolicy.KeyboardSelectionPolicy.ENABLED);
 
@@ -86,7 +86,7 @@ public class TableGWT implements EntryPoint {
     }
 
     /**
-     *  Меотод запуска gui, в котором создаются и располагаются элементы gui на web странице.
+     * Меотод запуска gui, в котором создаются и располагаются элементы gui на web странице.
      */
     public void onModuleLoad() {
         createPager();
@@ -109,6 +109,7 @@ public class TableGWT implements EntryPoint {
 
     /**
      * Создаем колонки для таблицы, устанавливаем им имена, даём разрешение на сортировку.
+     *
      * @return Возвращает {@link TextColumn}
      */
     private TextColumn<UserDTO> getLastName() {
@@ -158,8 +159,10 @@ public class TableGWT implements EntryPoint {
         sex.setDataStoreName("sex");
         return sex;
     }
+
     /**
      * Создаем колонки для таблицы, устанавливаем им имена, даём разрешение на сортировку.
+     *
      * @return Возвращает {@link Column}
      */
     private Column<UserDTO, Date> getEnrollmentDate() {
@@ -285,7 +288,7 @@ public class TableGWT implements EntryPoint {
              *          @param columnSortName сортировка
              *          @param isAscending направление сортировки
              */
-            swc.getAll(start, length + start - 1, columnSortName,isAscending ,callback);
+            swc.getAll(start, length + start - 1, columnSortName, isAscending, callback);
 
 
         }

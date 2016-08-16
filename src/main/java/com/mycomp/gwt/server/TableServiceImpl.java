@@ -2,9 +2,9 @@ package com.mycomp.gwt.server;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.mycomp.dao.UserService;
-import com.mycomp.model.User;
-import com.mycomp.gwt.shared.service.TableService;
 import com.mycomp.gwt.shared.UserDTO;
+import com.mycomp.gwt.shared.service.TableService;
+import com.mycomp.model.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -24,11 +24,11 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
 
     /**
      * Вывод данных из БД в GWT через конвертацию в DTO объект.
-     * @param firstId Начальный айдишник.
-     * @param lastId Последний айдишник.
-     * @param columnSortName Имя колонки для сортировки.
-     * @param isAscending Направление сортировки.
      *
+     * @param firstId        Начальный айдишник.
+     * @param lastId         Последний айдишник.
+     * @param columnSortName Имя колонки для сортировки.
+     * @param isAscending    Направление сортировки.
      */
     @Override
     public List<UserDTO> getAll(int firstId, int lastId, String columnSortName, boolean isAscending) {
@@ -62,6 +62,7 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
 
     /**
      * Возвращает количество записей из БД.
+     *
      * @return Long
      */
     @Override
