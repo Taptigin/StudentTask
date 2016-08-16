@@ -34,6 +34,9 @@ public class TableGWT implements EntryPoint {
     private SimplePager pager;
     private ColumnSortEvent.AsyncHandler sortHandler = new ColumnSortEvent.AsyncHandler(table);
 
+    /**
+     * Создание таблицы.
+      */
     private void createTable() {
         table.setKeyboardSelectionPolicy(HasKeyboardSelectionPolicy.KeyboardSelectionPolicy.ENABLED);
 
@@ -51,7 +54,9 @@ public class TableGWT implements EntryPoint {
 
         table.setWidth("100%");
 
-
+        /**
+         * Метод получающий от gwt колонку по которой производится сортировка и asc/desc
+         */
         table.addRangeChangeHandler(new RangeChangeEvent.Handler() {
             @Override
             public void onRangeChange(RangeChangeEvent event) {
@@ -68,6 +73,9 @@ public class TableGWT implements EntryPoint {
 
     }
 
+    /**
+     * создание пейджера
+     */
     private void createPager() {
         SimplePager.Resources pagerResources = GWT.create(SimplePager.Resources.class);
         pager = new SimplePager(SimplePager.TextLocation.CENTER, pagerResources, true, 0, true);
@@ -77,6 +85,9 @@ public class TableGWT implements EntryPoint {
 
     }
 
+    /**
+     *  Меотод запуска gui, в котором создаются и располагаются элементы gui на web странице.
+     */
     public void onModuleLoad() {
         createPager();
         createTable();
@@ -96,7 +107,10 @@ public class TableGWT implements EntryPoint {
 
     }
 
-
+    /**
+     * Создаем колонки для таблицы, устанавливаем им имена, даём разрешение на сортировку.
+     * @return Возвращает {@link TextColumn}
+     */
     private TextColumn<UsersEntityDTO> getLastName() {
         TextColumn<UsersEntityDTO> lastName = new TextColumn<UsersEntityDTO>() {
             @Override
@@ -144,7 +158,10 @@ public class TableGWT implements EntryPoint {
         sex.setDataStoreName("sex");
         return sex;
     }
-
+    /**
+     * Создаем колонки для таблицы, устанавливаем им имена, даём разрешение на сортировку.
+     * @return Возвращает {@link Column}
+     */
     private Column<UsersEntityDTO, Date> getEnrollmentDate() {
         DateCell dateCell = new DateCell();
         Column<UsersEntityDTO, Date> enrollmentDate = new Column<UsersEntityDTO, Date>(dateCell) {
@@ -207,7 +224,10 @@ public class TableGWT implements EntryPoint {
         return facultyName;
     }
 
-
+    /**
+     * Класс аснхронного дата провайдера extends {@link AsyncDataProvider}
+     * Необходим для асинхронной работы с БД.
+     */
     private static class MyAsyncDataProvider extends AsyncDataProvider<UsersEntityDTO> {
 
 
@@ -218,13 +238,20 @@ public class TableGWT implements EntryPoint {
             int length = range.getLength();
 
             TableServiceAsync swc = GWT.create(TableService.class);
-
+            /**
+             * Метод обращающийся к асинхронным сервисам gwt.
+             */
             AsyncCallback<Long> asyncCallback = new AsyncCallback<Long>() {
                 @Override
                 public void onFailure(Throwable caught) {
                     Window.alert("Не сработало возвращение RowCount");
                 }
 
+                /**
+                 *
+                 * @param result Результат, содержащий общее количество строк вернувшихся из запроса к бд.
+                 *               Нужен для установления у таблицы длинны.
+                 */
                 @Override
                 public void onSuccess(Long result) {
                     table.setRowCount(result.intValue());
@@ -239,6 +266,10 @@ public class TableGWT implements EntryPoint {
                     Window.alert("Callback not work");
                 }
 
+                /**
+                 *
+                 * @param result Результат содержашй записи в формате DTO полученные из БД.
+                 */
                 @Override
                 public void onSuccess(List<UsersEntityDTO> result) {
 
