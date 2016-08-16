@@ -3,7 +3,7 @@ package com.mycomp.gwt.server;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.mycomp.dao.DaoService;
 import com.mycomp.model.User;
-import com.mycomp.gwt.client.TableService;
+import com.mycomp.gwt.shared.service.TableService;
 import com.mycomp.gwt.shared.UsersEntityDTO;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

@@ -15,6 +15,8 @@ import com.google.gwt.view.client.HasData;
 import com.google.gwt.view.client.Range;
 import com.google.gwt.view.client.RangeChangeEvent;
 import com.mycomp.gwt.shared.UsersEntityDTO;
+import com.mycomp.gwt.shared.service.TableService;
+import com.mycomp.gwt.shared.service.TableServiceAsync;
 
 import java.util.Date;
 import java.util.List;
