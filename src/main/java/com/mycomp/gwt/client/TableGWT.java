@@ -278,7 +278,13 @@ public class TableGWT implements EntryPoint {
                 }
             };
 
-
+            /**
+             * Вызом ветода из GWT сервиса.
+             *          @param start C какой записи будут данные выводится в таблицу.
+             *          @param length По какую будут данные выводится в таблицу.
+             *          @param columnSortName сортировка
+             *          @param isAscending направление сортировки
+             */
             swc.getAll(start, length + start - 1, columnSortName,isAscending ,callback);
 
 
