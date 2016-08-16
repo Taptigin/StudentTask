@@ -28,18 +28,18 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
         List<UsersEntityDTO> listDto = new ArrayList<>();
         List<UsersEntity> list = service.getAll(1, 10000, columnSortName, isAscending);
 
-        for (int i = 0; i < list.size(); i++) {
+        for (UsersEntity user : list) {
             UsersEntityDTO userDto = new UsersEntityDTO();
-            userDto.setFirstName(list.get(i).getFirstName());
-            userDto.setMiddleName(list.get(i).getMiddleName());
-            userDto.setLastName(list.get(i).getLastName());
-            userDto.setAge(list.get(i).getAge());
-            userDto.setId(list.get(i).getId());
-            userDto.setSex(list.get(i).getSex());
-            userDto.setGroupName(list.get(i).getGroupName());
-            userDto.setFacultyName(list.get(i).getFacultyName());
-            userDto.setEnrollmentDate(list.get(i).getEnrollmentDate());
-            userDto.setReleaseDate(list.get(i).getReleaseDate());
+            userDto.setFirstName(user.getFirstName());
+            userDto.setMiddleName(user.getMiddleName());
+            userDto.setLastName(user.getLastName());
+            userDto.setAge(user.getAge());
+            userDto.setId(user.getId());
+            userDto.setSex(user.getSex());
+            userDto.setGroupName(user.getGroupName());
+            userDto.setFacultyName(user.getFacultyName());
+            userDto.setEnrollmentDate(user.getEnrollmentDate());
+            userDto.setReleaseDate(user.getReleaseDate());
             listDto.add(userDto);
         }
 
