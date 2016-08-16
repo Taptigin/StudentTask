@@ -94,7 +94,7 @@
       <version>4.3.1.RELEASE</version>
     </dependency>
 
-    <!--GWT-->
+    <!--gwt-->
 
     <!-- https://mvnrepository.com/artifact/com.google.gwt/gwt-user -->
     <dependency>
@@ -146,7 +146,7 @@
         <executions>
           <execution>
             <configuration>
-              <module>com.mycomp.GWT.TableGWT</module>
+              <module>com.mycomp.gwt.TableGWT</module>
             </configuration>
             <goals>
               <goal>compile</goal>

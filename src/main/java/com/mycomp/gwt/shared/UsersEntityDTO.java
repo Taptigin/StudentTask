@@ -1,4 +1,4 @@
-package com.mycomp.GWT.shared;
+package com.mycomp.gwt.shared;
 
 import java.io.Serializable;
 import java.sql.Date;

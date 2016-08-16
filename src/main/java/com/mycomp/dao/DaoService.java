@@ -1,6 +1,6 @@
-package com.mycomp.DAO;
+package com.mycomp.dao;
 
-import com.mycomp.EntityModel.UsersEntity;
+import com.mycomp.model.User;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import java.util.List;
  * Сервис для вытаскивания из базы данных записей и количества записей хранящихся в БД.
  */
 public interface DaoService {
-    public List<UsersEntity> getAll(int firstId, int lastId, String columnName, boolean isAscending);
+    public List<User> getAll(int firstId, int lastId, String columnName, boolean isAscending);
 
     public Long getRowCount();
 }

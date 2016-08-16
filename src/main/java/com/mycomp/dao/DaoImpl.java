@@ -1,7 +1,7 @@
-package com.mycomp.DAO;
+package com.mycomp.dao;
 
 
-import com.mycomp.EntityModel.UsersEntity;
+import com.mycomp.model.User;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -25,17 +25,17 @@ public class DaoImpl implements DaoService {
 
 
     @Override
-    public List<UsersEntity> getAll(int firstId, int lastId, String columnName, boolean isAscending) {
+    public List<User> getAll(int firstId, int lastId, String columnName, boolean isAscending) {
 
         this.columnName = columnName;
         this.direction = isAscending;
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-        CriteriaQuery<UsersEntity> query = criteriaBuilder.createQuery(UsersEntity.class);
-        Root<UsersEntity> root = query.from(UsersEntity.class);
+        CriteriaQuery<User> query = criteriaBuilder.createQuery(User.class);
+        Root<User> root = query.from(User.class);
         query.select(root);
 
 
-        List<UsersEntity> list;
+        List<User> list;
         if (direction == true) {
 
             query.orderBy(criteriaBuilder.asc(root.get(this.columnName)));
@@ -56,7 +56,7 @@ public class DaoImpl implements DaoService {
 
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
         CriteriaQuery<Long> criteriaQuery = criteriaBuilder.createQuery(Long.class);
-        criteriaQuery.select(criteriaBuilder.count(criteriaQuery.from(UsersEntity.class)));
+        criteriaQuery.select(criteriaBuilder.count(criteriaQuery.from(User.class)));
         Long l = em.createQuery(criteriaQuery).getSingleResult();
         em.close();
         return l;

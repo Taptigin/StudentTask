@@ -1,4 +1,4 @@
-package com.mycomp.EntityModel;
+package com.mycomp.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,7 +9,7 @@ import java.sql.Date;
  */
 @Entity
 @Table(name = "users", schema = "public", catalog = "students")
-public class UsersEntity implements Serializable {
+public class User implements Serializable {
     @Id
     private Integer id;
     @Column(name = "firstname")
@@ -128,7 +128,7 @@ public class UsersEntity implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        UsersEntity that = (UsersEntity) o;
+        User that = (User) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
@@ -162,7 +162,7 @@ public class UsersEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "UsersEntity{" +
+        return "User{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +

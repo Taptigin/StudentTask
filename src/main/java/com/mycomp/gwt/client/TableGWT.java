@@ -1,4 +1,4 @@
-package com.mycomp.GWT.client;
+package com.mycomp.gwt.client;
 
 import com.google.gwt.cell.client.DateCell;
 import com.google.gwt.core.client.EntryPoint;
@@ -14,14 +14,14 @@ import com.google.gwt.view.client.AsyncDataProvider;
 import com.google.gwt.view.client.HasData;
 import com.google.gwt.view.client.Range;
 import com.google.gwt.view.client.RangeChangeEvent;
-import com.mycomp.GWT.shared.UsersEntityDTO;
+import com.mycomp.gwt.shared.UsersEntityDTO;
 
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by Александр on 28.07.2016.
- * GWT клиент для общения с пользователем.
+ * gwt клиент для общения с пользователем.
  */
 public class TableGWT implements EntryPoint {
 
@@ -54,7 +54,6 @@ public class TableGWT implements EntryPoint {
             @Override
             public void onRangeChange(RangeChangeEvent event) {
 
-                //columnSortName = table.getColumnSortList().get(0).toString();
                 columnSortName = table.getColumnSortList().get(0).getColumn().getDataStoreName();
                 isAscending = table.getColumnSortList().get(0).isAscending();
 

@@ -1,10 +1,10 @@
-package com.mycomp.GWT.server;
+package com.mycomp.gwt.server;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.mycomp.DAO.DaoService;
-import com.mycomp.EntityModel.UsersEntity;
-import com.mycomp.GWT.client.TableService;
-import com.mycomp.GWT.shared.UsersEntityDTO;
+import com.mycomp.dao.DaoService;
+import com.mycomp.model.User;
+import com.mycomp.gwt.client.TableService;
+import com.mycomp.gwt.shared.UsersEntityDTO;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -26,9 +26,9 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
     public List<UsersEntityDTO> getAll(int firstId, int lastId, String columnSortName, boolean isAscending) {
         this.columnSortName = columnSortName;
         List<UsersEntityDTO> listDto = new ArrayList<>();
-        List<UsersEntity> list = service.getAll(1, 10000, columnSortName, isAscending);
+        List<User> list = service.getAll(1, 10000, columnSortName, isAscending);
 
-        for (UsersEntity user : list) {
+        for (User user : list) {
             UsersEntityDTO userDto = new UsersEntityDTO();
             userDto.setFirstName(user.getFirstName());
             userDto.setMiddleName(user.getMiddleName());

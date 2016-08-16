@@ -1,8 +1,8 @@
-package com.mycomp.GWT.client;
+package com.mycomp.gwt.client;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
-import com.mycomp.GWT.shared.UsersEntityDTO;
+import com.mycomp.gwt.shared.UsersEntityDTO;
 
 import java.util.List;
 

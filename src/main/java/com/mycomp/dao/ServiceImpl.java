@@ -1,6 +1,6 @@
-package com.mycomp.DAO;
+package com.mycomp.dao;
 
-import com.mycomp.EntityModel.UsersEntity;
+import com.mycomp.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,7 @@ public class ServiceImpl implements DaoService {
 
 
     @Override
-    public List<UsersEntity> getAll(int firstId, int lastId, String columnName, boolean isAscending) {
+    public List<User> getAll(int firstId, int lastId, String columnName, boolean isAscending) {
         return dao.getAll(firstId, lastId, columnName, isAscending);
     }
 
