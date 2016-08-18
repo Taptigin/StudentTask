@@ -93,7 +93,7 @@ public class MyAsyncDataProvider extends AsyncDataProvider<UserDTO> {
          *          @param columnSortName сортировка
          *          @param isAscending направление сортировки
          */
-        swc.getAll(start, length + start - 1, columnSortName, isAscending, callback);
+        swc.getAll(start, length + start, columnSortName, isAscending, callback);
 
 
     }

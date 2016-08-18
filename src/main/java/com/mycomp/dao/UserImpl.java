@@ -47,10 +47,16 @@ public class UserImpl implements UserService {
         if (direction == true) {
 
             query.orderBy(criteriaBuilder.asc(root.get(this.columnName)));
-            list = em.createQuery(query).getResultList();
+            list = em.createQuery(query)
+                    .setFirstResult(firstId)
+                    .setMaxResults(lastId)
+                    .getResultList();
         } else {
             query.orderBy(criteriaBuilder.desc(root.get(this.columnName)));
-            list = em.createQuery(query).getResultList();
+            list = em.createQuery(query)
+                    .setFirstResult(firstId)
+                    .setMaxResults(lastId)
+                    .getResultList();
         }
 
         em.close();

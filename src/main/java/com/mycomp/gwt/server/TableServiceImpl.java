@@ -34,7 +34,7 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
     public List<UserDTO> getAll(int firstId, int lastId, String columnSortName, boolean isAscending) {
         this.columnSortName = columnSortName;
         List<UserDTO> listDto = new ArrayList<>();
-        List<User> list = service.getAll(1, 10000, columnSortName, isAscending);
+        List<User> list = service.getAll(firstId, lastId, columnSortName, isAscending);
 
         for (User user : list) {
             UserDTO userDto = new UserDTO();
@@ -52,11 +52,13 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
         }
 
 
-        List<UserDTO> dto = new ArrayList<>();
-        for (int i = firstId; i <= lastId; i++) {
-            dto.add(listDto.get(i));
-        }
-        return dto;
+//        List<UserDTO> dto = new ArrayList<>();
+//        for (int i = firstId; i <= lastId; i++) {
+//            dto.add(listDto.get(i));
+//        }
+
+
+        return listDto;
 
     }
 
