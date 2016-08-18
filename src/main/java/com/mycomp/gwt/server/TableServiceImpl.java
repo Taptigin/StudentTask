@@ -52,11 +52,6 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
         }
 
 
-//        List<UserDTO> dto = new ArrayList<>();
-//        for (int i = firstId; i <= lastId; i++) {
-//            dto.add(listDto.get(i));
-//        }
-
 
         return listDto;
 
