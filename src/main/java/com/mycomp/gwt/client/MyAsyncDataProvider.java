@@ -22,11 +22,10 @@ import java.util.List;
 
  */
 public class MyAsyncDataProvider extends AsyncDataProvider<UserDTO> {
-    //private static DataGrid<UserDTO> table = new DataGrid<>();
     String columnSortName;
     boolean isAscending;
 
-    public MyAsyncDataProvider(String columnSortName, boolean isAscending, DataGrid<UserDTO> table) {
+    public MyAsyncDataProvider(String columnSortName, boolean isAscending) {
         this.columnSortName = columnSortName;
         this.isAscending = isAscending;
     }
@@ -45,17 +44,6 @@ public class MyAsyncDataProvider extends AsyncDataProvider<UserDTO> {
         final int start = range.getStart();
         int length = range.getLength();
 
-        //this.addDataDisplay(TableGWT.table);
-
-//        TableGWT.table.addRangeChangeHandler(new RangeChangeEvent.Handler() {
-//            @Override
-//            public void onRangeChange(RangeChangeEvent event) {
-//
-//                columnSortName = TableGWT.table.getColumnSortList().get(0).getColumn().getDataStoreName();
-//                isAscending = TableGWT.table.getColumnSortList().get(0).isAscending();
-//
-//            }
-//        });
 
         TableServiceAsync swc = GWT.create(TableService.class);
         /**
@@ -111,8 +99,5 @@ public class MyAsyncDataProvider extends AsyncDataProvider<UserDTO> {
     }
 
 
-    DataGrid<UserDTO> returnTable(){
 
-        return TableGWT.table;
-    }
 }

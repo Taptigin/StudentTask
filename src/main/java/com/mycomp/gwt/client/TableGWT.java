@@ -30,15 +30,14 @@ public class TableGWT implements EntryPoint {
     static DataGrid<UserDTO> table = new DataGrid<>();
     private static String columnSortName = "id";
     private static boolean isAscending = true;
-    //private MyAsyncDataProvider dataProvider = new MyAsyncDataProvider();
+
     private SimplePager pager;
     private ColumnSortEvent.AsyncHandler sortHandler = new ColumnSortEvent.AsyncHandler(table);
     private MyAsyncDataProvider provider;
 
     void start(){
-        provider = new MyAsyncDataProvider(columnSortName,isAscending,table);
+        provider = new MyAsyncDataProvider(columnSortName,isAscending);
         provider.addDataDisplay(table);
-        //table = provider.returnTable();
     }
 
     /**
