@@ -1,6 +1,6 @@
-package com.mycomp.dao.service;
+package com.mycomp.service;
 
-import com.mycomp.dao.UserService;
+import com.mycomp.dao.UserDAO;
 import com.mycomp.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserService dao;
+    private UserDAO dao;
 
 
     @Override

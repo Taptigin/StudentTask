@@ -1,10 +1,10 @@
 package com.mycomp.gwt.server;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.mycomp.dao.UserService;
 import com.mycomp.gwt.shared.UserDTO;
 import com.mycomp.gwt.shared.service.TableService;
 import com.mycomp.model.User;
+import com.mycomp.service.UserService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -50,7 +50,6 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
             userDto.setReleaseDate(user.getReleaseDate());
             listDto.add(userDto);
         }
-
 
 
         return listDto;

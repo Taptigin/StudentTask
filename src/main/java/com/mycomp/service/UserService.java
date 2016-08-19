@@ -1,4 +1,4 @@
-package com.mycomp.dao;
+package com.mycomp.service;
 
 import com.mycomp.model.User;
 

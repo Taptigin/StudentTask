@@ -16,7 +16,7 @@ import java.util.List;
  */
 
 @Repository
-public class UserImpl implements UserService {
+public class UserDAOImpl implements UserDAO {
     String columnName;
     boolean direction = true;
 

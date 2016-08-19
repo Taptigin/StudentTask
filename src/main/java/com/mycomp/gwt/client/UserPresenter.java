@@ -15,10 +15,9 @@ import java.util.logging.Level;
 
 /**
  * Created by Александр on 17.08.2016.
- *
+ * <p>
  * Класс аснхронного дата провайдера extends {@link AsyncDataProvider}
  * Необходим для асинхронной работы с БД.
-
  */
 public class UserPresenter extends AsyncDataProvider<UserDTO> {
     String columnSortName;
@@ -52,7 +51,7 @@ public class UserPresenter extends AsyncDataProvider<UserDTO> {
             @Override
             public void onFailure(Throwable caught) {
                 Window.alert("Не сработало возвращение RowCount");
-                UserView.logger.log(Level.ALL,"Не сработало возвращение RowCount");
+                UserView.logger.log(Level.ALL, "Не сработало возвращение RowCount");
                 GWT.log("Не сработало возвращение RowCount");
             }
 
@@ -73,7 +72,7 @@ public class UserPresenter extends AsyncDataProvider<UserDTO> {
             @Override
             public void onFailure(Throwable caught) {
                 Window.alert("Callback not work");
-                UserView.logger.log(Level.ALL,"Callback not work");
+                UserView.logger.log(Level.ALL, "Callback not work");
                 GWT.log("Callback not work");
             }
 
@@ -100,7 +99,6 @@ public class UserPresenter extends AsyncDataProvider<UserDTO> {
 
 
     }
-
 
 
 }

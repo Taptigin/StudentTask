@@ -9,7 +9,6 @@ import com.google.gwt.user.cellview.client.*;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import com.google.gwt.view.client.AsyncDataProvider;
 import com.google.gwt.view.client.RangeChangeEvent;
 import com.mycomp.gwt.shared.UserDTO;
 
@@ -23,15 +22,15 @@ import java.util.logging.Logger;
 public class UserView implements EntryPoint {
 
     static DataGrid<UserDTO> table = new DataGrid<>();
+    static Logger logger = Logger.getLogger("test");
     private static String columnSortName = "id";
     private static boolean isAscending = true;
-    public final static Logger logger = Logger.getLogger("test");
     private SimplePager pager;
     private ColumnSortEvent.AsyncHandler sortHandler = new ColumnSortEvent.AsyncHandler(table);
     private UserPresenter provider;
 
-    void start(){
-        provider = new UserPresenter(columnSortName,isAscending);
+    void start() {
+        provider = new UserPresenter(columnSortName, isAscending);
         provider.addDataDisplay(table);
         logger.addHandler(new ConsoleLogHandler());
     }
@@ -230,7 +229,6 @@ public class UserView implements EntryPoint {
         facultyName.setDataStoreName("facultyName");
         return facultyName;
     }
-
 
 
 }
