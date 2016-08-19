@@ -4,6 +4,7 @@ import com.google.gwt.cell.client.DateCell;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
+import com.google.gwt.logging.client.ConsoleLogHandler;
 import com.google.gwt.user.cellview.client.*;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.HTMLPanel;
@@ -13,6 +14,7 @@ import com.google.gwt.view.client.RangeChangeEvent;
 import com.mycomp.gwt.shared.UserDTO;
 
 import java.util.Date;
+import java.util.logging.Logger;
 
 /**
  * Created by Александр on 28.07.2016.
@@ -23,7 +25,7 @@ public class UserView implements EntryPoint {
     static DataGrid<UserDTO> table = new DataGrid<>();
     private static String columnSortName = "id";
     private static boolean isAscending = true;
-
+    public final static Logger logger = Logger.getLogger("test");
     private SimplePager pager;
     private ColumnSortEvent.AsyncHandler sortHandler = new ColumnSortEvent.AsyncHandler(table);
     private UserPresenter provider;
@@ -31,6 +33,7 @@ public class UserView implements EntryPoint {
     void start(){
         provider = new UserPresenter(columnSortName,isAscending);
         provider.addDataDisplay(table);
+        logger.addHandler(new ConsoleLogHandler());
     }
 
     /**
@@ -70,7 +73,7 @@ public class UserView implements EntryPoint {
 
 
         table.addColumnSortHandler(sortHandler);
-
+        logger.info("table created");
 
     }
 

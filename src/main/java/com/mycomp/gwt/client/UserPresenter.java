@@ -11,6 +11,7 @@ import com.mycomp.gwt.shared.service.TableService;
 import com.mycomp.gwt.shared.service.TableServiceAsync;
 
 import java.util.List;
+import java.util.logging.Level;
 
 /**
  * Created by Александр on 17.08.2016.
@@ -51,6 +52,8 @@ public class UserPresenter extends AsyncDataProvider<UserDTO> {
             @Override
             public void onFailure(Throwable caught) {
                 Window.alert("Не сработало возвращение RowCount");
+                UserView.logger.log(Level.ALL,"Не сработало возвращение RowCount");
+                GWT.log("Не сработало возвращение RowCount");
             }
 
             /**
@@ -70,6 +73,8 @@ public class UserPresenter extends AsyncDataProvider<UserDTO> {
             @Override
             public void onFailure(Throwable caught) {
                 Window.alert("Callback not work");
+                UserView.logger.log(Level.ALL,"Callback not work");
+                GWT.log("Callback not work");
             }
 
             /**
