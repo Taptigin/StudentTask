@@ -231,72 +231,7 @@ public class UserView implements EntryPoint {
         return facultyName;
     }
 
-    /**
-     * Класс аснхронного дата провайдера extends {@link AsyncDataProvider}
-     * Необходим для асинхронной работы с БД.
-     */
-//    private static class UserPresenter extends AsyncDataProvider<UserDTO> {
-//
-//
-//        @Override
-//        protected void onRangeChanged(HasData<UserDTO> display) {
-//            Range range = display.getVisibleRange();
-//            final int start = range.getStart();
-//            int length = range.getLength();
-//
-//            TableServiceAsync swc = GWT.create(TableService.class);
-//            /**
-//             * Метод обращающийся к асинхронным сервисам gwt.
-//             */
-//            AsyncCallback<Long> asyncCallback = new AsyncCallback<Long>() {
-//                @Override
-//                public void onFailure(Throwable caught) {
-//                    Window.alert("Не сработало возвращение RowCount");
-//                }
-//
-//                /**
-//                 *
-//                 * @param result Результат, содержащий общее количество строк вернувшихся из запроса к бд.
-//                 *               Нужен для установления у таблицы длинны.
-//                 */
-//                @Override
-//                public void onSuccess(Long result) {
-//                    table.setRowCount(result.intValue());
-//
-//                }
-//            };
-//            swc.getRowCount(asyncCallback);
-//
-//            AsyncCallback<List<UserDTO>> callback = new AsyncCallback<List<UserDTO>>() {
-//                @Override
-//                public void onFailure(Throwable caught) {
-//                    Window.alert("Callback not work");
-//                }
-//
-//                /**
-//                 *
-//                 * @param result Результат содержашй записи в формате DTO полученные из БД.
-//                 */
-//                @Override
-//                public void onSuccess(List<UserDTO> result) {
-//
-//                    updateRowData(start, result);
-//
-//                }
-//            };
-//
-//            /**
-//             * Вызом ветода из GWT сервиса.
-//             *          @param start C какой записи будут данные выводится в таблицу.
-//             *          @param length По какую будут данные выводится в таблицу.
-//             *          @param columnSortName сортировка
-//             *          @param isAscending направление сортировки
-//             */
-//            swc.getAll(start, length + start - 1, columnSortName, isAscending, callback);
-//
-//
-//        }
-//    }
+
 
 }
 
