@@ -5,27 +5,20 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.cellview.client.*;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.view.client.AsyncDataProvider;
-import com.google.gwt.view.client.HasData;
-import com.google.gwt.view.client.Range;
 import com.google.gwt.view.client.RangeChangeEvent;
 import com.mycomp.gwt.shared.UserDTO;
-import com.mycomp.gwt.shared.service.TableService;
-import com.mycomp.gwt.shared.service.TableServiceAsync;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Александр on 28.07.2016.
  * gwt клиент для общения с пользователем.
  */
-public class TableGWT implements EntryPoint {
+public class UserView implements EntryPoint {
 
     static DataGrid<UserDTO> table = new DataGrid<>();
     private static String columnSortName = "id";
@@ -33,10 +26,10 @@ public class TableGWT implements EntryPoint {
 
     private SimplePager pager;
     private ColumnSortEvent.AsyncHandler sortHandler = new ColumnSortEvent.AsyncHandler(table);
-    private MyAsyncDataProvider provider;
+    private UserPresenter provider;
 
     void start(){
-        provider = new MyAsyncDataProvider(columnSortName,isAscending);
+        provider = new UserPresenter(columnSortName,isAscending);
         provider.addDataDisplay(table);
     }
 
@@ -239,7 +232,7 @@ public class TableGWT implements EntryPoint {
      * Класс аснхронного дата провайдера extends {@link AsyncDataProvider}
      * Необходим для асинхронной работы с БД.
      */
-//    private static class MyAsyncDataProvider extends AsyncDataProvider<UserDTO> {
+//    private static class UserPresenter extends AsyncDataProvider<UserDTO> {
 //
 //
 //        @Override

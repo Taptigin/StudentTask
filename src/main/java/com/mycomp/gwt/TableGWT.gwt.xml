@@ -4,7 +4,7 @@
 
     <inherits name='com.google.gwt.user.User'/>
 
-    <entry-point class='com.mycomp.gwt.client.TableGWT'/>
+    <entry-point class='com.mycomp.gwt.client.UserView'/>
 
     <inherits name='com.google.gwt.user.theme.clean.Clean'/>
 

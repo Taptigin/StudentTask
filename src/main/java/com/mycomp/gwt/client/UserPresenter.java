@@ -1,13 +1,11 @@
 package com.mycomp.gwt.client;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.view.client.AsyncDataProvider;
 import com.google.gwt.view.client.HasData;
 import com.google.gwt.view.client.Range;
-import com.google.gwt.view.client.RangeChangeEvent;
 import com.mycomp.gwt.shared.UserDTO;
 import com.mycomp.gwt.shared.service.TableService;
 import com.mycomp.gwt.shared.service.TableServiceAsync;
@@ -21,11 +19,11 @@ import java.util.List;
  * Необходим для асинхронной работы с БД.
 
  */
-public class MyAsyncDataProvider extends AsyncDataProvider<UserDTO> {
+public class UserPresenter extends AsyncDataProvider<UserDTO> {
     String columnSortName;
     boolean isAscending;
 
-    public MyAsyncDataProvider(String columnSortName, boolean isAscending) {
+    public UserPresenter(String columnSortName, boolean isAscending) {
         this.columnSortName = columnSortName;
         this.isAscending = isAscending;
     }
@@ -62,7 +60,7 @@ public class MyAsyncDataProvider extends AsyncDataProvider<UserDTO> {
              */
             @Override
             public void onSuccess(Long result) {
-                TableGWT.table.setRowCount(result.intValue());
+                UserView.table.setRowCount(result.intValue());
 
             }
         };
