@@ -50,7 +50,7 @@ public class UserPresenter extends AsyncDataProvider<UserDTO> {
         AsyncCallback<Long> asyncCallback = new AsyncCallback<Long>() {
             @Override
             public void onFailure(Throwable caught) {
-                Window.alert("Не сработало возвращение RowCount");
+                //Window.alert("Не сработало возвращение RowCount");
                 UserView.logger.log(Level.ALL, "Не сработало возвращение RowCount");
                 GWT.log("Не сработало возвращение RowCount");
             }
@@ -71,7 +71,7 @@ public class UserPresenter extends AsyncDataProvider<UserDTO> {
         AsyncCallback<List<UserDTO>> callback = new AsyncCallback<List<UserDTO>>() {
             @Override
             public void onFailure(Throwable caught) {
-                Window.alert("Callback not work");
+                //Window.alert("Callback not work");
                 UserView.logger.log(Level.ALL, "Callback not work");
                 GWT.log("Callback not work");
             }
