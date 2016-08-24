@@ -1,6 +1,7 @@
 package com.mycomp.gwt.client;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.view.client.AsyncDataProvider;
@@ -20,19 +21,22 @@ import java.util.logging.Level;
  * Необходим для асинхронной работы с БД.
  */
 public class UserPresenter extends AsyncDataProvider<UserDTO> {
-
+    private DataGrid<UserDTO> table;
 
 
 
 
 
     void start(){
-        addDataDisplay(UserView.table);
+        table = UserView.getTable();
+        addDataDisplay(table);
 
     }
 
 
-
+    public DataGrid<UserDTO> getTable(){
+        return table;
+    }
 
 
     @Override
@@ -64,7 +68,7 @@ public class UserPresenter extends AsyncDataProvider<UserDTO> {
              */
             @Override
             public void onSuccess(Long result) {
-                UserView.table.setRowCount(result.intValue());
+                table.setRowCount(result.intValue());
 
             }
         };

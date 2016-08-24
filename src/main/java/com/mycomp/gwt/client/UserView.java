@@ -29,11 +29,11 @@ public class UserView  {
     private ColumnSortEvent.AsyncHandler sortHandler = new ColumnSortEvent.AsyncHandler(table);
     private UserPresenter provider;
 
-//    void start() {
-//        provider = new UserPresenter(columnSortName, isAscending);
-//        provider.addDataDisplay(table);
-//        logger.addHandler(new ConsoleLogHandler());
-//    }
+    public static DataGrid<UserDTO> getTable() {
+        return table;
+    }
+
+
 
     /**
      * Создание таблицы.

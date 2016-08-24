@@ -23,7 +23,7 @@ public class Controller implements EntryPoint {
 
         panel.addNorth(new HTMLPanel("h1", "Список студентов"), 60);
         panel.addNorth(view.getPager(), 70);
-        panel.add(UserView.table);
+        panel.add(presenter.getTable());
 
 
         RootLayoutPanel.get().add(panel);
