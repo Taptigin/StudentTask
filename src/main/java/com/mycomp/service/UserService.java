@@ -9,7 +9,7 @@ import java.util.List;
  * Сервис для вытаскивания из базы данных записей и количества записей хранящихся в БД.
  */
 public interface UserService {
-    public List<User> getAll(int firstId, int lastId, String columnName, boolean isAscending);
+    public List<User> getAll(int startIndex, int pageSize, String columnName, boolean isAscending);
 
     public Long getRowCount();
 }

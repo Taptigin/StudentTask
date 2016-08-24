@@ -26,14 +26,14 @@ public class UserDAOImpl implements UserDAO {
     /**
      * Получение данных из БД.
      *
-     * @param firstId     Первый айдишник.
-     * @param lastId      Последний айдишник.
+     * @param startIndex  Индекс с которого начинается выборка.
+     * @param pageSize    Размер выборки.
      * @param columnName  Имя колонки по которой производится сортировка.
      * @param isAscending Направление сортировки.
      * @return Лист с записями из БД.
      */
     @Override
-    public List<User> getAll(int firstId, int lastId, String columnName, boolean isAscending) {
+    public List<User> getAll(int startIndex, int pageSize, String columnName, boolean isAscending) {
 
         this.columnName = columnName;
         this.direction = isAscending;
@@ -48,14 +48,14 @@ public class UserDAOImpl implements UserDAO {
 
             query.orderBy(criteriaBuilder.asc(root.get(this.columnName)));
             list = em.createQuery(query)
-                    .setFirstResult(firstId)
-                    .setMaxResults(lastId)
+                    .setFirstResult(startIndex)
+                    .setMaxResults(pageSize)
                     .getResultList();
         } else {
             query.orderBy(criteriaBuilder.desc(root.get(this.columnName)));
             list = em.createQuery(query)
-                    .setFirstResult(firstId)
-                    .setMaxResults(lastId)
+                    .setFirstResult(startIndex)
+                    .setMaxResults(pageSize)
                     .getResultList();
         }
 

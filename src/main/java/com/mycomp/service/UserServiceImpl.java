@@ -19,8 +19,8 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public List<User> getAll(int firstId, int lastId, String columnName, boolean isAscending) {
-        return dao.getAll(firstId, lastId, columnName, isAscending);
+    public List<User> getAll(int startIndex, int pageSize, String columnName, boolean isAscending) {
+        return dao.getAll(startIndex, pageSize, columnName, isAscending);
     }
 
     @Override

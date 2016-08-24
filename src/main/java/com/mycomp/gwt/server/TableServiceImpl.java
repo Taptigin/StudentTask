@@ -25,16 +25,16 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
     /**
      * Вывод данных из БД в GWT через конвертацию в DTO объект.
      *
-     * @param firstId        Начальный айдишник.
-     * @param lastId         Последний айдишник.
+     * @param startIndex     Индекс с которого начинается выборка.
+     * @param pageSize       Размер выборки.
      * @param columnSortName Имя колонки для сортировки.
      * @param isAscending    Направление сортировки.
      */
     @Override
-    public List<UserDTO> getAll(int firstId, int lastId, String columnSortName, boolean isAscending) {
+    public List<UserDTO> getAll(int startIndex, int pageSize, String columnSortName, boolean isAscending) {
         this.columnSortName = columnSortName;
         List<UserDTO> listDto = new ArrayList<>();
-        List<User> list = service.getAll(firstId, lastId, columnSortName, isAscending);
+        List<User> list = service.getAll(startIndex, pageSize, columnSortName, isAscending);
 
         for (User user : list) {
             UserDTO userDto = new UserDTO();
