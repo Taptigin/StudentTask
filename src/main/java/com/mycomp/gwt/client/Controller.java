@@ -20,12 +20,9 @@ public class Controller implements EntryPoint {
         presenter.start();
 
         DockLayoutPanel panel = new DockLayoutPanel(Style.Unit.PX);
-
         panel.addNorth(new HTMLPanel("h1", "Список студентов"), 60);
         panel.addNorth(view.getPager(), 70);
         panel.add(presenter.getTable());
-
-
         RootLayoutPanel.get().add(panel);
 
     }

@@ -27,7 +27,7 @@ public class UserView  {
     private static boolean isAscending = true;
     private SimplePager pager;
     private ColumnSortEvent.AsyncHandler sortHandler = new ColumnSortEvent.AsyncHandler(table);
-    private UserPresenter provider;
+
 
     public static DataGrid<UserDTO> getTable() {
         return table;
