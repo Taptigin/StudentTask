@@ -20,27 +20,29 @@ import java.util.logging.Level;
  * Необходим для асинхронной работы с БД.
  */
 public class UserPresenter extends AsyncDataProvider<UserDTO> {
-    String columnSortName;
-    boolean isAscending;
 
-    public UserPresenter(String columnSortName, boolean isAscending) {
-        this.columnSortName = columnSortName;
-        this.isAscending = isAscending;
+
+
+
+
+
+    void start(){
+        addDataDisplay(UserView.table);
+
     }
 
-    public void setColumnSortName(String columnSortName) {
-        this.columnSortName = columnSortName;
-    }
 
-    public void setAscending(boolean ascending) {
-        isAscending = ascending;
-    }
+
+
 
     @Override
     protected void onRangeChanged(HasData<UserDTO> display) {
         Range range = display.getVisibleRange();
         final int start = range.getStart();
         int length = range.getLength();
+
+        String columnSortName = UserView.getColumnSortName();
+        boolean isAscending = UserView.isAscending();
 
 
         TableServiceAsync swc = GWT.create(TableService.class);

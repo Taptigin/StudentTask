@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  * Created by Александр on 28.07.2016.
  * gwt клиент для общения с пользователем.
  */
-public class UserView implements EntryPoint {
+public class UserView  {
 
     static DataGrid<UserDTO> table = new DataGrid<>();
     static Logger logger = Logger.getLogger("test");
@@ -29,16 +29,17 @@ public class UserView implements EntryPoint {
     private ColumnSortEvent.AsyncHandler sortHandler = new ColumnSortEvent.AsyncHandler(table);
     private UserPresenter provider;
 
-    void start() {
-        provider = new UserPresenter(columnSortName, isAscending);
-        provider.addDataDisplay(table);
-        logger.addHandler(new ConsoleLogHandler());
-    }
+//    void start() {
+//        provider = new UserPresenter(columnSortName, isAscending);
+//        provider.addDataDisplay(table);
+//        logger.addHandler(new ConsoleLogHandler());
+//    }
 
     /**
      * Создание таблицы.
      */
-    private void createTable() {
+    public void createTable() {
+        logger.addHandler(new ConsoleLogHandler());
         table.setKeyboardSelectionPolicy(HasKeyboardSelectionPolicy.KeyboardSelectionPolicy.ENABLED);
 
         table.addColumn(getFirstName(), "Имя");
@@ -64,8 +65,8 @@ public class UserView implements EntryPoint {
 
                 columnSortName = table.getColumnSortList().get(0).getColumn().getDataStoreName();
                 isAscending = table.getColumnSortList().get(0).isAscending();
-                provider.setAscending(isAscending);
-                provider.setColumnSortName(columnSortName);
+                //provider.setAscending(isAscending);
+                //provider.setColumnSortName(columnSortName);
 
             }
         });
@@ -76,10 +77,18 @@ public class UserView implements EntryPoint {
 
     }
 
+    public static String getColumnSortName() {
+        return columnSortName;
+    }
+
+    public static boolean isAscending() {
+        return isAscending;
+    }
+
     /**
      * создание пейджера
      */
-    private void createPager() {
+    public void createPager() {
         SimplePager.Resources pagerResources = GWT.create(SimplePager.Resources.class);
         pager = new SimplePager(SimplePager.TextLocation.CENTER, pagerResources, true, 0, true);
 
@@ -91,23 +100,8 @@ public class UserView implements EntryPoint {
     /**
      * Меотод запуска gui, в котором создаются и располагаются элементы gui на web странице.
      */
-    public void onModuleLoad() {
-        createPager();
-        createTable();
-
-        start();
-        //provider.addDataDisplay(table);
-
-        DockLayoutPanel panel = new DockLayoutPanel(Style.Unit.PX);
-
-        panel.addNorth(new HTMLPanel("h1", "Список студентов"), 60);
-        panel.addNorth(pager, 70);
-        panel.add(table);
-
-
-        RootLayoutPanel.get().add(panel);
-
-
+    public SimplePager getPager() {
+        return pager;
     }
 
     /**
