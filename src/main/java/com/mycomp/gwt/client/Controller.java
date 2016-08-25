@@ -16,7 +16,7 @@ public class Controller implements EntryPoint {
         view.createPager();
         view.createTable();
 
-        UserPresenter presenter = new UserPresenter();
+        UserPresenter presenter = new UserPresenter(view.getTable());
         presenter.start();
 
         DockLayoutPanel panel = new DockLayoutPanel(Style.Unit.PX);

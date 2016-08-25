@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  */
 public class UserView  {
 
-    static DataGrid<UserDTO> table = new DataGrid<>();
+    private DataGrid<UserDTO> table = new DataGrid<>();
     static Logger logger = Logger.getLogger("test");
     private static String columnSortName = "id";
     private static boolean isAscending = true;
@@ -29,7 +29,7 @@ public class UserView  {
     private ColumnSortEvent.AsyncHandler sortHandler = new ColumnSortEvent.AsyncHandler(table);
 
 
-    public static DataGrid<UserDTO> getTable() {
+    public  DataGrid<UserDTO> getTable() {
         return table;
     }
 

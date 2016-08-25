@@ -24,11 +24,13 @@ public class UserPresenter extends AsyncDataProvider<UserDTO> {
     private DataGrid<UserDTO> table;
 
 
-
-
+    public UserPresenter(DataGrid<UserDTO> table) {
+        this.table = table;
+    }
 
     void start(){
-        table = UserView.getTable();
+
+
         addDataDisplay(table);
 
     }
