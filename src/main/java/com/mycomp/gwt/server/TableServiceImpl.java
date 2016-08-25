@@ -14,6 +14,8 @@ import java.util.List;
 
 /**
  * Created by Александр on 28.07.2016.
+ * Сервлет GWT обращающийся к спринговому коду для получения данных из БД.
+ * Конвертация данных в объект DTO.
  */
 @Singleton
 public class TableServiceImpl extends RemoteServiceServlet implements TableService {

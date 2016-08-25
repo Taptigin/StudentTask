@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 /**
  * Created by Александр on 28.07.2016.
- * gwt клиент для общения с пользователем.
+ * Вьюха отрисовывающая таблицу и пейджер.
  */
 public class UserView {
 
@@ -57,7 +57,7 @@ public class UserView {
         table.setWidth("100%");
 
         /**
-         * Метод получающий от gwt колонку по которой производится сортировка и asc/desc
+         * Добавление хендлера который отвечает за сортировку и  asc/desc.
          */
         table.addRangeChangeHandler(new RangeChangeEvent.Handler() {
             @Override
@@ -65,8 +65,6 @@ public class UserView {
 
                 columnSortName = table.getColumnSortList().get(0).getColumn().getDataStoreName();
                 isAscending = table.getColumnSortList().get(0).isAscending();
-                //provider.setAscending(isAscending);
-                //provider.setColumnSortName(columnSortName);
 
             }
         });
@@ -89,9 +87,7 @@ public class UserView {
 
     }
 
-    /**
-     * Меотод запуска gui, в котором создаются и располагаются элементы gui на web странице.
-     */
+
     public SimplePager getPager() {
         return pager;
     }

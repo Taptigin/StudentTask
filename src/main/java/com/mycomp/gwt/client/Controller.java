@@ -8,6 +8,7 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 
 /**
  * Created by Александр on 24.08.2016.
+ * Класс контроллер соединяющий вьюху и презентер.
  */
 public class Controller implements EntryPoint {
     @Override

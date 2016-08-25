@@ -15,7 +15,6 @@ import java.util.logging.Level;
 
 /**
  * Created by Александр on 17.08.2016.
- * <p>
  * Класс аснхронного дата провайдера extends {@link AsyncDataProvider}
  * Необходим для асинхронной работы с БД.
  */
@@ -39,7 +38,9 @@ public class UserPresenter extends AsyncDataProvider<UserDTO> {
         return table;
     }
 
-
+    /**
+     * Метод обращающийся к асинхронным сервисам gwt, при изменении рейнджа таблицы.
+     */
     @Override
     protected void onRangeChanged(HasData<UserDTO> display) {
         Range range = display.getVisibleRange();
@@ -51,13 +52,10 @@ public class UserPresenter extends AsyncDataProvider<UserDTO> {
 
 
         TableServiceAsync swc = GWT.create(TableService.class);
-        /**
-         * Метод обращающийся к асинхронным сервисам gwt.
-         */
+
         AsyncCallback<Long> asyncCallback = new AsyncCallback<Long>() {
             @Override
             public void onFailure(Throwable caught) {
-                //Window.alert("Не сработало возвращение RowCount");
                 UserView.logger.log(Level.ALL, "Не сработало возвращение RowCount");
                 GWT.log("Не сработало возвращение RowCount");
             }
