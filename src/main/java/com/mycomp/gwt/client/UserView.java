@@ -1,14 +1,9 @@
 package com.mycomp.gwt.client;
 
 import com.google.gwt.cell.client.DateCell;
-import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Style;
 import com.google.gwt.logging.client.ConsoleLogHandler;
 import com.google.gwt.user.cellview.client.*;
-import com.google.gwt.user.client.ui.DockLayoutPanel;
-import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.view.client.RangeChangeEvent;
 import com.mycomp.gwt.shared.UserDTO;
 
@@ -19,21 +14,26 @@ import java.util.logging.Logger;
  * Created by Александр on 28.07.2016.
  * gwt клиент для общения с пользователем.
  */
-public class UserView  {
+public class UserView {
 
-    private DataGrid<UserDTO> table = new DataGrid<>();
     static Logger logger = Logger.getLogger("test");
     private static String columnSortName = "id";
     private static boolean isAscending = true;
+    private DataGrid<UserDTO> table = new DataGrid<>();
     private SimplePager pager;
     private ColumnSortEvent.AsyncHandler sortHandler = new ColumnSortEvent.AsyncHandler(table);
 
-
-    public  DataGrid<UserDTO> getTable() {
-        return table;
+    public static String getColumnSortName() {
+        return columnSortName;
     }
 
+    public static boolean isAscending() {
+        return isAscending;
+    }
 
+    public DataGrid<UserDTO> getTable() {
+        return table;
+    }
 
     /**
      * Создание таблицы.
@@ -75,14 +75,6 @@ public class UserView  {
         table.addColumnSortHandler(sortHandler);
         logger.info("table created");
 
-    }
-
-    public static String getColumnSortName() {
-        return columnSortName;
-    }
-
-    public static boolean isAscending() {
-        return isAscending;
     }
 
     /**

@@ -2,7 +2,6 @@ package com.mycomp.gwt.client;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.cellview.client.DataGrid;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.view.client.AsyncDataProvider;
 import com.google.gwt.view.client.HasData;
@@ -28,7 +27,7 @@ public class UserPresenter extends AsyncDataProvider<UserDTO> {
         this.table = table;
     }
 
-    void start(){
+    void start() {
 
 
         addDataDisplay(table);
@@ -36,7 +35,7 @@ public class UserPresenter extends AsyncDataProvider<UserDTO> {
     }
 
 
-    public DataGrid<UserDTO> getTable(){
+    public DataGrid<UserDTO> getTable() {
         return table;
     }
 
