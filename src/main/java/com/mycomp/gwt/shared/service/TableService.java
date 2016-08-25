@@ -7,13 +7,28 @@ import com.mycomp.gwt.shared.UserDTO;
 import java.util.List;
 
 /**
- * Created by Александр on 28.07.2016.
  * Асинхронный сервис для подтягивания данных из БД.
+ * <p>
+ * Created by Александр on 28.07.2016.
  */
 @RemoteServiceRelativePath("TableService")
 public interface TableService extends RemoteService {
-    List<UserDTO> getAll(int firstId, int lastId, String columnSortName, boolean isAscending);
+    /**
+     * Метод получения данных из БД.
+     *
+     * @param startIndex     Стартовый индекс с которого начинают запрашиваться данные.
+     * @param pageSize       Длинна выборки.
+     * @param columnSortName Имя столбца по которому производится сортировка.
+     * @param isAscending    Направление сортировки asc/desc.
+     * @return Возвращает коллекцию с данными типа User.
+     */
+    List<UserDTO> getAll(int startIndex, int pageSize, String columnSortName, boolean isAscending);
 
+    /**
+     * Метод получения количества записей взятых из БД.
+     *
+     * @return количество записей взятых из БД.
+     */
     Long getRowCount();
 
 }

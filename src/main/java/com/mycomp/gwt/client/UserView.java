@@ -11,8 +11,9 @@ import java.util.Date;
 import java.util.logging.Logger;
 
 /**
- * Created by Александр on 28.07.2016.
  * Вьюха отрисовывающая таблицу и пейджер.
+ * <p>
+ * Created by Александр on 28.07.2016.
  */
 public class UserView {
 

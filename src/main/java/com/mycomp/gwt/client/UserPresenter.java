@@ -14,9 +14,10 @@ import java.util.List;
 import java.util.logging.Level;
 
 /**
- * Created by Александр on 17.08.2016.
  * Класс аснхронного дата провайдера extends {@link AsyncDataProvider}
  * Необходим для асинхронной работы с БД.
+ * <p>
+ * Created by Александр on 17.08.2016.
  */
 public class UserPresenter extends AsyncDataProvider<UserDTO> {
     private DataGrid<UserDTO> table;
@@ -26,6 +27,9 @@ public class UserPresenter extends AsyncDataProvider<UserDTO> {
         this.table = table;
     }
 
+    /**
+     * Занесение таблицы в AsyncDataProvider.
+     */
     void start() {
 
 
@@ -94,7 +98,7 @@ public class UserPresenter extends AsyncDataProvider<UserDTO> {
         };
 
         /**
-         * Вызом ветода из GWT сервиса.
+         * Вызов ветода из GWT сервиса.
          *          @param start C какой записи будут данные выводится в таблицу.
          *          @param length По какую будут данные выводится в таблицу.
          *          @param columnSortName сортировка

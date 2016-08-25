@@ -4,8 +4,9 @@ import java.io.Serializable;
 import java.sql.Date;
 
 /**
- * Created by Александр on 08.08.2016.
  * Копия модельной сущности в виде DTO.
+ * <p>
+ * Created by Александр on 08.08.2016.
  */
 public class UserDTO implements Serializable {
     private Integer id;

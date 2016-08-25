@@ -7,10 +7,17 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 
 /**
- * Created by Александр on 24.08.2016.
  * Класс контроллер соединяющий вьюху и презентер.
+ * <p>
+ * Created by Александр on 24.08.2016.
  */
 public class Controller implements EntryPoint {
+    /**
+     * Метод запускающий создание gui.
+     * Сначала создаются "пустые" элементы,
+     * затем презентер их заполняет данными
+     * и происходит вывод на экран.
+     */
     @Override
     public void onModuleLoad() {
         UserView view = new UserView();

@@ -12,9 +12,10 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 
 /**
- * Created by Александр on 20.07.2016.
  * Имплементация спрингового интерфейса,
  * в которой непосредственно обращаемся к БД за записями.
+ * <p>
+ * Created by Александр on 20.07.2016.
  */
 
 @Repository
