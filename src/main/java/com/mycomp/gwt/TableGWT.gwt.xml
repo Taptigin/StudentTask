@@ -4,7 +4,7 @@
 
     <inherits name='com.google.gwt.user.User'/>
 
-    <entry-point class='com.mycomp.gwt.client.Controller'/>
+    <entry-point class='com.mycomp.gwt.client.Controller2'/>
 
     <inherits name='com.google.gwt.user.theme.clean.Clean'/>
     <inherits name="com.google.gwt.logging.Logging"/>
