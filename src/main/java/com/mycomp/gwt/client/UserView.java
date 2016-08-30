@@ -16,14 +16,14 @@ import java.util.logging.Logger;
 
 /**
  * Create View class.
- *
+ * <p>
  * Created by Alexandr on 30.08.2016.
  */
-public class UserView implements  UserPresenter.View{
+public class UserView implements UserPresenter.View {
+    static Logger logger = Logger.getLogger("test");
     private DataGrid<UserDTO> table = new DataGrid<>();
     private DockLayoutPanel panel;
     private SimplePager pager;
-    static Logger logger = Logger.getLogger("test");
 
 
     public UserView() {
@@ -39,6 +39,7 @@ public class UserView implements  UserPresenter.View{
         pager.setPageSize(50);
 
     }
+
     // Create table
     private DockLayoutPanel createDataGrid() {
         logger.addHandler(new ConsoleLogHandler());
@@ -83,6 +84,7 @@ public class UserView implements  UserPresenter.View{
         return panel;
 
     }
+
     //Connection data provider
     @Override
     public void setDataProvider(AbstractDataProvider<UserDTO> provider) {
@@ -155,7 +157,7 @@ public class UserView implements  UserPresenter.View{
     /**
      * Create columns for the table, set them names, give permission to the sorting.
      *
-     * @return  {@link Column}
+     * @return {@link Column}
      */
     private Column<UserDTO, Date> getEnrollmentDate() {
         DateCell dateCell = new DateCell();

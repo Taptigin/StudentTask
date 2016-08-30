@@ -5,26 +5,26 @@ import com.mycomp.model.User;
 import java.util.List;
 
 /**
- * Спринговый интерфейс для обращения к БД.
+ * Spring interface to access the database.
  * <p>
- * Created by Александр on 19.08.2016.
+ * Created by Alexandr on 19.08.2016.
  */
 public interface UserDAO {
     /**
-     * Метод получения данных из БД.
+     * A method of obtaining data from the database.
      *
-     * @param startIndex  Стартовый индекс с которого начинают запрашиваться данные.
-     * @param pageSize    Длинна выборки.
-     * @param columnName  Имя столбца по которому производится сортировка.
-     * @param isAscending Направление сортировки asc/desc.
-     * @return Возвращает коллекцию с данными типа User.
+     * @param startIndex  The starting index from which begin the requested data.
+     * @param pageSize    The sample length.
+     * @param columnName  The name of the column on which to sort.
+     * @param isAscending The direction of the sort asc/desc.
+     * @return Returns a collection with the data type User.
      */
     public List<User> getAll(int startIndex, int pageSize, String columnName, boolean isAscending);
 
     /**
-     * Метод получения количества записей взятых из БД.
+     * A method of obtaining the number of records taken from DB.
      *
-     * @return количество записей взятых из БД.
+     * @return the number of records taken from DB.
      */
     public Long getRowCount();
 }

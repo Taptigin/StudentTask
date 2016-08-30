@@ -12,10 +12,10 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 
 /**
- * Имплементация спрингового интерфейса,
- * в которой непосредственно обращаемся к БД за записями.
+ * Implementing a spring interface
+ * which refer directly to the database for the records.
  * <p>
- * Created by Александр on 20.07.2016.
+ * Created by Alexandr on 20.07.2016.
  */
 
 @Repository
@@ -25,13 +25,13 @@ public class UserDAOImpl implements UserDAO {
     private EntityManager em;
 
     /**
-     * Получение данных из БД.
+     * A method of obtaining data from the database.
      *
-     * @param startIndex  Индекс с которого начинается выборка.
-     * @param pageSize    Размер выборки.
-     * @param columnName  Имя колонки по которой производится сортировка.
-     * @param isAscending Направление сортировки.
-     * @return Лист с записями из БД.
+     * @param startIndex  The starting index from which begin the requested data.
+     * @param pageSize    The sample length.
+     * @param columnName  The name of the column on which to sort.
+     * @param isAscending The direction of the sort asc/desc.
+     * @return Returns a collection with the data type User.
      */
     @Override
     public List<User> getAll(int startIndex, int pageSize, String columnName, boolean isAscending) {
@@ -65,9 +65,9 @@ public class UserDAOImpl implements UserDAO {
     }
 
     /**
-     * Получаем общее количество записей содержащихся в БД.
+     * A method of obtaining the number of records taken from DB.
      *
-     * @return Количество записей.
+     * @return The number of records.
      */
     @Override
     public Long getRowCount() {

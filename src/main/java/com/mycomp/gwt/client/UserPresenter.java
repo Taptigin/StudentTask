@@ -18,14 +18,32 @@ import java.util.logging.Level;
 
 /**
  * Create presenter class.
- *
+ * <p>
  * Created by Alexandr on 30.08.2016.
  */
 public class UserPresenter {
     View view;
     boolean isInit;
 
-    public interface View extends IsWidget{
+    public UserPresenter(View view) {
+        this.view = view;
+    }
+
+    /**
+     * initializes provider
+     *
+     * @param container used Widget for image display
+     */
+
+    void go(HasWidgets container) {
+        if (!isInit) {
+            view.setDataProvider(new DataProvider());
+            isInit = true;
+        }
+        container.add(view.asWidget());
+    }
+
+    public interface View extends IsWidget {
 
         /**
          * Create provider for View
@@ -37,32 +55,17 @@ public class UserPresenter {
 
         /**
          * Get a ColumnSortList.ColumnSortInfo for View
+         *
          * @return an  instance
          */
 
         ColumnSortList.ColumnSortInfo getSortInfo();
     }
 
-    public UserPresenter(View view) {
-        this.view = view;
-    }
-
-    /**
-     * initializes provider
-     * @param container used Widget for image display
-     */
-
-    void go(HasWidgets container){
-        if(!isInit){
-            view.setDataProvider(new DataProvider());
-            isInit = true;
-        }
-        container.add(view.asWidget());
-    }
     /**
      * Create Provider class
      */
-    public class DataProvider extends AsyncDataProvider<UserDTO>{
+    public class DataProvider extends AsyncDataProvider<UserDTO> {
 
         @Override
         protected void onRangeChanged(HasData<UserDTO> display) {
@@ -99,7 +102,7 @@ public class UserPresenter {
                  */
                 @Override
                 public void onSuccess(Long result) {
-                    updateRowCount(result.intValue(),true);
+                    updateRowCount(result.intValue(), true);
 
                 }
             };
