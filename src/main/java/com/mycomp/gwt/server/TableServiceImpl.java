@@ -13,10 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Сервлет GWT обращающийся к спринговому коду для получения данных из БД.
- * Конвертация данных в объект DTO.
+ * GWT servlet access spring code to retrieve data from the database.
+ * Converting data to a DTO object.
  * <p>
- * Created by Александр on 28.07.2016.
+ * Created by Alexandr on 28.07.2016.
  */
 @Singleton
 public class TableServiceImpl extends RemoteServiceServlet implements TableService {
@@ -26,12 +26,12 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
     private UserService service = (UserService) context.getBean("storageService");
 
     /**
-     * Вывод данных из БД в GWT через конвертацию в DTO объект.
+     * Data output from the database in GWT through the conversion to the DTO object.
      *
-     * @param startIndex     Индекс с которого начинается выборка.
-     * @param pageSize       Размер выборки.
-     * @param columnSortName Имя колонки для сортировки.
-     * @param isAscending    Направление сортировки.
+     * @param startIndex     The index at which to begin sampling.
+     * @param pageSize       The size of the sample.
+     * @param columnSortName The name of the column to sort.
+     * @param isAscending    The direction of the sort.
      */
     @Override
     public List<UserDTO> getAll(int startIndex, int pageSize, String columnSortName, boolean isAscending) {
@@ -60,7 +60,7 @@ public class TableServiceImpl extends RemoteServiceServlet implements TableServi
     }
 
     /**
-     * Возвращает количество записей из БД.
+     * Returns the number of records from the database.
      *
      * @return Long
      */

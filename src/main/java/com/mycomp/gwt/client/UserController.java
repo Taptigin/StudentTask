@@ -6,7 +6,7 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 /**
  * Class controller connects the view and the presenter.
  *
- * Created by Александр on 30.08.2016.
+ * Created by Alexandr on 30.08.2016.
  */
 public class UserController implements EntryPoint {
     /**

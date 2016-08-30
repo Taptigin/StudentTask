@@ -8,8 +8,8 @@ import java.io.Serializable;
 import java.sql.Date;
 
 /**
- * Created by Александр on 21.07.2016.
- * Модель сущности для удобной работы с БД.
+ * Created by Alexandr on 21.07.2016.
+ * Model entity to the database.
  */
 @Entity
 @Table(name = "users", schema = "public", catalog = "students")

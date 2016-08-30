@@ -15,7 +15,9 @@ import java.util.Date;
 import java.util.logging.Logger;
 
 /**
- * Created by Александр on 30.08.2016.
+ * Create View class.
+ *
+ * Created by Alexandr on 30.08.2016.
  */
 public class UserView implements  UserPresenter.View{
     private DataGrid<UserDTO> table = new DataGrid<>();
@@ -81,12 +83,13 @@ public class UserView implements  UserPresenter.View{
         return panel;
 
     }
-
+    //Connection data provider
     @Override
     public void setDataProvider(AbstractDataProvider<UserDTO> provider) {
         provider.addDataDisplay(table);
     }
 
+    //Add sorting
     @Override
     public ColumnSortList.ColumnSortInfo getSortInfo() {
         ColumnSortList sortList = table.getColumnSortList();

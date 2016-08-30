@@ -17,7 +17,9 @@ import java.util.List;
 import java.util.logging.Level;
 
 /**
- * Created by Александр on 30.08.2016.
+ * Create presenter class.
+ *
+ * Created by Alexandr on 30.08.2016.
  */
 public class UserPresenter {
     View view;

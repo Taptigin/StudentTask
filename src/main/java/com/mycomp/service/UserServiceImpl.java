@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by Александр on 20.07.2016.
- * Имплементация ДАО сервиса.
+ * Created by Alexandr on 20.07.2016.
+ * The implementation of the DAO service.
  */
 @Service("storageService")
 public class UserServiceImpl implements UserService {
