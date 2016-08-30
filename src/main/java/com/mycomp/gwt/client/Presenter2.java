@@ -24,13 +24,31 @@ public class Presenter2 {
     boolean isInit;
 
     public interface View extends IsWidget{
+
+        /**
+         * Create provider for View
+         *
+         * @param provider the provider is used
+         */
+
         void setDataProvider(AbstractDataProvider<UserDTO> provider);
+
+        /**
+         * Get a ColumnSortList.ColumnSortInfo for View
+         * @return an  instance
+         */
+
         ColumnSortList.ColumnSortInfo getSortInfo();
     }
 
     public Presenter2(View view) {
         this.view = view;
     }
+
+    /**
+     * initializes provider
+     * @param container used Widget for image display
+     */
 
     void go(HasWidgets container){
         if(!isInit){
@@ -39,7 +57,9 @@ public class Presenter2 {
         }
         container.add(view.asWidget());
     }
-
+    /**
+     * Create Provider class
+     */
     public class DataProvider extends AsyncDataProvider<UserDTO>{
 
         @Override
@@ -50,7 +70,9 @@ public class Presenter2 {
 
             ColumnSortList.ColumnSortInfo sortInfo = view.getSortInfo();
 
+            // Column's  name for sort
             String columnSortName = "id";
+            // the direction of the sort
             boolean isAscending = true;
 
             if (sortInfo != null) {
@@ -60,7 +82,7 @@ public class Presenter2 {
 
 
             TableServiceAsync swc = GWT.create(TableService.class);
-
+            // get number of all records
             AsyncCallback<Long> asyncCallback = new AsyncCallback<Long>() {
                 @Override
                 public void onFailure(Throwable caught) {
@@ -70,29 +92,27 @@ public class Presenter2 {
 
                 /**
                  *
-                 * @param result Результат, содержащий общее количество строк вернувшихся из запроса к бд.
-                 *               Нужен для установления у таблицы длинны.
+                 * @param result The result that contains the total number of rows returned from a database query.
+                 *               Needed to set the table length.
                  */
                 @Override
                 public void onSuccess(Long result) {
-                    //table.setRowCount(result.intValue());
                     updateRowCount(result.intValue(),true);
 
                 }
             };
             swc.getRowCount(asyncCallback);
-
+            // retrieving data from the database.
             AsyncCallback<List<UserDTO>> callback = new AsyncCallback<List<UserDTO>>() {
                 @Override
                 public void onFailure(Throwable caught) {
-                    //Window.alert("Callback not work");
                     UserView.logger.log(Level.ALL, "Callback not work");
                     GWT.log("Callback not work");
                 }
 
                 /**
                  *
-                 * @param result Результат содержашй записи в формате DTO полученные из БД.
+                 * @param result The result contains entries in the format of DTO received from a DB.
                  */
                 @Override
                 public void onSuccess(List<UserDTO> result) {
@@ -103,11 +123,11 @@ public class Presenter2 {
             };
 
             /**
-             * Вызов ветода из GWT сервиса.
-             *          @param start C какой записи будут данные выводится в таблицу.
-             *          @param length По какую будут данные выводится в таблицу.
-             *          @param columnSortName сортировка
-             *          @param isAscending направление сортировки
+             * Calling a method from a GWT service.
+             *          @param start What records will be displayed in the data table.
+             *          @param length Which the data will be displayed in the table.
+             *          @param columnSortName sort.
+             *          @param isAscending the direction of the sort.
              */
             swc.getAll(start, length, columnSortName, isAscending, callback);
         }
