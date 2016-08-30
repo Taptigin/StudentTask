@@ -3,6 +3,7 @@ package com.mycomp.gwt.client;
 import com.google.gwt.cell.client.DateCell;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
+import com.google.gwt.logging.client.ConsoleLogHandler;
 import com.google.gwt.user.cellview.client.*;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.HTMLPanel;
@@ -12,6 +13,7 @@ import com.google.gwt.view.client.AbstractDataProvider;
 import com.mycomp.gwt.shared.UserDTO;
 
 import java.util.Date;
+import java.util.logging.Logger;
 
 /**
  * Created by Александр on 30.08.2016.
@@ -20,11 +22,14 @@ public class View2 implements  Presenter2.View{
     private DataGrid<UserDTO> table = new DataGrid<>();
     private DockLayoutPanel panel;
     private SimplePager pager;
+    static Logger logger = Logger.getLogger("test");
+
 
     public View2() {
         panel = createDataGrid();
     }
 
+    // Create a Pager to control the table.
     public void createPager() {
         SimplePager.Resources pagerResources = GWT.create(SimplePager.Resources.class);
         pager = new SimplePager(SimplePager.TextLocation.CENTER, pagerResources, true, 0, true);
@@ -33,24 +38,38 @@ public class View2 implements  Presenter2.View{
         pager.setPageSize(50);
 
     }
-
+    // Create table
     private DockLayoutPanel createDataGrid() {
+        logger.addHandler(new ConsoleLogHandler());
         table.setKeyboardSelectionPolicy(HasKeyboardSelectionPolicy.KeyboardSelectionPolicy.ENABLED);
+        // The add column displays the name.
         table.addColumn(getFirstName(), "Имя");
+        //The add column displays the middle name.
         table.addColumn(getMiddleName(), "Отчество");
+        //The add column displays the last name.
         table.addColumn(getLastName(), "Фамилия");
+        //The add column displays the age.
         table.addColumn(getAge(), "Возраст");
+        //The add column displays the sex.
         table.addColumn(getSex(), "Пол");
+        //The add column displays the enrollment date.
         table.addColumn(getEnrollmentDate(), "Дата поступления");
+        //The add column displays the release date.
         table.addColumn(getReleaseDate(), "Дата окончания");
+        //The add column displays the group name.
         table.addColumn(getGroupName(), "Группа");
+        //The add column displays the faculty name.
         table.addColumn(getFacultyName(), "Факультет");
 
         table.setAutoHeaderRefreshDisabled(true);
 
         table.setWidth("100%");
+
         createPager();
 
+        logger.info("table created");
+
+        //Add the Handler responsible for sorting.
         ColumnSortEvent.AsyncHandler handler = new
                 ColumnSortEvent.AsyncHandler(table);
         table.addColumnSortHandler(handler);
@@ -72,7 +91,9 @@ public class View2 implements  Presenter2.View{
     @Override
     public ColumnSortList.ColumnSortInfo getSortInfo() {
         ColumnSortList sortList = table.getColumnSortList();
-        return sortList.size() > 0 ? sortList.get(0) : null;
+        if (sortList.size() > 0) return sortList.get(0);
+        else return null;
+
 
     }
 
@@ -130,9 +151,9 @@ public class View2 implements  Presenter2.View{
     }
 
     /**
-     * Создаем колонки для таблицы, устанавливаем им имена, даём разрешение на сортировку.
+     * Create columns for the table, set them names, give permission to the sorting.
      *
-     * @return Возвращает {@link Column}
+     * @return  {@link Column}
      */
     private Column<UserDTO, Date> getEnrollmentDate() {
         DateCell dateCell = new DateCell();
