@@ -7,7 +7,6 @@ import com.google.gwt.logging.client.ConsoleLogHandler;
 import com.google.gwt.user.cellview.client.*;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.AbstractDataProvider;
 import com.mycomp.gwt.shared.UserDTO;
@@ -18,14 +17,14 @@ import java.util.logging.Logger;
 /**
  * Created by Александр on 30.08.2016.
  */
-public class View2 implements  Presenter2.View{
+public class UserView implements  UserPresenter.View{
     private DataGrid<UserDTO> table = new DataGrid<>();
     private DockLayoutPanel panel;
     private SimplePager pager;
     static Logger logger = Logger.getLogger("test");
 
 
-    public View2() {
+    public UserView() {
         panel = createDataGrid();
     }
 

@@ -19,7 +19,7 @@ import java.util.logging.Level;
 /**
  * Created by Александр on 30.08.2016.
  */
-public class Presenter2 {
+public class UserPresenter {
     View view;
     boolean isInit;
 
@@ -41,7 +41,7 @@ public class Presenter2 {
         ColumnSortList.ColumnSortInfo getSortInfo();
     }
 
-    public Presenter2(View view) {
+    public UserPresenter(View view) {
         this.view = view;
     }
 
@@ -86,7 +86,7 @@ public class Presenter2 {
             AsyncCallback<Long> asyncCallback = new AsyncCallback<Long>() {
                 @Override
                 public void onFailure(Throwable caught) {
-                    View2.logger.log(Level.ALL, "Не сработало возвращение RowCount");
+                    UserView.logger.log(Level.ALL, "Не сработало возвращение RowCount");
                     GWT.log("Не сработало возвращение RowCount");
                 }
 
@@ -106,7 +106,7 @@ public class Presenter2 {
             AsyncCallback<List<UserDTO>> callback = new AsyncCallback<List<UserDTO>>() {
                 @Override
                 public void onFailure(Throwable caught) {
-                    View2.logger.log(Level.ALL, "Callback not work");
+                    UserView.logger.log(Level.ALL, "Callback not work");
                     GWT.log("Callback not work");
                 }
 
