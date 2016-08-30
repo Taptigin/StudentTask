@@ -20,8 +20,6 @@ import java.util.List;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
-    String columnName;
-    boolean direction = true;
 
     @PersistenceContext
     private EntityManager em;
@@ -38,8 +36,6 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public List<User> getAll(int startIndex, int pageSize, String columnName, boolean isAscending) {
 
-        this.columnName = columnName;
-        this.direction = isAscending;
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
         CriteriaQuery<User> query = criteriaBuilder.createQuery(User.class);
         Root<User> root = query.from(User.class);
@@ -47,15 +43,15 @@ public class UserDAOImpl implements UserDAO {
 
 
         List<User> list;
-        if (direction == true) {
+        if (isAscending == true) {
 
-            query.orderBy(criteriaBuilder.asc(root.get(this.columnName)));
+            query.orderBy(criteriaBuilder.asc(root.get(columnName)));
             list = em.createQuery(query)
                     .setFirstResult(startIndex)
                     .setMaxResults(pageSize)
                     .getResultList();
         } else {
-            query.orderBy(criteriaBuilder.desc(root.get(this.columnName)));
+            query.orderBy(criteriaBuilder.desc(root.get(columnName)));
             list = em.createQuery(query)
                     .setFirstResult(startIndex)
                     .setMaxResults(pageSize)
