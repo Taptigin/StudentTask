@@ -20,7 +20,9 @@ import java.util.List;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
-
+    /**
+     * Create entity Manager for transaction management.
+     */
     @PersistenceContext
     private EntityManager em;
 
