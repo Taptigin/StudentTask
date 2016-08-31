@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * @see UserService
-     * @return
+     * @return The number of records.
      */
     @Override
     public Long getRowCount() {

@@ -5,7 +5,7 @@ import java.sql.Date;
 
 /**
  * Copy model entities as DTO.
- * <p>
+ * @see com.mycomp.model.User
  * Created by Alexandr on 08.08.2016.
  */
 public class UserDTO implements Serializable {
